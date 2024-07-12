@@ -7,7 +7,7 @@ class WishListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Upcomings'),
+          title: const Text('Wish Lists'),
           centerTitle: true,
         ),
         body: Container());

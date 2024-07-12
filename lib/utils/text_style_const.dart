@@ -32,8 +32,17 @@ TextStyle defaultTextStyleBlack = const TextStyle(
   color: Colors.black,
   fontWeight: FontWeight.normal,
 );
+TextStyle smallTextStyleBlack = const TextStyle(
+  fontSize: 10,
+  color: Colors.black,
 
-
+  fontWeight: FontWeight.normal,
+);
+TextStyle smallTextStyleWhite = const TextStyle(
+  fontSize: 10,
+  color: Colors.white,
+  fontWeight: FontWeight.normal,
+);
 TextStyle mediumTextStyleBlack = const TextStyle(
   fontSize: 16,
   color: Colors.black,

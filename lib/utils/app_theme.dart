@@ -20,7 +20,7 @@ class AppTheme {
   static const blackTextColor = Color(0xFF191919);
   static const blackTicketColor = Color(0xFF222222);
   static const blackBtnColor = Color(0xFF0D0D0D);
-  static const primaryColor = Color.fromARGB(255,51,143,77);
+  static const primaryColor =Color(0xff1B8B00);
   static const indicatorColor = Color(0xFF4FBBE0);
   static const cyanBtnColor = Color(0xFF95D6EC);
   static const starColor = Color(0xFFFFE500);

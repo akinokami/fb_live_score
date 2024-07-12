@@ -1,3 +1,4 @@
+import 'package:fb_livescore/utils/app_theme.dart';
 import 'package:fb_livescore/views/screens/compare/compare_screen.dart';
 import 'package:fb_livescore/views/screens/my_team/my_team_screen.dart';
 import 'package:fb_livescore/views/screens/wishlist/wish_list_screen.dart';
@@ -19,7 +20,7 @@ class Home extends StatelessWidget {
 
   buildBottomNavigationMenu(context, landingPageController) {
     return Obx(() => MediaQuery(
-        data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+        data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
         child: SizedBox(
           height: 60,
           child: BottomNavigationBar(
@@ -27,12 +28,25 @@ class Home extends StatelessWidget {
             showSelectedLabels: true,
             onTap: landingPageController.changeTabIndex,
             currentIndex: landingPageController.tabIndex.value,
-            backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
+            backgroundColor: Color(0xff1B8B00),
             unselectedItemColor: Colors.white.withOpacity(0.5),
             selectedItemColor: Colors.white,
             unselectedLabelStyle: unselectedLabelStyle,
             selectedLabelStyle: selectedLabelStyle,
             items: [
+
+
+              BottomNavigationBarItem(
+                icon: Container(
+                  margin: const EdgeInsets.only(bottom: 7),
+                  child: const Icon(
+                    Icons.people,
+                    size: 20.0,
+                  ),
+                ),
+                label: 'My Team',
+                backgroundColor: AppTheme.primaryColor,
+              ),
               BottomNavigationBarItem(
                 icon: Container(
                   margin: const EdgeInsets.only(bottom: 7),
@@ -42,7 +56,7 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 label: 'Home',
-                backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
+                backgroundColor: AppTheme.primaryColor,
               ),
               BottomNavigationBarItem(
                 icon: Container(
@@ -53,30 +67,9 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 label: 'Compare',
-                backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
+                backgroundColor: AppTheme.primaryColor,
               ),
-              BottomNavigationBarItem(
-                icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
-                    Icons.people,
-                    size: 20.0,
-                  ),
-                ),
-                label: 'My Team',
-                backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
-              ),
-              BottomNavigationBarItem(
-                icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
-                    Icons.shopping_cart,
-                    size: 20.0,
-                  ),
-                ),
-                label: 'Wishlist',
-                backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
-              ),
+
             ],
           ),
         )));
@@ -92,10 +85,11 @@ class Home extends StatelessWidget {
       body: Obx(() => IndexedStack(
             index: homeController.tabIndex.value,
             children: const [
+
+              MyTeamScreen(),
               HomeScreen(),
               CompareScreen(),
-              MyTeamScreen(),
-              WishListScreen(),
+
             ],
           )),
     ));

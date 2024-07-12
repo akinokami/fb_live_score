@@ -1,11 +1,10 @@
 import 'package:fb_livescore/models/home_custom_card_model.dart';
 import 'package:fb_livescore/models/home_top_field_model.dart';
-import 'package:fb_livescore/views/screens/home._menu.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController{
-  late RxList<HomeTopFieldModel> overviewList = <HomeTopFieldModel>[].obs;
-  late RxList<HomeCustomCardModel> topPlayerList = <HomeCustomCardModel>[].obs;
+  final RxList<HomeTopFieldModel> overviewList = <HomeTopFieldModel>[].obs;
+  final RxList<HomeCustomCardModel> topPlayerList = <HomeCustomCardModel>[].obs;
 
 
   @override
@@ -23,13 +22,15 @@ class HomeController extends GetxController{
     ]);
 
     topPlayerList.addAll([
-      HomeCustomCardModel("David Beckham", "assets/beckham.webp", "assets/manchester.webp", "Forward", "Manchester United", "30", "10.5 m"),
-      HomeCustomCardModel("Mateta", "assets/beckham.webp", "assets/spur.webp", "Midfielder", "Manchester United", "30", "10.5 m"),
-      HomeCustomCardModel("Eze", "assets/beckham.webp", "assets/manchester.webp", "Defender", "Manchester United", "30", "10.5 m"),
-      HomeCustomCardModel("Bruno G.", "assets/beckham.webp", "assets/spur.webp", "Forward", "Manchester United", "30", "10.5 m"),
-      HomeCustomCardModel("Kulusevski", "assets/beckham.webp", "assets/manchester.webp", "Midfielder", "Manchester United", "30", "10.5 m"),
-      HomeCustomCardModel("Wilson", "assets/beckham.webp", "assets/spur.webp", "Forward", "Manchester United", "30", "10.5 m"),
+      HomeCustomCardModel("David Beckham", "assets/beckham.webp", "assets/manchester.webp", "Forward", "Manchester United", "30", "10.5 m",""),
+      HomeCustomCardModel("Mateta", "assets/beckham.webp", "assets/spur.webp", "Midfielder", "Manchester United", "30", "10.5 m",""),
+      HomeCustomCardModel("Eze", "assets/beckham.webp", "assets/mancity.webp", "Defender", "Manchester United", "30", "10.5 m",""),
+      HomeCustomCardModel("Bruno G.", "assets/beckham.webp", "assets/spur.webp", "Forward", "Manchester United", "30", "10.5 m",""),
+      HomeCustomCardModel("Kulusevski", "assets/beckham.webp", "assets/manchester.webp", "Midfielder", "Manchester United", "30", "10.5 m",""),
+      HomeCustomCardModel("Wilson", "assets/beckham.webp", "assets/mancity.webp", "Forward", "Manchester United", "30", "10.5 m",""),
     ]);
+
+
   }
 
   @override
