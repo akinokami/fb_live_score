@@ -1,9 +1,12 @@
+import 'package:fb_livescore/controller/cart_controller.dart';
 import 'package:fb_livescore/models/status_model.dart';
 import 'package:fb_livescore/models/team_mode.dart';
 import 'package:fb_livescore/services/api_constant.dart';
+import 'package:fb_livescore/utils/app_theme.dart';
 import 'package:fb_livescore/utils/constants.dart';
 import 'package:fb_livescore/views/widgets/point_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/text_style_const.dart';
 
@@ -184,13 +187,20 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
         height: 500,
         child: ListView(
           children: const [
-            ResultsWidget(teamLogo: 1, isHome: "H", opponentName: "Aston Villa", points: "18 pts", isWin: true, result: "5 - 0")
+            ResultsWidget(
+                teamLogo: 1,
+                isHome: "H",
+                opponentName: "Aston Villa",
+                points: "18 pts",
+                isWin: true,
+                result: "5 - 0")
           ],
         ));
   }
 
   @override
   Widget build(BuildContext context) {
+    final cartController = Get.find<CartController>();
     return SingleChildScrollView(
       child: Container(
         height: MediaQuery.of(context).size.height,
@@ -227,14 +237,21 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                 const SizedBox(
                   width: 20,
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Opacity(
-                    opacity: 0.8,
-                    child: Icon(
-                      color: Colors.black,
-                      Icons.shopping_cart_outlined,
-                      size: 20,
+                Obx(
+                  () => Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: () => cartController.addToCart(widget.modelData!),
+                      child: Icon(
+                        color:
+                            cartController.cartList.contains(widget.modelData)
+                                ? AppTheme.primaryColor
+                                : Colors.grey,
+                        cartController.cartList.contains(widget.modelData)
+                            ? Icons.shopping_cart
+                            : Icons.shopping_cart_outlined,
+                        size: 20,
+                      ),
                     ),
                   ),
                 ),
@@ -385,11 +402,10 @@ class ResultsWidget extends StatelessWidget {
     ];
     return SizedBox(
       height: MediaQuery.of(context).size.height * .7,
-      width: MediaQuery.of(context).size.width*.88,
+      width: MediaQuery.of(context).size.width * .88,
       child: ListView(
         children: data.map((section) {
           return ExpansionTile(
-
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -400,20 +416,23 @@ class ResultsWidget extends StatelessWidget {
                       isHome,
                       style: defaultTextStyleBlack,
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Image.network(
                       'https://resources.premierleague.com/premierleague/badges/20/t$teamLogo.png',
                       width: 20,
                       height: 20,
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Text(
                       opponentName,
                       style: defaultTextStyleBlack,
                     ),
                   ],
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -421,31 +440,35 @@ class ResultsWidget extends StatelessWidget {
                       points,
                       style: defaultTextStyleBlack,
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     isWin
                         ? Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.green,
-                      ),
-                      child: Text(
-                        "W",
-                        style: smallTextStyleWhite,
-                      ),
-                    )
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.green,
+                            ),
+                            child: Text(
+                              "W",
+                              style: smallTextStyleWhite,
+                            ),
+                          )
                         : Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.red,
-                      ),
-                      child: Text(
-                        "L",
-                        style: smallTextStyleWhite,
-                      ),
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.red,
+                            ),
+                            child: Text(
+                              "L",
+                              style: smallTextStyleWhite,
+                            ),
+                          ),
+                    SizedBox(
+                      width: 10,
                     ),
-                    SizedBox(width: 10,),
                     Text(
                       result,
                       style: defaultTextStyleBlack,

@@ -43,7 +43,7 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
 
   @override
   Widget build(BuildContext context) {
-    final cartController = Get.put(CartController());
+    final cartController = Get.find<CartController>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

@@ -107,8 +107,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final homeController = Get.put(HomeController());
     final cartController = Get.put(CartController());
+    final homeController = Get.put(HomeController());
+
     return Scaffold(
         appBar: AppBar(
           toolbarHeight: 50,

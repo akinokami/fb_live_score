@@ -18,6 +18,7 @@ class CartController extends GetxController {
 
   void getCarts() {
     cart.value = box.read('carts') ?? '[]';
+    cartList.clear();
     cartList.addAll(jsonDecode(cart.value).map<Elements>((item) {
       return Elements.fromJson(item);
     }));
@@ -27,9 +28,8 @@ class CartController extends GetxController {
     cartList.contains(cartItem)
         ? cartList.remove(cartItem)
         : cartList.add(cartItem);
+    box.remove('carts');
     box.write('carts', jsonEncode(cartList));
-    cart.value = box.read('carts') ?? '[]';
-    print(cart.value);
   }
 
   // void removeFromCart(Elements cartItem) {

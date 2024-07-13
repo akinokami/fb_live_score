@@ -1,3 +1,4 @@
+import 'package:fb_livescore/controller/cart_controller.dart';
 import 'package:fb_livescore/models/status_model.dart';
 import 'package:fb_livescore/models/team_mode.dart';
 import 'package:fb_livescore/services/api_constant.dart';
@@ -5,6 +6,7 @@ import 'package:fb_livescore/utils/constants.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
 import 'package:fb_livescore/views/widgets/bottom_modal_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/app_theme.dart';
 
@@ -37,6 +39,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = Get.find<CartController>();
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Column(
@@ -112,14 +115,34 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                               SizedBox(
                                 width: 20,
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Opacity(
-                                  opacity: 0.8,
-                                  child: Icon(
-                                    color: Colors.black,
-                                    Icons.shopping_cart_outlined,
-                                    size: 20,
+                              // Padding(
+                              //   padding: EdgeInsets.all(8.0),
+                              //   child: Opacity(
+                              //     opacity: 0.8,
+                              //     child: Icon(
+                              //       color: Colors.black,
+                              //       Icons.shopping_cart_outlined,
+                              //       size: 20,
+                              //     ),
+                              //   ),
+                              // ),
+                              Obx(
+                                () => Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: GestureDetector(
+                                    onTap: () => cartController
+                                        .addToCart(widget.modelData),
+                                    child: Icon(
+                                      color: cartController.cartList
+                                              .contains(widget.modelData)
+                                          ? AppTheme.primaryColor
+                                          : Colors.grey,
+                                      cartController.cartList
+                                              .contains(widget.modelData)
+                                          ? Icons.shopping_cart
+                                          : Icons.shopping_cart_outlined,
+                                      size: 20,
+                                    ),
                                   ),
                                 ),
                               ),
