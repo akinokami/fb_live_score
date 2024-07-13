@@ -27,7 +27,7 @@ int _selectedIndex=0;
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: Material(
-          elevation: 10,
+          elevation: 2,
           borderRadius: BorderRadius.circular(5),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 3),
@@ -160,7 +160,7 @@ Widget _statsWidget() {
             ),
             const SizedBox(height: 5,),
             SizedBox(
-              height: MediaQuery.of(context).size.height*.05,
+              height: MediaQuery.of(context).size.height*.055,
               child: ListView.builder(
                 itemCount: 7,
                   scrollDirection: Axis.horizontal,
@@ -172,24 +172,17 @@ Widget _statsWidget() {
 
                         padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 3),
                         decoration: BoxDecoration(
-                          color: Color(0xff1B8B00),
+                          color: Colors.grey[200],
                           borderRadius: BorderRadius.circular(2),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0xff1B8B00),
-                              spreadRadius: 1,
-                              blurRadius: 1,
-                              offset: const Offset(0, 1), // changes position of shadow
-                            ),
-                          ],
+
 
                         ),
                         child: Column(
                           children: [
                             Opacity(
                                 opacity:0.6,
-                                child: Text("Price",style: smallTextStyleWhite,)),
-                            Text("14.3 m",style: smallTextStyleWhite),
+                                child: Text("Price",style: smallTextStyleBlack,)),
+                            Text("14.3 m",style: smallTextStyleBlack),
                           ],
                         ),
                       ),
