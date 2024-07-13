@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(left: 8.0,bottom: 3),
                   child: Material(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(10),
                     elevation: 10,
                     child: Container(
                         padding: const EdgeInsets.symmetric(
@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                             //   end: Alignment.bottomRight,
                             // ),
                             color:Color(0xff1B8B00).withOpacity(0.7),
-                            borderRadius: BorderRadius.circular(50)),
+                            borderRadius: BorderRadius.circular(10)),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

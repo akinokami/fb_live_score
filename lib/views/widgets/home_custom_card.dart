@@ -116,7 +116,8 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                       },
                                       child: Icon(
                                         color: selectedList.contains(index)?AppTheme.primaryColor:Colors.grey,
-                                        selectedList.contains(index)?Icons.shopping_cart: Icons.shopping_cart_outlined,
+                                        selectedList.contains(index)?Icons.shopping_cart
+                                            : Icons.shopping_cart_outlined,
                                         size: 20,
                                       ),
                                     ),
