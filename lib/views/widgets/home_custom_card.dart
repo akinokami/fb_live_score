@@ -1,4 +1,6 @@
 import 'package:fb_livescore/models/status_model.dart';
+import 'package:fb_livescore/models/team_mode.dart';
+import 'package:fb_livescore/services/api_constant.dart';
 import 'package:fb_livescore/utils/constants.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
 import 'package:fb_livescore/views/widgets/bottom_modal_sheet.dart';
@@ -31,6 +33,7 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
             child: BottomSheetContent(
               title: widget.title,
               modelData: widget.list[selectedIndex],
+              teamList: widget.teamList,
             ));
       },
     );
@@ -105,19 +108,27 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                     const SizedBox(
                                       width: 5,
                                     ),
-                                    // Image.asset(
-                                    //   widget.list[index].teamLogoPath ?? "",
-                                    //   width: 20,
-                                    //   height: 20,
-                                    // ),
+                                    Image.network(
+                                      teamList
+                                              .firstWhere((element) =>
+                                                  int.parse(
+                                                      element.id.toString()) ==
+                                                  int.parse(widget
+                                                      .list[index].team
+                                                      .toString()))
+                                              .imageUrl ??
+                                          '',
+                                      width: 20,
+                                      height: 20,
+                                    ),
                                     const SizedBox(
                                       width: 20,
                                     ),
-                                    // Image.asset(
-                                    //   widget.list[index].playerImage ?? "",
-                                    //   width: 50,
-                                    //   height: 70,
-                                    // ),
+                                    Image.network(
+                                      "${ApiConstant.imageUrl}${widget.list[index].photo?.replaceAll('.jpg', '.png') ?? ''}",
+                                      width: 50,
+                                      height: 70,
+                                    ),
                                     const SizedBox(
                                       width: 20,
                                     ),

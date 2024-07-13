@@ -1,14 +1,18 @@
 import 'package:fb_livescore/models/status_model.dart';
+import 'package:fb_livescore/models/team_mode.dart';
+import 'package:fb_livescore/services/api_constant.dart';
+import 'package:fb_livescore/utils/constants.dart';
 import 'package:fb_livescore/views/widgets/point_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/text_style_const.dart';
 
 class BottomSheetContent extends StatefulWidget {
-  const BottomSheetContent({super.key, required this.title, this.modelData});
+  const BottomSheetContent(
+      {super.key, required this.title, this.modelData, required this.teamList});
   final String title;
   final Elements? modelData;
-
+  final List<Teams> teamList;
   @override
   State<BottomSheetContent> createState() => _BottomSheetContentState();
 }
@@ -34,7 +38,9 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
 
             // margin: EdgeInsets.symmetric(horizontal: 10.0),
             decoration: BoxDecoration(
-              color: _selectedIndex == index ? const Color(0xff1B8B00) : Colors.white,
+              color: _selectedIndex == index
+                  ? const Color(0xff1B8B00)
+                  : Colors.white,
               borderRadius: BorderRadius.circular(5),
             ),
             child: Text(
@@ -181,43 +187,48 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   crossAxisAlignment: CrossAxisAlignment.start,
-            //   mainAxisSize: MainAxisSize.max,
-            //   children: [
-            //     Padding(
-            //       padding: const EdgeInsets.all(8.0),
-            //       child: Image.asset(
-            //         widget.modelData?.teamLogoPath ?? "",
-            //         width: 20,
-            //         height: 20,
-            //       ),
-            //     ),
-            //     const SizedBox(
-            //       width: 20,
-            //     ),
-            //     Image.asset(
-            //       widget.modelData?.playerImage ?? "",
-            //       width: 50,
-            //       height: 70,
-            //     ),
-            //     const SizedBox(
-            //       width: 20,
-            //     ),
-            //     const Padding(
-            //       padding: EdgeInsets.all(8.0),
-            //       child: Opacity(
-            //         opacity: 0.8,
-            //         child: Icon(
-            //           color: Colors.black,
-            //           Icons.shopping_cart_outlined,
-            //           size: 20,
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.network(
+                    teamList
+                            .firstWhere((element) =>
+                                int.parse(element.id.toString()) ==
+                                int.parse(widget.modelData!.team.toString()))
+                            .imageUrl ??
+                        '',
+                    width: 20,
+                    height: 20,
+                  ),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Image.network(
+                  "${ApiConstant.imageUrl}${widget.modelData?.photo?.replaceAll('.jpg', '.png') ?? ''}",
+                  width: 50,
+                  height: 70,
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Opacity(
+                    opacity: 0.8,
+                    child: Icon(
+                      color: Colors.black,
+                      Icons.shopping_cart_outlined,
+                      size: 20,
+                    ),
+                  ),
+                ),
+              ],
+            ),
             Text(
               widget.modelData?.secondName ?? "",
               style: smallTextStyleBlack,
@@ -229,7 +240,10 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                 children: [
                   Opacity(
                       opacity: 0.5,
-                      child: Text("role", style: smallTextStyleBlack)),
+                      child: Text(
+                          Constants()
+                              .defineType(widget.modelData?.elementType ?? 0),
+                          style: smallTextStyleBlack)),
                   const SizedBox(
                     width: 2,
                   ),
@@ -244,7 +258,15 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                   ),
                   Opacity(
                       opacity: 0.5,
-                      child: Text("team name", style: smallTextStyleBlack)),
+                      child: Text(
+                          widget.teamList
+                                  .firstWhere((element) =>
+                                      int.parse(element.id.toString()) ==
+                                      int.parse(
+                                          widget.modelData!.team.toString()))
+                                  .name ??
+                              '',
+                          style: smallTextStyleBlack)),
                 ],
               ),
             ),

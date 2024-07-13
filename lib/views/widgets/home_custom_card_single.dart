@@ -1,4 +1,6 @@
 import 'package:fb_livescore/models/status_model.dart';
+import 'package:fb_livescore/models/team_mode.dart';
+import 'package:fb_livescore/services/api_constant.dart';
 import 'package:fb_livescore/utils/constants.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
 import 'package:fb_livescore/views/widgets/bottom_modal_sheet.dart';
@@ -27,6 +29,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
             child: BottomSheetContent(
               title: widget.title ?? "",
               modelData: widget.modelData,
+              teamList: widget.teamList,
             ));
       },
     );
@@ -78,27 +81,34 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(10),
                                   topRight: Radius.circular(10))),
-                          child: const Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              // Padding(
-                              //   padding: const EdgeInsets.all(8.0),
-                              //   child: Image.asset(
-                              //     widget.modelData.teamLogoPath ?? "",
-                              //     width: 20,
-                              //     height: 20,
-                              //   ),
-                              // ),
-                              // const SizedBox(
-                              //   width: 20,
-                              // ),
-                              // Image.asset(
-                              //   widget.modelData.playerImage ?? "",
-                              //   width: 50,
-                              //   height: 70,
-                              // ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.network(
+                                  teamList
+                                          .firstWhere((element) =>
+                                              int.parse(
+                                                  element.id.toString()) ==
+                                              int.parse(widget.modelData.team
+                                                  .toString()))
+                                          .imageUrl ??
+                                      '',
+                                  width: 20,
+                                  height: 20,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Image.network(
+                                "${ApiConstant.imageUrl}${widget.modelData.photo?.replaceAll('.jpg', '.png') ?? ''}",
+                                width: 50,
+                                height: 70,
+                              ),
                               SizedBox(
                                 width: 20,
                               ),
