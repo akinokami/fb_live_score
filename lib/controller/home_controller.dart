@@ -12,6 +12,7 @@ class HomeController extends GetxController {
   RxList<Elements> midfielderList = <Elements>[].obs;
   RxList<Elements> defenderList = <Elements>[].obs;
   RxList<Elements> gokeeperList = <Elements>[].obs;
+  RxList<Elements> players = <Elements>[].obs;
   Rx<Elements> mostSelected = Elements().obs;
   Rx<Elements> mostCaptained = Elements().obs;
   Rx<Elements> mostViceCaptained = Elements().obs;
@@ -28,7 +29,11 @@ class HomeController extends GetxController {
     try {
       final result = await ApiRepo().getStatus();
       statusModel.value = result;
-
+      players.value = (statusModel.value.elements
+          ?.where((i) => i.nowCost != null)
+          .toList()
+        ?..sort((a, b) => b.nowCost!.compareTo(a.nowCost??0)))! // Sort in descending order by nowCost
+          ;
       topPlayerList.value = statusModel.value.elements
               ?.where((i) => num.parse(i.totalpoints.toString()) >= 135)
               .toList() ??
