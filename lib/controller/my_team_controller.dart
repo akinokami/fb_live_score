@@ -5,13 +5,6 @@ class MyTeamController extends GetxController{
 
 TextEditingController searchController = TextEditingController();
 
-  @override
-  void onInit() async {
-    super.onInit();
-
-
-
-  }
 
   @override
   void onReady() {

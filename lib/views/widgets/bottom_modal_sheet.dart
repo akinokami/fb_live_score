@@ -34,7 +34,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
 
             // margin: EdgeInsets.symmetric(horizontal: 10.0),
             decoration: BoxDecoration(
-              color: _selectedIndex == index ? Color(0xff1B8B00) : Colors.white,
+              color: _selectedIndex == index ? const Color(0xff1B8B00) : Colors.white,
               borderRadius: BorderRadius.circular(5),
             ),
             child: Text(

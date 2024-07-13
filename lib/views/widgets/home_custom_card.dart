@@ -83,7 +83,7 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                             children: [
                               Container(
                                 padding: const EdgeInsets.only(top: 5),
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     //color:Colors.blueGrey,
                                     //   gradient:  LinearGradient(
                                     //     colors: [
@@ -93,7 +93,7 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                     //     begin: Alignment.topLeft,
                                     //     end: Alignment.bottomRight,
                                     //   ),
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(10),
                                         topRight: Radius.circular(10))),
                                 child: Row(

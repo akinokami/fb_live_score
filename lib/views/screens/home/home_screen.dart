@@ -54,11 +54,11 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Badge(
-                label: Text("3"),
+                label: const Text("3"),
                 child: IconButton(
                   icon: const Icon(Icons.shopping_cart_outlined),
                   onPressed: () {
-                    Get.to(WishListScreen());
+                    Get.to(const WishListScreen());
                   },
                 ),
               ),

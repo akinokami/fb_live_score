@@ -45,8 +45,8 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                 },
                 decoration: InputDecoration(
                     hintText: "Enter Manager ID",
-                    contentPadding: EdgeInsets.only(top: 10, left: 10),
-                    hintStyle: TextStyle(color: Colors.grey, fontSize: 12),
+                    contentPadding: const EdgeInsets.only(top: 10, left: 10),
+                    hintStyle: const TextStyle(color: Colors.grey, fontSize: 12),
                     //prefixIcon: Icon(Icons.search),
                     suffixIcon: Padding(
                       padding: const EdgeInsets.all(5.0),
@@ -66,7 +66,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                           decoration: BoxDecoration(
                               color: AppTheme.primaryColor,
                               borderRadius: BorderRadius.circular(50)),
-                          child: Center(
+                          child: const Center(
                             child: Text("Search",
                                 style: TextStyle(
                                   color: Colors.white,
@@ -85,8 +85,8 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
             height: MediaQuery.of(context).size.height * .03,
           ),
           if (data)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -153,7 +153,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
           if (data)
             Expanded(
               child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("assets/soccer_field.webp"),
                       fit: BoxFit.cover,
@@ -170,24 +170,24 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 Container(
                                   height: 50,
                                   width: 50,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image:
                                               AssetImage("assets/beckham.webp"),
                                           fit: BoxFit.cover)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.blue,
                                       borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(5),
                                           topLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "David Beckham",
                                       style: TextStyle(
@@ -199,13 +199,13 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.only(
                                           bottomRight: Radius.circular(5),
                                           bottomLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "2",
                                       style: TextStyle(
@@ -227,24 +227,24 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 Container(
                                   height: 50,
                                   width: 50,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image:
                                               AssetImage("assets/beckham.webp"),
                                           fit: BoxFit.cover)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.blue,
                                       borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(5),
                                           topLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "David Beckham",
                                       style: TextStyle(
@@ -256,13 +256,13 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.only(
                                           bottomRight: Radius.circular(5),
                                           bottomLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "2",
                                       style: TextStyle(
@@ -279,24 +279,24 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 Container(
                                   height: 50,
                                   width: 50,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image:
                                               AssetImage("assets/beckham.webp"),
                                           fit: BoxFit.cover)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.blue,
                                       borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(5),
                                           topLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "David Beckham",
                                       style: TextStyle(
@@ -308,13 +308,13 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.only(
                                           bottomRight: Radius.circular(5),
                                           bottomLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "2",
                                       style: TextStyle(
@@ -331,24 +331,24 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 Container(
                                   height: 50,
                                   width: 50,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image:
                                               AssetImage("assets/beckham.webp"),
                                           fit: BoxFit.cover)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.blue,
                                       borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(5),
                                           topLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "David Beckham",
                                       style: TextStyle(
@@ -360,226 +360,13 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.only(
                                           bottomRight: Radius.circular(5),
                                           bottomLeft: Radius.circular(5))),
-                                  child: Center(
-                                    child: Text(
-                                      "2",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              children: [
-                                Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image:
-                                              AssetImage("assets/beckham.webp"),
-                                          fit: BoxFit.cover)),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
-                                      color: Colors.blue,
-                                      borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(5),
-                                          topLeft: Radius.circular(5))),
-                                  child: Center(
-                                    child: Text(
-                                      "David Beckham",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 8,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(5),
-                                          bottomLeft: Radius.circular(5))),
-                                  child: Center(
-                                    child: Text(
-                                      "2",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image:
-                                              AssetImage("assets/beckham.webp"),
-                                          fit: BoxFit.cover)),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
-                                      color: Colors.blue,
-                                      borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(5),
-                                          topLeft: Radius.circular(5))),
-                                  child: Center(
-                                    child: Text(
-                                      "David Beckham",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 8,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(5),
-                                          bottomLeft: Radius.circular(5))),
-                                  child: Center(
-                                    child: Text(
-                                      "2",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image:
-                                              AssetImage("assets/beckham.webp"),
-                                          fit: BoxFit.cover)),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
-                                      color: Colors.blue,
-                                      borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(5),
-                                          topLeft: Radius.circular(5))),
-                                  child: Center(
-                                    child: Text(
-                                      "David Beckham",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 8,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(5),
-                                          bottomLeft: Radius.circular(5))),
-                                  child: Center(
-                                    child: Text(
-                                      "2",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image:
-                                              AssetImage("assets/beckham.webp"),
-                                          fit: BoxFit.cover)),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
-                                      color: Colors.blue,
-                                      borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(5),
-                                          topLeft: Radius.circular(5))),
-                                  child: Center(
-                                    child: Text(
-                                      "David Beckham",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 8,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(5),
-                                          bottomLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "2",
                                       style: TextStyle(
@@ -601,24 +388,24 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 Container(
                                   height: 50,
                                   width: 50,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image:
                                               AssetImage("assets/beckham.webp"),
                                           fit: BoxFit.cover)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.blue,
                                       borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(5),
                                           topLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "David Beckham",
                                       style: TextStyle(
@@ -630,13 +417,13 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.only(
                                           bottomRight: Radius.circular(5),
                                           bottomLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "2",
                                       style: TextStyle(
@@ -653,24 +440,24 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 Container(
                                   height: 50,
                                   width: 50,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image:
                                               AssetImage("assets/beckham.webp"),
                                           fit: BoxFit.cover)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.blue,
                                       borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(5),
                                           topLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "David Beckham",
                                       style: TextStyle(
@@ -682,13 +469,13 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.only(
                                           bottomRight: Radius.circular(5),
                                           bottomLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "2",
                                       style: TextStyle(
@@ -705,24 +492,24 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 Container(
                                   height: 50,
                                   width: 50,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image:
                                               AssetImage("assets/beckham.webp"),
                                           fit: BoxFit.cover)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.blue,
                                       borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(5),
                                           topLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       "David Beckham",
                                       style: TextStyle(
@@ -734,13 +521,226 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                 ),
                                 Container(
                                   width: MediaQuery.of(context).size.width * .2,
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.only(
                                           bottomRight: Radius.circular(5),
                                           bottomLeft: Radius.circular(5))),
-                                  child: Center(
+                                  child: const Center(
+                                    child: Text(
+                                      "2",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image:
+                                              AssetImage("assets/beckham.webp"),
+                                          fit: BoxFit.cover)),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width * .2,
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
+                                      color: Colors.blue,
+                                      borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(5),
+                                          topLeft: Radius.circular(5))),
+                                  child: const Center(
+                                    child: Text(
+                                      "David Beckham",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 8,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width * .2,
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(5),
+                                          bottomLeft: Radius.circular(5))),
+                                  child: const Center(
+                                    child: Text(
+                                      "2",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              children: [
+                                Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image:
+                                              AssetImage("assets/beckham.webp"),
+                                          fit: BoxFit.cover)),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width * .2,
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
+                                      color: Colors.blue,
+                                      borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(5),
+                                          topLeft: Radius.circular(5))),
+                                  child: const Center(
+                                    child: Text(
+                                      "David Beckham",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 8,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width * .2,
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(5),
+                                          bottomLeft: Radius.circular(5))),
+                                  child: const Center(
+                                    child: Text(
+                                      "2",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image:
+                                              AssetImage("assets/beckham.webp"),
+                                          fit: BoxFit.cover)),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width * .2,
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
+                                      color: Colors.blue,
+                                      borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(5),
+                                          topLeft: Radius.circular(5))),
+                                  child: const Center(
+                                    child: Text(
+                                      "David Beckham",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 8,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width * .2,
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(5),
+                                          bottomLeft: Radius.circular(5))),
+                                  child: const Center(
+                                    child: Text(
+                                      "2",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image:
+                                              AssetImage("assets/beckham.webp"),
+                                          fit: BoxFit.cover)),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width * .2,
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
+                                      color: Colors.blue,
+                                      borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(5),
+                                          topLeft: Radius.circular(5))),
+                                  child: const Center(
+                                    child: Text(
+                                      "David Beckham",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 8,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width * .2,
+                                  padding: const EdgeInsets.only(left: 5, right: 5),
+                                  decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(5),
+                                          bottomLeft: Radius.circular(5))),
+                                  child: const Center(
                                     child: Text(
                                       "2",
                                       style: TextStyle(

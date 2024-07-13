@@ -65,7 +65,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               //color:Colors.blueGrey,
                               // gradient:  LinearGradient(
                               //   colors: [
@@ -75,10 +75,10 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                               //   begin: Alignment.topLeft,
                               //   end: Alignment.bottomRight,
                               // ),
-                              borderRadius: const BorderRadius.only(
+                              borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(10),
                                   topRight: Radius.circular(10))),
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
@@ -99,10 +99,10 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                               //   width: 50,
                               //   height: 70,
                               // ),
-                              const SizedBox(
+                              SizedBox(
                                 width: 20,
                               ),
-                              const Padding(
+                              Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Opacity(
                                   opacity: 0.8,

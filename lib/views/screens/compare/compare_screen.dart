@@ -16,8 +16,8 @@ class _CompareScreenState extends State<CompareScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Choose a Player'),
-          content: Container(
+          title: const Text('Choose a Player'),
+          content: SizedBox(
             width: double.maxFinite,
             child: ListView.builder(
               shrinkWrap: true,
@@ -45,8 +45,8 @@ class _CompareScreenState extends State<CompareScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Choose a Player'),
-          content: Container(
+          title: const Text('Choose a Player'),
+          content: SizedBox(
             width: double.maxFinite,
             child: ListView.builder(
               shrinkWrap: true,
@@ -102,7 +102,7 @@ class _CompareScreenState extends State<CompareScreen> {
                       height: MediaQuery.of(context).size.height * .25,
                       child: Card(
                           child: selectedPlayer1 == null
-                              ? Column(
+                              ? const Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text("Add Player"),
@@ -116,15 +116,15 @@ class _CompareScreenState extends State<CompareScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                       Text(selectedPlayer1!.name),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       Text(selectedPlayer1!.role),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       Text(selectedPlayer1!.price.toString()),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       Text(selectedPlayer1!.points.toString()),
@@ -140,7 +140,7 @@ class _CompareScreenState extends State<CompareScreen> {
                         height: MediaQuery.of(context).size.height * .25,
                         child: Card(
                             child: selectedPlayer2 == null
-                                ? Column(
+                                ? const Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text("Add Player"),
@@ -154,15 +154,15 @@ class _CompareScreenState extends State<CompareScreen> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                         Text(selectedPlayer2!.name),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         Text(selectedPlayer2!.role),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         Text(selectedPlayer2!.price.toString()),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         Text(
@@ -487,19 +487,18 @@ class PlayerListItem extends StatelessWidget {
   final Player player;
   final VoidCallback onTap;
 
-  const PlayerListItem({Key? key, required this.player, required this.onTap})
-      : super(key: key);
+  const PlayerListItem({super.key, required this.player, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: ListTile(
-        leading: Icon(Icons.person), // Placeholder for player icon
+        leading: const Icon(Icons.person), // Placeholder for player icon
         title: Text(player.name),
         subtitle: Text(
             '${player.role}, Price: \$${player.price}, Points: ${player.points}'),
-        trailing: Icon(Icons.add_circle_outline),
+        trailing: const Icon(Icons.add_circle_outline),
       ),
     );
   }
