@@ -5,6 +5,8 @@ import 'package:fb_livescore/utils/constants.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
 import 'package:fb_livescore/views/widgets/bottom_modal_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../controller/cart_controller.dart';
 import '../../utils/app_theme.dart';
 
 class HomeCustomCard extends StatefulWidget {
@@ -41,6 +43,7 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = Get.put(CartController());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -132,22 +135,21 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                     const SizedBox(
                                       width: 20,
                                     ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          selectedList.contains(index)
-                                              ? selectedList.remove(index)
-                                              : selectedList.add(index);
-                                        });
-                                      },
-                                      child: Icon(
-                                        color: selectedList.contains(index)
-                                            ? AppTheme.primaryColor
-                                            : Colors.grey,
-                                        selectedList.contains(index)
-                                            ? Icons.shopping_cart
-                                            : Icons.shopping_cart_outlined,
-                                        size: 20,
+                                    Obx(
+                                      () => GestureDetector(
+                                        onTap: () => cartController
+                                            .addToCart(widget.list[index]),
+                                        child: Icon(
+                                          color: cartController.cartList
+                                                  .contains(widget.list[index])
+                                              ? AppTheme.primaryColor
+                                              : Colors.grey,
+                                          cartController.cartList
+                                                  .contains(widget.list[index])
+                                              ? Icons.shopping_cart
+                                              : Icons.shopping_cart_outlined,
+                                          size: 20,
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(

@@ -1,3 +1,4 @@
+import 'package:fb_livescore/controller/cart_controller.dart';
 import 'package:fb_livescore/controller/home_controller.dart';
 import 'package:fb_livescore/utils/global.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
@@ -107,6 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final homeController = Get.put(HomeController());
+    final cartController = Get.put(CartController());
     return Scaffold(
         appBar: AppBar(
           toolbarHeight: 50,
@@ -145,15 +147,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
           ),
           actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Badge(
-                label: const Text("3"),
-                child: IconButton(
-                  icon: const Icon(Icons.shopping_cart_outlined),
-                  onPressed: () {
-                    Get.to(const WishListScreen());
-                  },
+            Obx(
+              () => Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Badge(
+                  label: Text(cartController.cartList.length.toString()),
+                  child: IconButton(
+                    icon: const Icon(Icons.shopping_cart_outlined),
+                    onPressed: () {
+                      Get.to(const WishListScreen());
+                    },
+                  ),
                 ),
               ),
             ),
