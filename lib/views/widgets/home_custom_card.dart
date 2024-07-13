@@ -1,13 +1,19 @@
 import 'package:fb_livescore/models/status_model.dart';
+import 'package:fb_livescore/utils/constants.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
 import 'package:fb_livescore/views/widgets/bottom_modal_sheet.dart';
 import 'package:flutter/material.dart';
 import '../../utils/app_theme.dart';
 
 class HomeCustomCard extends StatefulWidget {
-  const HomeCustomCard({super.key, required this.title, required this.list});
+  const HomeCustomCard(
+      {super.key,
+      required this.title,
+      required this.list,
+      required this.teamList});
   final String title;
   final List<Elements> list;
+  final List<Teams> teamList;
   @override
   State<HomeCustomCard> createState() => _HomeCustomCardState();
 }
@@ -155,7 +161,10 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                           opacity: 0.5,
                                           child: Text(
                                               textAlign: TextAlign.right,
-                                              "Forward",
+                                              Constants().defineType(widget
+                                                      .list[index]
+                                                      .elementType ??
+                                                  0),
                                               style: smallTextStyleBlack)),
                                     ),
                                     const SizedBox(
@@ -174,8 +183,16 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                       width: 90,
                                       child: Opacity(
                                           opacity: 0.5,
-                                          child: Text("Crystal Palace",
-                                              //  widget.list[index].teamName ?? "",
+                                          child: Text(
+                                              widget.teamList
+                                                      .firstWhere((element) =>
+                                                          int.parse(element.id
+                                                              .toString()) ==
+                                                          int.parse(widget
+                                                              .list[index].team
+                                                              .toString()))
+                                                      .name ??
+                                                  '',
                                               style: smallTextStyleBlack)),
                                     ),
                                   ],

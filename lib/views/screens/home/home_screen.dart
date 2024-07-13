@@ -137,6 +137,7 @@ class HomeScreen extends StatelessWidget {
                           child: HomeCustomCard(
                         title: "Top Players",
                         list: homeController.topPlayerList,
+                        teamList: homeController.statusModel.value.teams ?? [],
                       )),
                     ),
                     // const SizedBox(
@@ -190,8 +191,11 @@ class HomeScreen extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * .28,
                       child: SizedBox(
                         child: HomeCustomCardSingle(
-                            title: "Most Selected",
-                            modelData: homeController.mostSelected.value),
+                          title: "Most Selected",
+                          modelData: homeController.mostSelected.value,
+                          teamList:
+                              homeController.statusModel.value.teams ?? [],
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -203,6 +207,8 @@ class HomeScreen extends StatelessWidget {
                         child: HomeCustomCardSingle(
                           title: "Most Captained",
                           modelData: homeController.mostCaptained.value,
+                          teamList:
+                              homeController.statusModel.value.teams ?? [],
                         ),
                       ),
                     ),
@@ -215,6 +221,7 @@ class HomeScreen extends StatelessWidget {
                           child: HomeCustomCardSingle(
                         title: "Most Vice Captained",
                         modelData: homeController.mostViceCaptained.value,
+                        teamList: homeController.statusModel.value.teams ?? [],
                       )),
                     ),
                     const SizedBox(
@@ -226,6 +233,7 @@ class HomeScreen extends StatelessWidget {
                           child: HomeCustomCardSingle(
                         title: "Most Transferred in",
                         modelData: homeController.mostTransferred.value,
+                        teamList: homeController.statusModel.value.teams ?? [],
                       )),
                     ),
                   ],

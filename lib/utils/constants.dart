@@ -23,4 +23,19 @@ class Constants {
       snackPosition: SnackPosition.TOP,
     );
   }
+
+  String defineType(num type) {
+    switch (type) {
+      case 1:
+        return 'Goalkeeper';
+      case 2:
+        return 'Defender';
+      case 3:
+        return 'Midfielder';
+      case 4:
+        return 'Forward';
+      default:
+        return '';
+    }
+  }
 }

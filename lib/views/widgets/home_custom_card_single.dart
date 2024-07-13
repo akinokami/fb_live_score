@@ -1,4 +1,5 @@
 import 'package:fb_livescore/models/status_model.dart';
+import 'package:fb_livescore/utils/constants.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
 import 'package:fb_livescore/views/widgets/bottom_modal_sheet.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +7,11 @@ import 'package:flutter/material.dart';
 import '../../utils/app_theme.dart';
 
 class HomeCustomCardSingle extends StatefulWidget {
-  const HomeCustomCardSingle({super.key, this.title, required this.modelData});
+  const HomeCustomCardSingle(
+      {super.key, this.title, required this.modelData, required this.teamList});
   final String? title;
   final Elements modelData;
+  final List<Teams> teamList;
   @override
   State<HomeCustomCardSingle> createState() => _HomeCustomCardSingleState();
 }
@@ -124,7 +127,9 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                             children: [
                               Opacity(
                                   opacity: 0.5,
-                                  child: Text("Forward",
+                                  child: Text(
+                                      Constants().defineType(
+                                          widget.modelData.elementType ?? 0),
                                       style: smallTextStyleBlack)),
                               const SizedBox(
                                 width: 2,
@@ -140,7 +145,16 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                               ),
                               Opacity(
                                   opacity: 0.5,
-                                  child: Text("Man City",
+                                  child: Text(
+                                      widget.teamList
+                                              .firstWhere((element) =>
+                                                  int.parse(
+                                                      element.id.toString()) ==
+                                                  int.parse(widget
+                                                      .modelData.team
+                                                      .toString()))
+                                              .name ??
+                                          '',
                                       style: smallTextStyleBlack)),
                             ],
                           ),

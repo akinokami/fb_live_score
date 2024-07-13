@@ -1,4 +1,4 @@
-import 'package:fb_livescore/views/screens/home._menu.dart';
+import 'package:fb_livescore/views/screens/home_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

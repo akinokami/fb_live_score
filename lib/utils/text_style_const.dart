@@ -6,20 +6,17 @@ TextStyle defaultTextStyleWhite = const TextStyle(
   fontWeight: FontWeight.normal,
 );
 
-
 TextStyle mediumTextStyleWhite = const TextStyle(
   fontSize: 16,
   color: Colors.white,
   fontWeight: FontWeight.normal,
 );
 
-
 TextStyle largeTextStyleWhite = const TextStyle(
   fontSize: 18,
   color: Colors.white,
   fontWeight: FontWeight.normal,
 );
-
 
 TextStyle biggestTextStyleWhite = const TextStyle(
   fontSize: 26,
@@ -35,7 +32,6 @@ TextStyle defaultTextStyleBlack = const TextStyle(
 TextStyle smallTextStyleBlack = const TextStyle(
   fontSize: 10,
   color: Colors.black,
-
   fontWeight: FontWeight.normal,
 );
 TextStyle smallTextStyleWhite = const TextStyle(
@@ -49,13 +45,11 @@ TextStyle mediumTextStyleBlack = const TextStyle(
   fontWeight: FontWeight.normal,
 );
 
-
 TextStyle largeTextStyleBlack = const TextStyle(
   fontSize: 18,
   color: Colors.black,
   fontWeight: FontWeight.normal,
 );
-
 
 TextStyle biggestTextStyleBlack = const TextStyle(
   fontSize: 26,
@@ -73,4 +67,10 @@ TextStyle homeSmallTitleTextStyle = const TextStyle(
   fontSize: 18,
   color: Colors.black,
   fontWeight: FontWeight.bold,
+);
+
+TextStyle defaultTextStyleGrey = TextStyle(
+  fontSize: 14,
+  color: Colors.grey[500],
+  fontWeight: FontWeight.normal,
 );
