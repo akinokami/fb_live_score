@@ -130,15 +130,24 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                 () => Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: GestureDetector(
-                                    onTap: () => cartController
-                                        .addToCart(widget.modelData),
+                                    // onTap: () => cartController
+                                    //     .addToCart(widget.modelData),
+                                    onTap: (){
+                                      if (cartController.cartList.any((item) => item.id == widget.modelData.id)) {
+                                        // If it is, remove it
+                                        cartController.removeFromCart(widget.modelData);
+                                      } else {
+                                        // If it's not, add it
+                                        cartController.addToCart(widget.modelData);
+                                      }
+                                      // Update the UI
+                                      cartController.updateCartList();
+                                    },
                                     child: Icon(
-                                      color: cartController.cartList
-                                              .contains(widget.modelData)
+                                      color: cartController.cartList.any((item) => item.id == widget.modelData.id)
                                           ? AppTheme.primaryColor
                                           : Colors.grey,
-                                      cartController.cartList
-                                              .contains(widget.modelData)
+                                      cartController.cartList.any((item) => item.id == widget.modelData.id)
                                           ? Icons.shopping_cart
                                           : Icons.shopping_cart_outlined,
                                       size: 20,

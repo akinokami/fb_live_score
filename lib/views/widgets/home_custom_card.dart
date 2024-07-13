@@ -137,15 +137,24 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                     ),
                                     Obx(
                                       () => GestureDetector(
-                                        onTap: () => cartController
-                                            .addToCart(widget.list[index]),
+                                        onTap: (){
+                                          if (cartController.cartList.any((item) => item.id == widget.list[index].id)) {
+                                            // If it is, remove it
+                                            cartController.removeFromCart(widget.list[index]);
+                                          } else {
+                                            // If it's not, add it
+                                            cartController.addToCart(widget.list[index]);
+                                          }
+                                          // Update the UI
+                                          cartController.updateCartList();
+                                        },
+                                        // onTap: () => cartController
+                                        //     .addToCart(widget.list[index]),
                                         child: Icon(
-                                          color: cartController.cartList
-                                                  .contains(widget.list[index])
+                                          color: cartController.cartList.any((item) => item.id == widget.list[index].id)
                                               ? AppTheme.primaryColor
                                               : Colors.grey,
-                                          cartController.cartList
-                                                  .contains(widget.list[index])
+                                          cartController.cartList.any((item) => item.id == widget.list[index].id)
                                               ? Icons.shopping_cart
                                               : Icons.shopping_cart_outlined,
                                           size: 20,
