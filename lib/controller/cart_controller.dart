@@ -34,8 +34,14 @@ class CartController extends GetxController {
     box.write('carts', jsonEncode(cartList));
   }
 
-  // void removeFromCart(Elements cartItem) {
-  //   cartList.remove(cartItem);
-  //   box.write('carts', jsonEncode(cartList));
-  // }
+  void removeFromCart(Elements item) {
+    cartList.removeWhere((cartItem) => cartItem.id == item.id);
+    updateCartList(); // Call updateCartList to refresh UI and storage
+  }
+  void updateCartList() {
+    // Update the UI
+    update();
+    // Update the storage
+    box.write('carts', jsonEncode(cartList.map((item) => item.toJson()).toList()));
+  }
 }
