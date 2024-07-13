@@ -1,36 +1,82 @@
 import 'package:fb_livescore/models/home_custom_card_model.dart';
 import 'package:fb_livescore/models/home_top_field_model.dart';
+import 'package:fb_livescore/models/status_model.dart';
+import 'package:fb_livescore/services/api_repo.dart';
+import 'package:fb_livescore/utils/app_theme.dart';
+import 'package:fb_livescore/utils/constants.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController{
-  final RxList<HomeTopFieldModel> overviewList = <HomeTopFieldModel>[].obs;
+class HomeController extends GetxController {
+  //final RxList<HomeTopFieldModel> overviewList = <HomeTopFieldModel>[].obs;
   final RxList<HomeCustomCardModel> topPlayerList = <HomeCustomCardModel>[].obs;
+  final aa = ''.obs;
 
+  final isLoading = false.obs;
+  Rx<StatusModel> statusModel = StatusModel().obs;
 
   @override
   void onInit() async {
     super.onInit();
-    overviewList.addAll([
-    HomeTopFieldModel('Highest Points', "154"),
-      HomeTopFieldModel('Average Points', "52"),
-      HomeTopFieldModel('Transfers Made', "7,278,097"),
-      HomeTopFieldModel('Bench Boost', "793,326"),
-        HomeTopFieldModel ('Free Hit', "112,447"),
-        HomeTopFieldModel('Wildcard', "128,789"),
-        HomeTopFieldModel('Triple Captain', "379,636"),
-
-    ]);
+    getStatus();
+    // overviewList.addAll([
+    //   HomeTopFieldModel('Highest Points', "154"),
+    //   HomeTopFieldModel('Average Points', "52"),
+    //   HomeTopFieldModel('Transfers Made', "7,278,097"),
+    //   HomeTopFieldModel('Bench Boost', "793,326"),
+    //   HomeTopFieldModel('Free Hit', "112,447"),
+    //   HomeTopFieldModel('Wildcard', "128,789"),
+    //   HomeTopFieldModel('Triple Captain', "379,636"),
+    // ]);
 
     topPlayerList.addAll([
-      HomeCustomCardModel("David Beckham", "assets/beckham.webp", "assets/manchester.webp", "Forward", "Manchester United", "30", "10.5 m",""),
-      HomeCustomCardModel("Mateta", "assets/beckham.webp", "assets/spur.webp", "Midfielder", "Manchester United", "30", "10.5 m",""),
-      HomeCustomCardModel("Eze", "assets/beckham.webp", "assets/mancity.webp", "Defender", "Manchester United", "30", "10.5 m",""),
-      HomeCustomCardModel("Bruno G.", "assets/beckham.webp", "assets/spur.webp", "Forward", "Manchester United", "30", "10.5 m",""),
-      HomeCustomCardModel("Kulusevski", "assets/beckham.webp", "assets/manchester.webp", "Midfielder", "Manchester United", "30", "10.5 m",""),
-      HomeCustomCardModel("Wilson", "assets/beckham.webp", "assets/mancity.webp", "Forward", "Manchester United", "30", "10.5 m",""),
+      HomeCustomCardModel(
+          "David Beckham",
+          "assets/beckham.webp",
+          "assets/manchester.webp",
+          "Forward",
+          "Manchester United",
+          "30",
+          "10.5 m",
+          ""),
+      HomeCustomCardModel("Mateta", "assets/beckham.webp", "assets/spur.webp",
+          "Midfielder", "Manchester United", "30", "10.5 m", ""),
+      HomeCustomCardModel("Eze", "assets/beckham.webp", "assets/mancity.webp",
+          "Defender", "Manchester United", "30", "10.5 m", ""),
+      HomeCustomCardModel("Bruno G.", "assets/beckham.webp", "assets/spur.webp",
+          "Forward", "Manchester United", "30", "10.5 m", ""),
+      HomeCustomCardModel(
+          "Kulusevski",
+          "assets/beckham.webp",
+          "assets/manchester.webp",
+          "Midfielder",
+          "Manchester United",
+          "30",
+          "10.5 m",
+          ""),
+      HomeCustomCardModel(
+          "Wilson",
+          "assets/beckham.webp",
+          "assets/mancity.webp",
+          "Forward",
+          "Manchester United",
+          "30",
+          "10.5 m",
+          ""),
     ]);
+  }
 
-
+  Future<void> getStatus() async {
+    isLoading.value = true;
+    try {
+      final result = await ApiRepo().getStatus();
+      statusModel.value = result;
+    } catch (e) {
+      isLoading.value = false;
+      constants.showSnackBar(
+          title: 'Error', msg: e.toString(), textColor: AppTheme.red);
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   @override

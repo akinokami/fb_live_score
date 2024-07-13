@@ -1,9 +1,21 @@
+import 'package:fb_livescore/models/status_model.dart';
+import 'package:fb_livescore/services/api_constant.dart';
 
-
+import '../utils/custom_exception.dart';
 import 'api_utils.dart';
 
 class ApiRepo {
   final ApiUtils apiUtils = ApiUtils();
+
+  Future<StatusModel> getStatus() async {
+    try {
+      final response =
+          await apiUtils.get(url: "${ApiConstant.baseUrl}bootstrap-static/");
+      return StatusModel.fromJson(response.data);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
 
   /// Movie
   // Future<List<SliderModel>> getMovieSlider() async {

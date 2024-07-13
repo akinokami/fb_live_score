@@ -1,12 +1,11 @@
 import 'package:fb_livescore/utils/app_theme.dart';
 import 'package:fb_livescore/views/screens/compare/compare_screen.dart';
 import 'package:fb_livescore/views/screens/my_team/my_team_screen.dart';
-import 'package:fb_livescore/views/screens/wishlist/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../controller/navigation_controller.dart';
 import 'home/home_screen.dart';
+
 class Home extends StatelessWidget {
   Home({super.key});
 
@@ -20,7 +19,8 @@ class Home extends StatelessWidget {
 
   buildBottomNavigationMenu(context, landingPageController) {
     return Obx(() => MediaQuery(
-        data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
+        data: MediaQuery.of(context)
+            .copyWith(textScaler: const TextScaler.linear(1.0)),
         child: SizedBox(
           height: 60,
           child: BottomNavigationBar(
@@ -34,8 +34,6 @@ class Home extends StatelessWidget {
             unselectedLabelStyle: unselectedLabelStyle,
             selectedLabelStyle: selectedLabelStyle,
             items: [
-
-
               BottomNavigationBarItem(
                 icon: Container(
                   margin: const EdgeInsets.only(bottom: 7),
@@ -69,7 +67,6 @@ class Home extends StatelessWidget {
                 label: 'Compare',
                 backgroundColor: AppTheme.primaryColor,
               ),
-
             ],
           ),
         )));
@@ -85,11 +82,9 @@ class Home extends StatelessWidget {
       body: Obx(() => IndexedStack(
             index: homeController.tabIndex.value,
             children: const [
-
               MyTeamScreen(),
               HomeScreen(),
               CompareScreen(),
-
             ],
           )),
     ));
