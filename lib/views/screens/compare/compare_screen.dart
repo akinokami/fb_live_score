@@ -206,7 +206,7 @@ class _CompareScreenState extends State<CompareScreen> {
                             height: 10,
                           ),
                           Text(
-                            {selectedPlayer1?.starts ?? ''},
+                            '',
                             style: defaultTextStyleBlack,
                           ),
                           const SizedBox(

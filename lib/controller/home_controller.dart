@@ -42,19 +42,27 @@ class HomeController extends GetxController {
           [];
 
       topForwardList.value = statusModel.value.elements
-              ?.where((i) => num.parse(i.totalpoints.toString()) >= 135)
+              ?.where((i) =>
+                  num.parse(i.totalpoints.toString()) >= 130 &&
+                  i.elementType == 4)
               .toList() ??
           [];
       midfielderList.value = statusModel.value.elements
-              ?.where((i) => num.parse(i.totalpoints.toString()) >= 135)
+              ?.where((i) =>
+                  num.parse(i.totalpoints.toString()) >= 135 &&
+                  i.elementType == 3)
               .toList() ??
           [];
       defenderList.value = statusModel.value.elements
-              ?.where((i) => num.parse(i.totalpoints.toString()) >= 135)
+              ?.where((i) =>
+                  num.parse(i.totalpoints.toString()) >= 120 &&
+                  i.elementType == 2)
               .toList() ??
           [];
       gokeeperList.value = statusModel.value.elements
-              ?.where((i) => num.parse(i.totalpoints.toString()) >= 135)
+              ?.where((i) =>
+                  num.parse(i.totalpoints.toString()) >= 110 &&
+                  i.elementType == 1)
               .toList() ??
           [];
 

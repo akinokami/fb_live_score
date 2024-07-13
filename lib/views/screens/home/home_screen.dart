@@ -1,14 +1,108 @@
 import 'package:fb_livescore/controller/home_controller.dart';
+import 'package:fb_livescore/utils/global.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
 import 'package:fb_livescore/views/screens/wishlist/wish_list_screen.dart';
+import 'package:fb_livescore/views/widgets/custom_text.dart';
 import 'package:fb_livescore/views/widgets/home_custom_card.dart';
 import 'package:fb_livescore/views/widgets/home_custom_card_single.dart';
 import 'package:fb_livescore/views/widgets/score_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool isAccepted = false;
+  bool isChecked = false;
+  String first = '';
+
+  @override
+  void initState() {
+    final box = GetStorage();
+    first = box.read('first') ?? '';
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (first == '') {
+        return showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (ctx) => Builder(builder: (context) {
+            return StatefulBuilder(
+              builder: (context, StateSetter setState) {
+                return AlertDialog(
+                  title: CustomText(
+                    text: 'Privacy Policy',
+                    fontWeight: FontWeight.w500,
+                  ),
+                  content: Container(
+                    height: MediaQuery.of(context).size.height * 0.70,
+                    child: SingleChildScrollView(
+                        child: Column(
+                      children: [
+                        Text(Global.policy, style: TextStyle(fontSize: 12)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Checkbox(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6)),
+                              activeColor: Colors.green,
+                              side: WidgetStateBorderSide.resolveWith(
+                                (states) => BorderSide(
+                                  width: 1.5,
+                                  color:
+                                      isChecked ? Colors.green : Colors.black,
+                                ),
+                              ),
+                              value: isChecked,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  isChecked = value!;
+                                  if (isChecked) {
+                                    isAccepted = true;
+                                  } else {
+                                    isAccepted = false;
+                                  }
+                                });
+                              },
+                            ),
+                            CustomText(
+                              text: 'I agreed to the Privacy Policy.',
+                              size: 12,
+                            )
+                          ],
+                        ),
+                        ElevatedButton(
+                          child: CustomText(
+                            text: 'Accept',
+                            size: 14,
+                            textColor: Colors.white,
+                          ),
+                          onPressed: isAccepted
+                              ? () {
+                                  final box = GetStorage();
+                                  box.write('first', 'notfirst');
+                                  Navigator.pop(context);
+                                }
+                              : null,
+                        ),
+                      ],
+                    )),
+                  ),
+                );
+              },
+            );
+          }),
+        );
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -140,50 +234,54 @@ class HomeScreen extends StatelessWidget {
                         teamList: homeController.statusModel.value.teams ?? [],
                       )),
                     ),
-                    // const SizedBox(
-                    //   height: 10,
-                    // ),
-                    // SizedBox(
-                    //   height: MediaQuery.of(context).size.height * .28,
-                    //   child: SizedBox(
-                    //       child: HomeCustomCard(
-                    //     title: "Top Forwards",
-                    //     list: homeController.topPlayerList,
-                    //   )),
-                    // ),
-                    // const SizedBox(
-                    //   height: 10,
-                    // ),
-                    // SizedBox(
-                    //   height: MediaQuery.of(context).size.height * .28,
-                    //   child: SizedBox(
-                    //       child: HomeCustomCard(
-                    //     title: "Top Midfielders",
-                    //     list: homeController.topPlayerList,
-                    //   )),
-                    // ),
-                    // const SizedBox(
-                    //   height: 10,
-                    // ),
-                    // SizedBox(
-                    //   height: MediaQuery.of(context).size.height * .28,
-                    //   child: SizedBox(
-                    //       child: HomeCustomCard(
-                    //     title: "Top Defenders",
-                    //     list: homeController.topPlayerList,
-                    //   )),
-                    // ),
-                    // const SizedBox(
-                    //   height: 10,
-                    // ),
-                    // SizedBox(
-                    //   height: MediaQuery.of(context).size.height * .28,
-                    //   child: SizedBox(
-                    //       child: HomeCustomCard(
-                    //     title: "Top GoldKeepers",
-                    //     list: homeController.topPlayerList,
-                    //   )),
-                    // ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .28,
+                      child: SizedBox(
+                          child: HomeCustomCard(
+                        title: "Top Forwards",
+                        list: homeController.topForwardList,
+                        teamList: homeController.statusModel.value.teams ?? [],
+                      )),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .28,
+                      child: SizedBox(
+                          child: HomeCustomCard(
+                        title: "Top Midfielders",
+                        list: homeController.midfielderList,
+                        teamList: homeController.statusModel.value.teams ?? [],
+                      )),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .28,
+                      child: SizedBox(
+                          child: HomeCustomCard(
+                        title: "Top Defenders",
+                        list: homeController.defenderList,
+                        teamList: homeController.statusModel.value.teams ?? [],
+                      )),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .28,
+                      child: SizedBox(
+                          child: HomeCustomCard(
+                        title: "Top GoldKeepers",
+                        list: homeController.gokeeperList,
+                        teamList: homeController.statusModel.value.teams ?? [],
+                      )),
+                    ),
                     const SizedBox(
                       height: 10,
                     ),
