@@ -1,4 +1,6 @@
 import 'package:fb_livescore/models/status_model.dart';
+import 'package:fb_livescore/models/team_mode.dart';
+import 'package:fb_livescore/services/api_constant.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -57,6 +59,33 @@ class _CompareScreenState extends State<CompareScreen> {
                             : Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        // Image.network(
+                                        //   teamList
+                                        //           .firstWhere((element) =>
+                                        //               int.parse(element.id
+                                        //                   .toString()) ==
+                                        //               int.parse(selectedPlayer1!
+                                        //                   .team
+                                        //                   .toString()))
+                                        //           .imageUrl ??
+                                        //       '',
+                                        //   width: 20,
+                                        //   height: 20,
+                                        // ),
+                                        Image.network(
+                                          "${ApiConstant.imageUrl}${selectedPlayer1?.photo?.replaceAll('.jpg', '.png') ?? ''}",
+                                          width: 50,
+                                          height: 70,
+                                        ),
+                                      ],
+                                    ),
                                     Text(
                                       selectedPlayer1!.secondName ?? "",
                                       style: TextStyle(
@@ -115,6 +144,33 @@ class _CompareScreenState extends State<CompareScreen> {
                               : Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          // Image.network(
+                                          //   teamList
+                                          //           .firstWhere((element) =>
+                                          //               int.parse(element.id
+                                          //                   .toString()) ==
+                                          //               int.parse(selectedPlayer1!
+                                          //                   .team
+                                          //                   .toString()))
+                                          //           .imageUrl ??
+                                          //       '',
+                                          //   width: 20,
+                                          //   height: 20,
+                                          // ),
+                                          Image.network(
+                                            "${ApiConstant.imageUrl}${selectedPlayer2?.photo?.replaceAll('.jpg', '.png') ?? ''}",
+                                            width: 50,
+                                            height: 70,
+                                          ),
+                                        ],
+                                      ),
                                       Text(
                                         selectedPlayer2!.secondName ?? "",
                                         style: TextStyle(
@@ -856,12 +912,16 @@ class PlayerListItem extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: ListTile(
-        leading: const Icon(Icons.person), // Placeholder for player icon
+        leading: Image.network(
+          "${ApiConstant.imageUrl}${player.photo?.replaceAll('.jpg', '.png') ?? ''}",
+          width: 40,
+          height: 50,
+        ), // Placeholder for player icon
         title: Text(player.secondName ?? ""),
 
         subtitle: Text(
             '${player.elementType}, Price: \u00A3${(player.nowCost ?? 1) / 10}, Points: ${player.totalpoints}'),
-        trailing: const Icon(Icons.add_circle_outline),
+        //trailing: const Icon(Icons.add_circle_outline),
       ),
     );
   }
