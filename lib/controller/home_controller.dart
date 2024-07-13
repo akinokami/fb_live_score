@@ -29,10 +29,12 @@ class HomeController extends GetxController {
     try {
       final result = await ApiRepo().getStatus();
       statusModel.value = result;
+      //players.value = statusModel.value.elements ?? [];
       players.value = (statusModel.value.elements
-          ?.where((i) => i.nowCost != null)
-          .toList()
-        ?..sort((a, b) => b.nowCost!.compareTo(a.nowCost??0)))! // Sort in descending order by nowCost
+              ?.where((i) => i.nowCost != null)
+              .toList()
+            ?..sort((a, b) => (b.nowCost ?? 0).compareTo(
+                a.nowCost ?? 0)))! // Sort in descending order by nowCost
           ;
       topPlayerList.value = statusModel.value.elements
               ?.where((i) => num.parse(i.totalpoints.toString()) >= 135)
