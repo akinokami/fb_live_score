@@ -182,298 +182,595 @@ class _CompareScreenState extends State<CompareScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Column(
+                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Player 1"),
-                        SizedBox(
+                        Text(
+                          "Price",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 2"),
-                        SizedBox(
+                        Text(
+                          "Total Points",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 3"),
-                        SizedBox(
+                        Text(
+                          "Points Per Game",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 4"),
-                        SizedBox(
+                        Text(
+                          "Form",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 5"),
-                        SizedBox(
+                        Text(
+                          "Starts",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 6"),
-                        SizedBox(
+                        Text(
+                          "Minutes",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 7"),
-                        SizedBox(
+                        Text(
+                          "Goals",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 8"),
-                        SizedBox(
+                        Text(
+                          "Assists",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 9"),
-                        SizedBox(
+                        Text(
+                          "Clean Sheets",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 10"),
-                        SizedBox(
+                        Text(
+                          "xGoals",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 11"),
-                        SizedBox(
+                        Text(
+                          "xAssists",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 12"),
-                        SizedBox(
+                        Text(
+                          "xGoal Involvements",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 13"),
-                        SizedBox(
+                        Text(
+                          "xGoal Per 90",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 14"),
-                        SizedBox(
+                        Text(
+                          "xAssist Per 90",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 15"),
-                        SizedBox(
+                        Text(
+                          "xGI Per 90",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 12"),
-                        SizedBox(
+                        Text(
+                          "Goals Conceded",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 13"),
-                        SizedBox(
+                        Text(
+                          "GC Per 90",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 14"),
-                        SizedBox(
+                        Text(
+                          "xGC Per 90",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 15"),
+                        Text(
+                          "Penalties Missed",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Yellow Cards",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Red Cards",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Own Goals",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Bonus",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "BPS",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Influence",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Creativity",
+                          style: defaultTextStyleGrey,
+                        ),const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Threat",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "ICT Index",
+                          style: defaultTextStyleGrey,
+                        ),
                       ],
                     ),
                     Column(
                       children: [
                         Text(
-                          "Player 1",
+                          "Price",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 2",
+                          "Total Points",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 3",
-                          style: defaultTextStyleGrey,
-                        ),
-                        Text(
-                          "Player 3",
+                          "Points Per Game",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 4",
+                          "Form",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 5",
+                          "Starts",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 6",
+                          "Minutes",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 7",
+                          "Goals",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 8",
+                          "Assists",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 9",
+                          "Clean Sheets",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 10",
+                          "xGoals",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 11",
+                          "xAssists",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 12",
+                          "xGoal Involvements",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 13",
+                          "xGoal Per 90",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 14",
+                          "xAssist Per 90",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 15",
+                          "xGI Per 90",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 12",
+                          "Goals Conceded",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 13",
+                          "GC Per 90",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 14",
+                          "xGC Per 90",
                           style: defaultTextStyleGrey,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Player 15",
+                          "Penalties Missed",
                           style: defaultTextStyleGrey,
                         ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Yellow Cards",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Red Cards",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Own Goals",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Bonus",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "BPS",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Influence",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Creativity",
+                          style: defaultTextStyleGrey,
+                        ),const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Threat",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "ICT Index",
+                          style: defaultTextStyleGrey,
+                        ),
+
                       ],
                     ),
-                    const Column(
+                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text("Player 1"),
-                        SizedBox(
+                        Text(
+                          "Price",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 2"),
-                        SizedBox(
+                        Text(
+                          "Total Points",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 3"),
-                        SizedBox(
+                        Text(
+                          "Points Per Game",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 4"),
-                        SizedBox(
+                        Text(
+                          "Form",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 5"),
-                        SizedBox(
+                        Text(
+                          "Starts",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 6"),
-                        SizedBox(
+                        Text(
+                          "Minutes",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 7"),
-                        SizedBox(
+                        Text(
+                          "Goals",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 8"),
-                        SizedBox(
+                        Text(
+                          "Assists",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 9"),
-                        SizedBox(
+                        Text(
+                          "Clean Sheets",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 10"),
-                        SizedBox(
+                        Text(
+                          "xGoals",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 11"),
-                        SizedBox(
+                        Text(
+                          "xAssists",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 12"),
-                        SizedBox(
+                        Text(
+                          "xGoal Involvements",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 13"),
-                        SizedBox(
+                        Text(
+                          "xGoal Per 90",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 14"),
-                        SizedBox(
+                        Text(
+                          "xAssist Per 90",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 15"),
-                        SizedBox(
+                        Text(
+                          "xGI Per 90",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 12"),
-                        SizedBox(
+                        Text(
+                          "Goals Conceded",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 13"),
-                        SizedBox(
+                        Text(
+                          "GC Per 90",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 14"),
-                        SizedBox(
+                        Text(
+                          "xGC Per 90",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Player 15"),
+                        Text(
+                          "Penalties Missed",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Yellow Cards",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Red Cards",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Own Goals",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Bonus",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "BPS",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Influence",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Creativity",
+                          style: defaultTextStyleGrey,
+                        ),const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Threat",
+                          style: defaultTextStyleGrey,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "ICT Index",
+                          style: defaultTextStyleGrey,
+                        ),
                       ],
                     ),
                   ],
