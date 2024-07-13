@@ -178,6 +178,17 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
         ));
   }
 
+  Widget _resultsWidget(Elements modelData) {
+    return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
+        height: 500,
+        child: ListView(
+          children: const [
+            ResultsWidget(teamLogo: 1, isHome: "H", opponentName: "Aston Villa", points: "18 pts", isWin: true, result: "5 - 0")
+          ],
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -328,13 +339,133 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                         ? _statsWidget(widget.modelData!)
                         : _selectedIndex == 1
                             ? const Text('')
-                            : const Text('Results Tab Content'),
+                            : _resultsWidget(widget.modelData!),
                   ),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ResultsWidget extends StatelessWidget {
+  const ResultsWidget(
+      {super.key,
+      required this.teamLogo,
+      required this.isHome,
+      required this.opponentName,
+      required this.points,
+      required this.isWin,
+      required this.result});
+  final int teamLogo;
+  final String isHome;
+  final String opponentName;
+  final String points;
+  final bool isWin;
+  final String result;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> data = [
+      {
+        'title': 'Section 1',
+        'items': ['Item 1.1', 'Item 1.2', 'Item 1.3'],
+      },
+      {
+        'title': 'Section 2',
+        'items': ['Item 2.1', 'Item 2.2', 'Item 2.3'],
+      },
+      {
+        'title': 'Section 3',
+        'items': ['Item 3.1', 'Item 3.2', 'Item 3.3'],
+      },
+    ];
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * .7,
+      width: MediaQuery.of(context).size.width*.88,
+      child: ListView(
+        children: data.map((section) {
+          return ExpansionTile(
+
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      isHome,
+                      style: defaultTextStyleBlack,
+                    ),
+                    SizedBox(width: 10,),
+                    Image.network(
+                      'https://resources.premierleague.com/premierleague/badges/20/t$teamLogo.png',
+                      width: 20,
+                      height: 20,
+                    ),
+                    SizedBox(width: 10,),
+                    Text(
+                      opponentName,
+                      style: defaultTextStyleBlack,
+                    ),
+                  ],
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      points,
+                      style: defaultTextStyleBlack,
+                    ),
+                    SizedBox(width: 10,),
+                    isWin
+                        ? Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.green,
+                      ),
+                      child: Text(
+                        "W",
+                        style: smallTextStyleWhite,
+                      ),
+                    )
+                        : Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.red,
+                      ),
+                      child: Text(
+                        "L",
+                        style: smallTextStyleWhite,
+                      ),
+                    ),
+                    SizedBox(width: 10,),
+                    Text(
+                      result,
+                      style: defaultTextStyleBlack,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            children: section['items'].map<Widget>((item) {
+              return Row(
+                children: [
+                  Text(
+                    item,
+                    style: smallTextStyleBlack,
+                  ),
+                ],
+              );
+            }).toList(),
+          );
+        }).toList(),
       ),
     );
   }
