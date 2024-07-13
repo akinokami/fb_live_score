@@ -1,14 +1,13 @@
+import 'package:fb_livescore/models/status_model.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
+import 'package:fb_livescore/views/widgets/bottom_modal_sheet.dart';
 import 'package:flutter/material.dart';
-
-import '../../models/home_custom_card_model.dart';
 import '../../utils/app_theme.dart';
-import 'bottom_modal_sheet.dart';
 
 class HomeCustomCard extends StatefulWidget {
   const HomeCustomCard({super.key, required this.title, required this.list});
   final String title;
-  final List<HomeCustomCardModel> list;
+  final List<Elements> list;
   @override
   State<HomeCustomCard> createState() => _HomeCustomCardState();
 }
@@ -23,10 +22,14 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
       builder: (context) {
         return FractionallySizedBox(
             heightFactor: 0.9,
-            child: BottomSheetContent(title: widget.title??"",modelData: widget.list[selectedIndex],));
+            child: BottomSheetContent(
+              title: widget.title,
+              modelData: widget.list[selectedIndex],
+            ));
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -49,88 +52,100 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
               itemCount: widget.list.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     setState(() {
-                      selectedIndex=index;
+                      selectedIndex = index;
                     });
 
-                       _showBottomSheet(context);
-
-
+                    _showBottomSheet(context);
                   },
                   child: Container(
-                    width: MediaQuery.of(context).size.width*.4,
-                    height: MediaQuery.of(context).size.height*.45,
+                    width: MediaQuery.of(context).size.width * .4,
+                    height: MediaQuery.of(context).size.height * .45,
                     margin: const EdgeInsets.all(8.0),
                     child: Material(
                       elevation: 10,
-                        borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10),
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10)
-                        ),
+                            borderRadius: BorderRadius.circular(10)),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 0.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-
                               Container(
-                                padding:const EdgeInsets.only(top: 5),
-                                decoration:BoxDecoration(
-                                  //color:Colors.blueGrey,
-                                  //   gradient:  LinearGradient(
-                                  //     colors: [
-                                  //       Colors.blueGrey.withOpacity(0.6),
-                                  //       Colors.blueGrey
-                                  //     ], //#A2D240//#1B8B00
-                                  //     begin: Alignment.topLeft,
-                                  //     end: Alignment.bottomRight,
-                                  //   ),
-                                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10))
-                                ),
+                                padding: const EdgeInsets.only(top: 5),
+                                decoration: BoxDecoration(
+                                    //color:Colors.blueGrey,
+                                    //   gradient:  LinearGradient(
+                                    //     colors: [
+                                    //       Colors.blueGrey.withOpacity(0.6),
+                                    //       Colors.blueGrey
+                                    //     ], //#A2D240//#1B8B00
+                                    //     begin: Alignment.topLeft,
+                                    //     end: Alignment.bottomRight,
+                                    //   ),
+                                    borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(10),
+                                        topRight: Radius.circular(10))),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    const SizedBox(width: 5,),
-                                    Image.asset(
-                                      widget.list[index].teamLogoPath??"",
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    // Image.asset(
+                                    //   widget.list[index].teamLogoPath ?? "",
+                                    //   width: 20,
+                                    //   height: 20,
+                                    // ),
+                                    const SizedBox(
                                       width: 20,
-                                      height: 20,
                                     ),
-                                    const SizedBox(width: 20,),
-                                    Image.asset(
-                                      widget.list[index].playerImage??"",
-                                      width: 50,
-                                      height: 70,
+                                    // Image.asset(
+                                    //   widget.list[index].playerImage ?? "",
+                                    //   width: 50,
+                                    //   height: 70,
+                                    // ),
+                                    const SizedBox(
+                                      width: 20,
                                     ),
-                                    const SizedBox(width: 20,),
                                     GestureDetector(
-                                      onTap: (){
-                                       setState(() {
-                                         selectedList.contains(index)?selectedList.remove(index):selectedList.add(index);
-                                       });
+                                      onTap: () {
+                                        setState(() {
+                                          selectedList.contains(index)
+                                              ? selectedList.remove(index)
+                                              : selectedList.add(index);
+                                        });
                                       },
                                       child: Icon(
-                                        color: selectedList.contains(index)?AppTheme.primaryColor:Colors.grey,
-                                        selectedList.contains(index)?Icons.shopping_cart
+                                        color: selectedList.contains(index)
+                                            ? AppTheme.primaryColor
+                                            : Colors.grey,
+                                        selectedList.contains(index)
+                                            ? Icons.shopping_cart
                                             : Icons.shopping_cart_outlined,
                                         size: 20,
                                       ),
                                     ),
-                                    const SizedBox(width: 5,),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
                                   ],
                                 ),
                               ),
                               Text(
-                                widget.list[index].playerName??"",
+                                widget.list[index].secondName ?? "",
                                 style: smallTextStyleBlack,
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 5.0),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -140,7 +155,7 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                           opacity: 0.5,
                                           child: Text(
                                               textAlign: TextAlign.right,
-                                              widget.list[index].playRole??"",
+                                              "Forward",
                                               style: smallTextStyleBlack)),
                                     ),
                                     const SizedBox(
@@ -148,7 +163,6 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                     ),
                                     const SizedBox(
                                         height: 10,
-
                                         child: VerticalDivider(
                                           width: 5,
                                           color: Colors.grey,
@@ -160,7 +174,8 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                       width: 90,
                                       child: Opacity(
                                           opacity: 0.5,
-                                          child: Text(widget.list[index].teamName??"",
+                                          child: Text("Crystal Palace",
+                                              //  widget.list[index].teamName ?? "",
                                               style: smallTextStyleBlack)),
                                     ),
                                   ],
@@ -168,8 +183,8 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                               ),
                               Container(
                                 //padding:EdgeInsets.only(top: 5),
-                                decoration:const BoxDecoration(
-                                    color:AppTheme.primaryColor,
+                                decoration: const BoxDecoration(
+                                    color: AppTheme.primaryColor,
                                     // gradient: LinearGradient(
                                     //   colors: [
                                     //     Color(0xFFA2D240),
@@ -178,10 +193,12 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                     //   begin: Alignment.topLeft,
                                     //   end: Alignment.bottomRight,
                                     // ),
-                                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),bottomRight: Radius.circular(10))
-                                ),
+                                    borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(10),
+                                        bottomRight: Radius.circular(10))),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Column(
                                       children: [
@@ -191,11 +208,14 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                                 style: smallTextStyleWhite)),
                                         Opacity(
                                             opacity: 0.9,
-                                            child: Text(widget.list[index].gw38Points??"",
+                                            child: Text(
+                                                "${widget.list[index].eventPoints ?? ''}",
                                                 style: smallTextStyleWhite)),
                                       ],
                                     ),
-                                    const SizedBox(width: 10,),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
                                     Column(
                                       children: [
                                         Opacity(
@@ -204,11 +224,11 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                                 style: smallTextStyleWhite)),
                                         Opacity(
                                             opacity: 0.9,
-                                            child: Text(widget.list[index].price??"",
+                                            child: Text(
+                                                "${widget.list[index].nowCost ?? ''}",
                                                 style: smallTextStyleWhite)),
                                       ],
                                     )
-
                                   ],
                                 ),
                               )

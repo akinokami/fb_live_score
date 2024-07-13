@@ -1,14 +1,14 @@
+import 'package:fb_livescore/models/status_model.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
+import 'package:fb_livescore/views/widgets/bottom_modal_sheet.dart';
 import 'package:flutter/material.dart';
 
-import '../../models/home_custom_card_model.dart';
 import '../../utils/app_theme.dart';
-import 'bottom_modal_sheet.dart';
 
 class HomeCustomCardSingle extends StatefulWidget {
-  const HomeCustomCardSingle({super.key,  this.title,required  this.modelData});
+  const HomeCustomCardSingle({super.key, this.title, required this.modelData});
   final String? title;
-  final HomeCustomCardModel modelData;
+  final Elements modelData;
   @override
   State<HomeCustomCardSingle> createState() => _HomeCustomCardSingleState();
 }
@@ -21,27 +21,30 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
       builder: (context) {
         return FractionallySizedBox(
             heightFactor: 0.9,
-            child: BottomSheetContent(title: widget.title??"",modelData: widget.modelData,));
+            child: BottomSheetContent(
+              title: widget.title ?? "",
+              modelData: widget.modelData,
+            ));
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.title??"",
+            widget.title ?? "",
             style: homeSmallTitleTextStyle,
           ),
           const SizedBox(
             height: 10,
           ),
           GestureDetector(
-            onTap: (){
+            onTap: () {
               _showBottomSheet(context);
             },
             child: SizedBox(
@@ -50,18 +53,16 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                 elevation: 10,
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10)
-                  ),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(10)),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 0.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-
                         Container(
-                          decoration:BoxDecoration(
+                          decoration: BoxDecoration(
                               //color:Colors.blueGrey,
                               // gradient:  LinearGradient(
                               //   colors: [
@@ -71,29 +72,33 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                               //   begin: Alignment.topLeft,
                               //   end: Alignment.bottomRight,
                               // ),
-                              borderRadius: const BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10))
-                          ),
+                              borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10))),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
                             children: [
-
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Image.asset(
-                                  widget.modelData.teamLogoPath??"",
-                                  width: 20,
-                                  height: 20,
-                                ),
+                              // Padding(
+                              //   padding: const EdgeInsets.all(8.0),
+                              //   child: Image.asset(
+                              //     widget.modelData.teamLogoPath ?? "",
+                              //     width: 20,
+                              //     height: 20,
+                              //   ),
+                              // ),
+                              // const SizedBox(
+                              //   width: 20,
+                              // ),
+                              // Image.asset(
+                              //   widget.modelData.playerImage ?? "",
+                              //   width: 50,
+                              //   height: 70,
+                              // ),
+                              const SizedBox(
+                                width: 20,
                               ),
-                              const SizedBox(width: 20,),
-                              Image.asset(
-                                widget.modelData.playerImage??"",
-                                width: 50,
-                                height: 70,
-                              ),
-                              const SizedBox(width: 20,),
                               const Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Opacity(
@@ -105,12 +110,11 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                   ),
                                 ),
                               ),
-
                             ],
                           ),
                         ),
                         Text(
-                          widget.modelData.playerName??"",
+                          widget.modelData.secondName ?? "",
                           style: smallTextStyleBlack,
                         ),
                         Padding(
@@ -120,7 +124,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                             children: [
                               Opacity(
                                   opacity: 0.5,
-                                  child: Text(widget.modelData.playRole??"",
+                                  child: Text("Forward",
                                       style: smallTextStyleBlack)),
                               const SizedBox(
                                 width: 2,
@@ -136,14 +140,14 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                               ),
                               Opacity(
                                   opacity: 0.5,
-                                  child: Text(widget.modelData.teamName??"",
+                                  child: Text("Man City",
                                       style: smallTextStyleBlack)),
                             ],
                           ),
                         ),
                         Container(
-                          decoration:const BoxDecoration(
-                              color:AppTheme.primaryColor,
+                          decoration: const BoxDecoration(
+                              color: AppTheme.primaryColor,
                               // gradient: LinearGradient(
                               //   colors: [
                               //     Color(0xFFA2D240),
@@ -152,8 +156,9 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                               //   begin: Alignment.topLeft,
                               //   end: Alignment.bottomRight,
                               // ),
-                              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),bottomRight: Radius.circular(10))
-                          ),
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(10),
+                                  bottomRight: Radius.circular(10))),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -165,11 +170,14 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                           style: smallTextStyleWhite)),
                                   Opacity(
                                       opacity: 0.8,
-                                      child: Text(widget.modelData.gw38Points??"",
+                                      child: Text(
+                                          "${widget.modelData.eventPoints ?? ''}",
                                           style: smallTextStyleWhite)),
                                 ],
                               ),
-                              const SizedBox(width: 10,),
+                              const SizedBox(
+                                width: 10,
+                              ),
                               Column(
                                 children: [
                                   Opacity(
@@ -178,11 +186,14 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                           style: smallTextStyleWhite)),
                                   Opacity(
                                       opacity: 0.8,
-                                      child: Text(widget.modelData.price??"",
+                                      child: Text(
+                                          "${widget.modelData.nowCost ?? ''}",
                                           style: smallTextStyleWhite)),
                                 ],
                               ),
-                              const SizedBox(width: 10,),
+                              const SizedBox(
+                                width: 10,
+                              ),
                               Column(
                                 children: [
                                   Opacity(
@@ -191,11 +202,11 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                           style: smallTextStyleWhite)),
                                   Opacity(
                                       opacity: 0.8,
-                                      child: Text(widget.modelData.owned??"",
+                                      child: Text(
+                                          "${widget.modelData.selectedByPercent ?? ''}%",
                                           style: smallTextStyleWhite)),
                                 ],
                               )
-
                             ],
                           ),
                         )

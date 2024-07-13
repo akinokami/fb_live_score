@@ -1,5 +1,4 @@
 import 'package:fb_livescore/controller/home_controller.dart';
-import 'package:fb_livescore/models/home_custom_card_model.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
 import 'package:fb_livescore/views/screens/wishlist/wish_list_screen.dart';
 import 'package:fb_livescore/views/widgets/home_custom_card.dart';
@@ -140,16 +139,60 @@ class HomeScreen extends StatelessWidget {
                         list: homeController.topPlayerList,
                       )),
                     ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height * .28,
+                    //   child: SizedBox(
+                    //       child: HomeCustomCard(
+                    //     title: "Top Forwards",
+                    //     list: homeController.topPlayerList,
+                    //   )),
+                    // ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height * .28,
+                    //   child: SizedBox(
+                    //       child: HomeCustomCard(
+                    //     title: "Top Midfielders",
+                    //     list: homeController.topPlayerList,
+                    //   )),
+                    // ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height * .28,
+                    //   child: SizedBox(
+                    //       child: HomeCustomCard(
+                    //     title: "Top Defenders",
+                    //     list: homeController.topPlayerList,
+                    //   )),
+                    // ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height * .28,
+                    //   child: SizedBox(
+                    //       child: HomeCustomCard(
+                    //     title: "Top GoldKeepers",
+                    //     list: homeController.topPlayerList,
+                    //   )),
+                    // ),
                     const SizedBox(
                       height: 10,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * .28,
                       child: SizedBox(
-                          child: HomeCustomCard(
-                        title: "Top Forwards",
-                        list: homeController.topPlayerList,
-                      )),
+                        child: HomeCustomCardSingle(
+                            title: "Most Selected",
+                            modelData: homeController.mostSelected.value),
+                      ),
                     ),
                     const SizedBox(
                       height: 10,
@@ -157,32 +200,11 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * .28,
                       child: SizedBox(
-                          child: HomeCustomCard(
-                        title: "Top Midfielders",
-                        list: homeController.topPlayerList,
-                      )),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .28,
-                      child: SizedBox(
-                          child: HomeCustomCard(
-                        title: "Top Defenders",
-                        list: homeController.topPlayerList,
-                      )),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .28,
-                      child: SizedBox(
-                          child: HomeCustomCard(
-                        title: "Top GoldKeepers",
-                        list: homeController.topPlayerList,
-                      )),
+                        child: HomeCustomCardSingle(
+                          title: "Most Captained",
+                          modelData: homeController.mostCaptained.value,
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: 10,
@@ -192,15 +214,18 @@ class HomeScreen extends StatelessWidget {
                       child: SizedBox(
                           child: HomeCustomCardSingle(
                         title: "Most Vice Captained",
-                        modelData: HomeCustomCardModel(
-                            "David Beckham",
-                            "assets/beckham.webp",
-                            "assets/manchester.webp",
-                            "Forward",
-                            "Manchester United",
-                            "30",
-                            "10.5 m",
-                            "51.3 %"),
+                        modelData: homeController.mostViceCaptained.value,
+                      )),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .28,
+                      child: SizedBox(
+                          child: HomeCustomCardSingle(
+                        title: "Most Transferred in",
+                        modelData: homeController.mostTransferred.value,
                       )),
                     ),
                   ],

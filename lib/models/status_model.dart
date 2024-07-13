@@ -4,7 +4,7 @@ class StatusModel {
   List<Phases>? phases;
   List<Teams>? teams;
   num? totalPlayers;
-  List<Elements>? elements;
+  List<Elements>? elements = [];
   List<ElementStats>? elementStats;
   List<ElementTypes>? elementTypes;
 
@@ -234,19 +234,19 @@ class ChipPlays {
 
 class TopElementInfo {
   num? id;
-  num? ponums;
+  num? points;
 
-  TopElementInfo({this.id, this.ponums});
+  TopElementInfo({this.id, this.points});
 
   TopElementInfo.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    ponums = json['ponums'];
+    points = json['points'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['ponums'] = ponums;
+    data['points'] = points;
     return data;
   }
 }
@@ -259,9 +259,9 @@ class TopElementInfo {
 //   num? leagueMaxSizePrivateH2h;
 //   num? leagueMaxKoRoundsPrivateH2h;
 //   String? leaguePrefixPublic;
-//   num? leaguePonumsH2hWin;
-//   num? leaguePonumsH2hLose;
-//   num? leaguePonumsH2hDraw;
+//   num? leaguepointsH2hWin;
+//   num? leaguepointsH2hLose;
+//   num? leaguepointsH2hDraw;
 //   bool? leagueKoFirstInsteadOfRandom;
 //   Null? cupStartEventId;
 //   Null? cupStopEventId;
@@ -292,9 +292,9 @@ class TopElementInfo {
 //       this.leagueMaxSizePrivateH2h,
 //       this.leagueMaxKoRoundsPrivateH2h,
 //       this.leaguePrefixPublic,
-//       this.leaguePonumsH2hWin,
-//       this.leaguePonumsH2hLose,
-//       this.leaguePonumsH2hDraw,
+//       this.leaguepointsH2hWin,
+//       this.leaguepointsH2hLose,
+//       this.leaguepointsH2hDraw,
 //       this.leagueKoFirstInsteadOfRandom,
 //       this.cupStartEventId,
 //       this.cupStopEventId,
@@ -325,9 +325,9 @@ class TopElementInfo {
 //     leagueMaxSizePrivateH2h = json['league_max_size_private_h2h'];
 //     leagueMaxKoRoundsPrivateH2h = json['league_max_ko_rounds_private_h2h'];
 //     leaguePrefixPublic = json['league_prefix_public'];
-//     leaguePonumsH2hWin = json['league_ponums_h2h_win'];
-//     leaguePonumsH2hLose = json['league_ponums_h2h_lose'];
-//     leaguePonumsH2hDraw = json['league_ponums_h2h_draw'];
+//     leaguepointsH2hWin = json['league_points_h2h_win'];
+//     leaguepointsH2hLose = json['league_points_h2h_lose'];
+//     leaguepointsH2hDraw = json['league_points_h2h_draw'];
 //     leagueKoFirstInsteadOfRandom = json['league_ko_first_instead_of_random'];
 //     cupStartEventId = json['cup_start_event_id'];
 //     cupStopEventId = json['cup_stop_event_id'];
@@ -370,9 +370,9 @@ class TopElementInfo {
 //     data['league_max_size_private_h2h'] = leagueMaxSizePrivateH2h;
 //     data['league_max_ko_rounds_private_h2h'] = leagueMaxKoRoundsPrivateH2h;
 //     data['league_prefix_public'] = leaguePrefixPublic;
-//     data['league_ponums_h2h_win'] = leaguePonumsH2hWin;
-//     data['league_ponums_h2h_lose'] = leaguePonumsH2hLose;
-//     data['league_ponums_h2h_draw'] = leaguePonumsH2hDraw;
+//     data['league_points_h2h_win'] = leaguepointsH2hWin;
+//     data['league_points_h2h_lose'] = leaguepointsH2hLose;
+//     data['league_points_h2h_draw'] = leaguepointsH2hDraw;
 //     data['league_ko_first_instead_of_random'] = leagueKoFirstInsteadOfRandom;
 //     data['cup_start_event_id'] = cupStartEventId;
 //     data['cup_stop_event_id'] = cupStopEventId;
@@ -437,7 +437,7 @@ class Teams {
   num? loss;
   String? name;
   num? played;
-  num? ponums;
+  num? points;
   num? position;
   String? shortName;
   num? strength;
@@ -460,7 +460,7 @@ class Teams {
       this.loss,
       this.name,
       this.played,
-      this.ponums,
+      this.points,
       this.position,
       this.shortName,
       this.strength,
@@ -483,7 +483,7 @@ class Teams {
     loss = json['loss'];
     name = json['name'];
     played = json['played'];
-    ponums = json['ponums'];
+    points = json['points'];
     position = json['position'];
     shortName = json['short_name'];
     strength = json['strength'];
@@ -508,7 +508,7 @@ class Teams {
     data['loss'] = loss;
     data['name'] = name;
     data['played'] = played;
-    data['ponums'] = ponums;
+    data['points'] = points;
     data['position'] = position;
     data['short_name'] = shortName;
     data['strength'] = strength;
@@ -538,7 +538,7 @@ class Elements {
   num? elementType;
   String? epNext;
   String? epThis;
-  num? eventPonums;
+  num? eventPoints;
   String? firstName;
   String? form;
   num? id;
@@ -547,7 +547,7 @@ class Elements {
   String? newsAdded;
   num? nowCost;
   String? photo;
-  String? ponumsPerGame;
+  String? pointsPerGame;
   String? secondName;
   String? selectedByPercent;
   bool? special;
@@ -555,7 +555,7 @@ class Elements {
   String? status;
   num? team;
   num? teamCode;
-  num? totalPonums;
+  num? totalpoints;
   num? transfersIn;
   num? transfersInEvent;
   num? transfersOut;
@@ -609,8 +609,8 @@ class Elements {
   num? nowCostRankType;
   num? formRank;
   num? formRankType;
-  num? ponumsPerGameRank;
-  num? ponumsPerGameRankType;
+  num? pointsPerGameRank;
+  num? pointsPerGameRankType;
   num? selectedRank;
   num? selectedRankType;
   num? startsPer90;
@@ -628,7 +628,7 @@ class Elements {
       this.elementType,
       this.epNext,
       this.epThis,
-      this.eventPonums,
+      this.eventPoints,
       this.firstName,
       this.form,
       this.id,
@@ -637,7 +637,7 @@ class Elements {
       this.newsAdded,
       this.nowCost,
       this.photo,
-      this.ponumsPerGame,
+      this.pointsPerGame,
       this.secondName,
       this.selectedByPercent,
       this.special,
@@ -645,7 +645,7 @@ class Elements {
       this.status,
       this.team,
       this.teamCode,
-      this.totalPonums,
+      this.totalpoints,
       this.transfersIn,
       this.transfersInEvent,
       this.transfersOut,
@@ -699,8 +699,8 @@ class Elements {
       this.nowCostRankType,
       this.formRank,
       this.formRankType,
-      this.ponumsPerGameRank,
-      this.ponumsPerGameRankType,
+      this.pointsPerGameRank,
+      this.pointsPerGameRankType,
       this.selectedRank,
       this.selectedRankType,
       this.startsPer90,
@@ -718,7 +718,7 @@ class Elements {
     elementType = json['element_type'];
     epNext = json['ep_next'];
     epThis = json['ep_this'];
-    eventPonums = json['event_ponums'];
+    eventPoints = json['event_points'];
     firstName = json['first_name'];
     form = json['form'];
     id = json['id'];
@@ -727,7 +727,7 @@ class Elements {
     newsAdded = json['news_added'];
     nowCost = json['now_cost'];
     photo = json['photo'];
-    ponumsPerGame = json['ponums_per_game'];
+    pointsPerGame = json['points_per_game'];
     secondName = json['second_name'];
     selectedByPercent = json['selected_by_percent'];
     special = json['special'];
@@ -735,7 +735,7 @@ class Elements {
     status = json['status'];
     team = json['team'];
     teamCode = json['team_code'];
-    totalPonums = json['total_ponums'];
+    totalpoints = json['total_points'];
     transfersIn = json['transfers_in'];
     transfersInEvent = json['transfers_in_event'];
     transfersOut = json['transfers_out'];
@@ -791,8 +791,8 @@ class Elements {
     nowCostRankType = json['now_cost_rank_type'];
     formRank = json['form_rank'];
     formRankType = json['form_rank_type'];
-    ponumsPerGameRank = json['ponums_per_game_rank'];
-    ponumsPerGameRankType = json['ponums_per_game_rank_type'];
+    pointsPerGameRank = json['points_per_game_rank'];
+    pointsPerGameRankType = json['points_per_game_rank_type'];
     selectedRank = json['selected_rank'];
     selectedRankType = json['selected_rank_type'];
     startsPer90 = json['starts_per_90'];
@@ -812,7 +812,7 @@ class Elements {
     data['element_type'] = elementType;
     data['ep_next'] = epNext;
     data['ep_this'] = epThis;
-    data['event_ponums'] = eventPonums;
+    data['event_points'] = eventPoints;
     data['first_name'] = firstName;
     data['form'] = form;
     data['id'] = id;
@@ -821,7 +821,7 @@ class Elements {
     data['news_added'] = newsAdded;
     data['now_cost'] = nowCost;
     data['photo'] = photo;
-    data['ponums_per_game'] = ponumsPerGame;
+    data['points_per_game'] = pointsPerGame;
     data['second_name'] = secondName;
     data['selected_by_percent'] = selectedByPercent;
     data['special'] = special;
@@ -829,7 +829,7 @@ class Elements {
     data['status'] = status;
     data['team'] = team;
     data['team_code'] = teamCode;
-    data['total_ponums'] = totalPonums;
+    data['total_points'] = totalpoints;
     data['transfers_in'] = transfersIn;
     data['transfers_in_event'] = transfersInEvent;
     data['transfers_out'] = transfersOut;
@@ -885,8 +885,8 @@ class Elements {
     data['now_cost_rank_type'] = nowCostRankType;
     data['form_rank'] = formRank;
     data['form_rank_type'] = formRankType;
-    data['ponums_per_game_rank'] = ponumsPerGameRank;
-    data['ponums_per_game_rank_type'] = ponumsPerGameRankType;
+    data['points_per_game_rank'] = pointsPerGameRank;
+    data['points_per_game_rank_type'] = pointsPerGameRankType;
     data['selected_rank'] = selectedRank;
     data['selected_rank_type'] = selectedRankType;
     data['starts_per_90'] = startsPer90;

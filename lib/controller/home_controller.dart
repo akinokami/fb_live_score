@@ -1,5 +1,3 @@
-import 'package:fb_livescore/models/home_custom_card_model.dart';
-import 'package:fb_livescore/models/home_top_field_model.dart';
 import 'package:fb_livescore/models/status_model.dart';
 import 'package:fb_livescore/services/api_repo.dart';
 import 'package:fb_livescore/utils/app_theme.dart';
@@ -7,62 +5,22 @@ import 'package:fb_livescore/utils/constants.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //final RxList<HomeTopFieldModel> overviewList = <HomeTopFieldModel>[].obs;
-  final RxList<HomeCustomCardModel> topPlayerList = <HomeCustomCardModel>[].obs;
-  final aa = ''.obs;
-
   final isLoading = false.obs;
   Rx<StatusModel> statusModel = StatusModel().obs;
+  RxList<Elements> topPlayerList = <Elements>[].obs;
+  RxList<Elements> topForwardList = <Elements>[].obs;
+  RxList<Elements> midfielderList = <Elements>[].obs;
+  RxList<Elements> defenderList = <Elements>[].obs;
+  RxList<Elements> gokeeperList = <Elements>[].obs;
+  Rx<Elements> mostSelected = Elements().obs;
+  Rx<Elements> mostCaptained = Elements().obs;
+  Rx<Elements> mostViceCaptained = Elements().obs;
+  Rx<Elements> mostTransferred = Elements().obs;
 
   @override
   void onInit() async {
     super.onInit();
     getStatus();
-    // overviewList.addAll([
-    //   HomeTopFieldModel('Highest Points', "154"),
-    //   HomeTopFieldModel('Average Points', "52"),
-    //   HomeTopFieldModel('Transfers Made', "7,278,097"),
-    //   HomeTopFieldModel('Bench Boost', "793,326"),
-    //   HomeTopFieldModel('Free Hit', "112,447"),
-    //   HomeTopFieldModel('Wildcard', "128,789"),
-    //   HomeTopFieldModel('Triple Captain', "379,636"),
-    // ]);
-
-    topPlayerList.addAll([
-      HomeCustomCardModel(
-          "David Beckham",
-          "assets/beckham.webp",
-          "assets/manchester.webp",
-          "Forward",
-          "Manchester United",
-          "30",
-          "10.5 m",
-          ""),
-      HomeCustomCardModel("Mateta", "assets/beckham.webp", "assets/spur.webp",
-          "Midfielder", "Manchester United", "30", "10.5 m", ""),
-      HomeCustomCardModel("Eze", "assets/beckham.webp", "assets/mancity.webp",
-          "Defender", "Manchester United", "30", "10.5 m", ""),
-      HomeCustomCardModel("Bruno G.", "assets/beckham.webp", "assets/spur.webp",
-          "Forward", "Manchester United", "30", "10.5 m", ""),
-      HomeCustomCardModel(
-          "Kulusevski",
-          "assets/beckham.webp",
-          "assets/manchester.webp",
-          "Midfielder",
-          "Manchester United",
-          "30",
-          "10.5 m",
-          ""),
-      HomeCustomCardModel(
-          "Wilson",
-          "assets/beckham.webp",
-          "assets/mancity.webp",
-          "Forward",
-          "Manchester United",
-          "30",
-          "10.5 m",
-          ""),
-    ]);
   }
 
   Future<void> getStatus() async {
@@ -70,6 +28,41 @@ class HomeController extends GetxController {
     try {
       final result = await ApiRepo().getStatus();
       statusModel.value = result;
+
+      topPlayerList.value = statusModel.value.elements
+              ?.where((i) => num.parse(i.totalpoints.toString()) >= 135)
+              .toList() ??
+          [];
+
+      //Most Selected Player
+      mostSelected.value = statusModel.value.elements
+              ?.where(
+                  (i) => i.id == statusModel.value.events?.last.mostSelected)
+              .toList()
+              .firstOrNull ??
+          Elements();
+      mostCaptained.value = statusModel.value.elements
+              ?.where(
+                  (i) => i.id == statusModel.value.events?.last.mostCaptained)
+              .toList()
+              .firstOrNull ??
+          Elements();
+      mostViceCaptained.value = statusModel.value.elements
+              ?.where((i) =>
+                  i.id == statusModel.value.events?.last.mostViceCaptained)
+              .toList()
+              .firstOrNull ??
+          Elements();
+      mostTransferred.value = statusModel.value.elements
+              ?.where((i) =>
+                  i.id == statusModel.value.events?.last.mostTransferredIn)
+              .toList()
+              .firstOrNull ??
+          Elements();
+
+      // topPlayerList.value = statusModel.value.elements!
+      //     .where((i) => num.parse(i.ponumsPerGame.toString()) >= 4.0)
+      //     .toList();
     } catch (e) {
       isLoading.value = false;
       constants.showSnackBar(

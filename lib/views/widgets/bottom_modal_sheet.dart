@@ -1,20 +1,20 @@
-
+import 'package:fb_livescore/models/status_model.dart';
+import 'package:fb_livescore/views/widgets/point_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../models/home_custom_card_model.dart';
 import '../../utils/text_style_const.dart';
 
 class BottomSheetContent extends StatefulWidget {
   const BottomSheetContent({super.key, required this.title, this.modelData});
-final String title;
-final HomeCustomCardModel? modelData;
+  final String title;
+  final Elements? modelData;
 
   @override
   State<BottomSheetContent> createState() => _BottomSheetContentState();
 }
 
 class _BottomSheetContentState extends State<BottomSheetContent> {
-int _selectedIndex=0;
+  int _selectedIndex = 0;
   void _onTabTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -30,17 +30,17 @@ int _selectedIndex=0;
           elevation: 2,
           borderRadius: BorderRadius.circular(5),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 3),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 3),
 
-           // margin: EdgeInsets.symmetric(horizontal: 10.0),
+            // margin: EdgeInsets.symmetric(horizontal: 10.0),
             decoration: BoxDecoration(
               color: _selectedIndex == index ? Color(0xff1B8B00) : Colors.white,
               borderRadius: BorderRadius.circular(5),
             ),
             child: Text(
               label,
-              style:  TextStyle(
-                color:_selectedIndex == index ? Colors.white :  Colors.black,
+              style: TextStyle(
+                color: _selectedIndex == index ? Colors.white : Colors.black,
                 fontSize: 14.0,
               ),
             ),
@@ -50,84 +50,176 @@ int _selectedIndex=0;
     );
   }
 
-Widget _statsWidget() {
-  return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 5.0,vertical: 5),
-    height: 500,
-    // margin: EdgeInsets.symmetric(horizontal: 10.0),
-
-    child: ListView.builder(
-        itemCount: 15,
-        itemBuilder: (context,index){
-      return Container(
-        height: 50,
-        width: MediaQuery.of(context).size.width,
-        color:index%2!=0? Colors.grey[300]:Colors.white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget _statsWidget(Elements modelData) {
+    return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
+        height: 500,
+        child: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Own Goals",style: smallTextStyleBlack,),
+            StatusTableWidget(
+              title: 'Total Points',
+              score: "${modelData.totalpoints}",
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("154",style: smallTextStyleBlack,),
+            StatusTableWidget(
+              title: 'Points Per Game',
+              score: "${modelData.pointsPerGame}",
+              color: Colors.grey[300],
+            ),
+            StatusTableWidget(
+              title: 'Starts',
+              score: "${modelData.starts}",
+            ),
+            StatusTableWidget(
+              title: 'Minutes',
+              score: "${modelData.minutes}",
+              color: Colors.grey[300],
+            ),
+            StatusTableWidget(
+              title: 'Goals',
+              score: "${modelData.goalsScored}",
+            ),
+            StatusTableWidget(
+              title: 'Assists',
+              score: "${modelData.assists}",
+              color: Colors.grey[300],
+            ),
+            StatusTableWidget(
+              title: 'xGoals',
+              score: "${modelData.expectedGoals}",
+            ),
+            StatusTableWidget(
+              title: 'xAssists',
+              score: "${modelData.expectedAssists}",
+              color: Colors.grey[300],
+            ),
+            StatusTableWidget(
+              title: 'xGoals Involvements',
+              score: "${modelData.expectedGoalInvolvements}",
+            ),
+            StatusTableWidget(
+              title: 'xGoals Per 90',
+              score: "${modelData.expectedGoalsPer90}",
+              color: Colors.grey[300],
+            ),
+            StatusTableWidget(
+              title: 'xAssists Per 90',
+              score: "${modelData.expectedAssistsPer90}",
+            ),
+            StatusTableWidget(
+              title: 'xGoal Involvements Per 90',
+              score: "${modelData.expectedGoalInvolvementsPer90}",
+              color: Colors.grey[300],
+            ),
+            StatusTableWidget(
+              title: 'Goals Conceded',
+              score: "${modelData.goalsConceded}",
+            ),
+            StatusTableWidget(
+              title: 'Goals conceded Per 90',
+              score: "${modelData.goalsConcededPer90}",
+              color: Colors.grey[300],
+            ),
+            StatusTableWidget(
+              title: 'Penalties Missed',
+              score: "${modelData.penaltiesMissed}",
+            ),
+            StatusTableWidget(
+              title: 'Yellow Cards',
+              score: "${modelData.yellowCards}",
+              color: Colors.grey[300],
+            ),
+            StatusTableWidget(
+              title: 'Red Cards',
+              score: "${modelData.redCards}",
+            ),
+            StatusTableWidget(
+              title: 'Own Goals',
+              score: "${modelData.ownGoals}",
+              color: Colors.grey[300],
+            ),
+            StatusTableWidget(
+              title: 'Bonus',
+              score: "${modelData.bonus}",
+            ),
+            StatusTableWidget(
+              title: 'BPS',
+              score: "${modelData.bps}",
+              color: Colors.grey[300],
+            ),
+            StatusTableWidget(
+              title: 'Influence',
+              score: "${modelData.influence}",
+            ),
+            StatusTableWidget(
+              title: 'Creativity',
+              score: "${modelData.creativity}",
+              color: Colors.grey[300],
+            ),
+            StatusTableWidget(
+              title: 'Threat',
+              score: "${modelData.threat}",
+            ),
+            StatusTableWidget(
+              title: 'ICT Index',
+              score: "${modelData.ictIndex}",
+              color: Colors.grey[300],
+            ),
+            StatusTableWidget(
+              title: 'From',
+              score: "${modelData.form}",
             ),
           ],
-
-        ),
-      );
-    }),
-  );
-}
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        height:  MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height,
         padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-      
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    widget.modelData?.teamLogoPath??"",
-                    width: 20,
-                    height: 20,
-                  ),
-                ),
-                const SizedBox(width: 20,),
-                Image.asset(
-                  widget.modelData?.playerImage??"",
-                  width: 50,
-                  height: 70,
-                ),
-                const SizedBox(width: 20,),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Opacity(
-                    opacity: 0.8,
-                    child: Icon(
-                      color: Colors.black,
-                      Icons.shopping_cart_outlined,
-                      size: 20,
-                    ),
-                  ),
-                ),
-      
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   mainAxisSize: MainAxisSize.max,
+            //   children: [
+            //     Padding(
+            //       padding: const EdgeInsets.all(8.0),
+            //       child: Image.asset(
+            //         widget.modelData?.teamLogoPath ?? "",
+            //         width: 20,
+            //         height: 20,
+            //       ),
+            //     ),
+            //     const SizedBox(
+            //       width: 20,
+            //     ),
+            //     Image.asset(
+            //       widget.modelData?.playerImage ?? "",
+            //       width: 50,
+            //       height: 70,
+            //     ),
+            //     const SizedBox(
+            //       width: 20,
+            //     ),
+            //     const Padding(
+            //       padding: EdgeInsets.all(8.0),
+            //       child: Opacity(
+            //         opacity: 0.8,
+            //         child: Icon(
+            //           color: Colors.black,
+            //           Icons.shopping_cart_outlined,
+            //           size: 20,
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            // ),
             Text(
-              widget.modelData?.playerName??"",
+              widget.modelData?.secondName ?? "",
               style: smallTextStyleBlack,
             ),
             Padding(
@@ -137,8 +229,7 @@ Widget _statsWidget() {
                 children: [
                   Opacity(
                       opacity: 0.5,
-                      child: Text(widget.modelData?.playRole??"",
-                          style: smallTextStyleBlack)),
+                      child: Text("role", style: smallTextStyleBlack)),
                   const SizedBox(
                     width: 2,
                   ),
@@ -153,45 +244,53 @@ Widget _statsWidget() {
                   ),
                   Opacity(
                       opacity: 0.5,
-                      child: Text(widget.modelData?.teamName??"",
-                          style: smallTextStyleBlack)),
+                      child: Text("team name", style: smallTextStyleBlack)),
                 ],
               ),
             ),
-            const SizedBox(height: 5,),
-            SizedBox(
-              height: MediaQuery.of(context).size.height*.055,
-              child: ListView.builder(
-                itemCount: 7,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context,index){
-                    return Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Container(
-                        height: 30,
-
-                        padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 3),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(2),
-
-
-                        ),
-                        child: Column(
-                          children: [
-                            Opacity(
-                                opacity:0.6,
-                                child: Text("Price",style: smallTextStyleBlack,)),
-                            Text("14.3 m",style: smallTextStyleBlack),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
+            const SizedBox(
+              height: 5,
             ),
-            const SizedBox(height: 10,),
             SizedBox(
-              height: MediaQuery.of(context).size.height*.7,
+                height: MediaQuery.of(context).size.height * .088,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Row(
+                      children: [
+                        PointWidget(
+                          title: 'Price',
+                          point: "${widget.modelData?.nowCost ?? ''}",
+                        ),
+                        PointWidget(
+                          title: 'Total Pts',
+                          point: "${widget.modelData?.totalpoints ?? ''}",
+                        ),
+                        PointWidget(
+                          title: 'Pts/Game',
+                          point: widget.modelData?.pointsPerGame ?? '',
+                        ),
+                        PointWidget(
+                          title: 'From',
+                          point: widget.modelData?.valueForm ?? '',
+                        ),
+                        PointWidget(
+                          title: 'Total Bonous',
+                          point: "${widget.modelData?.bonus ?? ''}",
+                        ),
+                        PointWidget(
+                          title: 'GW38 Pts',
+                          point: "${widget.modelData?.eventPoints ?? ''}",
+                        ),
+                      ],
+                    ),
+                  ],
+                )),
+            const SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .7,
               child: Column(
                 children: <Widget>[
                   Row(
@@ -204,16 +303,57 @@ Widget _statsWidget() {
                   ),
                   Expanded(
                     child: _selectedIndex == 0
-                        ? _statsWidget()
+                        ? _statsWidget(widget.modelData!)
                         : _selectedIndex == 1
-                        ? const Text('Fixtures Tab Content')
-                        : const Text('Results Tab Content'),
+                            ? const Text('')
+                            : const Text('Results Tab Content'),
                   ),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class StatusTableWidget extends StatelessWidget {
+  final String? title;
+  final String? score;
+  final Color? color;
+  const StatusTableWidget({
+    super.key,
+    this.title,
+    this.score,
+    this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: MediaQuery.of(context).size.width,
+      color: color ??
+          Colors.white, // index % 2 != 0 ? Colors.grey[300] : Colors.white,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              title ?? "",
+              style: smallTextStyleBlack,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              score ?? "",
+              style: smallTextStyleBlack,
+            ),
+          ),
+        ],
       ),
     );
   }
