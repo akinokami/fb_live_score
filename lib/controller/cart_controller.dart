@@ -9,6 +9,7 @@ class CartController extends GetxController {
   final box = GetStorage();
   RxList<Elements> cartList = <Elements>[].obs;
   final cart = ''.obs;
+  final isLoading = false.obs;
 
   @override
   void onInit() {
@@ -22,6 +23,7 @@ class CartController extends GetxController {
     cartList.addAll(jsonDecode(cart.value).map<Elements>((item) {
       return Elements.fromJson(item);
     }));
+    print(cartList);
   }
 
   void addToCart(Elements cartItem) {

@@ -1,4 +1,6 @@
 import 'package:fb_livescore/controller/cart_controller.dart';
+import 'package:fb_livescore/controller/match_history_controller.dart';
+import 'package:fb_livescore/models/match_history_model.dart';
 import 'package:fb_livescore/models/status_model.dart';
 import 'package:fb_livescore/models/team_mode.dart';
 import 'package:fb_livescore/services/api_constant.dart';
@@ -182,20 +184,381 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
   }
 
   Widget _resultsWidget(Elements modelData) {
-    return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
-        height: 500,
-        child: ListView(
-          children: const [
-            ResultsWidget(
-                teamLogo: 1,
-                isHome: "H",
-                opponentName: "Aston Villa",
-                points: "18 pts",
-                isWin: true,
-                result: "5 - 0")
-          ],
-        ));
+    bool isWin = false;
+    bool isLose = false;
+    bool isDraw = false;
+    final historyController = Get.put(MatchHistoryController());
+    historyController.getHistory(int.parse(modelData.id.toString()));
+    return Obx(() => historyController.isLoading.value
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : Container(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
+            height: 50,
+            child: ListView.builder(
+                itemCount: historyController.historyList.length,
+                itemBuilder: (context, index) {
+                  return SizedBox(
+                      width: MediaQuery.of(context).size.width * .88,
+                      child: ExpansionTile(
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  historyController
+                                              .historyList[index].wasHome ==
+                                          true
+                                      ? "H"
+                                      : "A",
+                                  style: defaultTextStyleBlack,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Image.network(
+                                  teamList
+                                          .firstWhere((element) =>
+                                              int.parse(
+                                                  element.id.toString()) ==
+                                              historyController
+                                                  .historyList[index]
+                                                  .opponentTeam)
+                                          .imageUrl ??
+                                      '',
+                                  width: 20,
+                                  height: 20,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  teamList
+                                          .firstWhere((element) =>
+                                              int.parse(
+                                                  element.id.toString()) ==
+                                              int.parse(historyController
+                                                  .historyList[index]
+                                                  .opponentTeam
+                                                  .toString()))
+                                          .name ??
+                                      "",
+                                  style: defaultTextStyleBlack,
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  historyController
+                                          .historyList[index].totalPoints
+                                          .toString() +
+                                      " pts",
+                                  style: defaultTextStyleBlack,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                historyController
+                                            .historyList[index].teamAScore ==
+                                        historyController
+                                            .historyList[index].teamHScore
+                                    ? Container(
+                                        padding: EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.grey,
+                                        ),
+                                        child: Text(
+                                          "D",
+                                          style: smallTextStyleWhite,
+                                        ),
+                                      )
+                                    : historyController.historyList[index]
+                                                    .wasHome ==
+                                                true &&
+                                            historyController.historyList[index]
+                                                    .teamHScore! >
+                                                historyController
+                                                    .historyList[index]
+                                                    .teamAScore!
+                                        ? Container(
+                                            padding: EdgeInsets.all(5),
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Colors.green,
+                                            ),
+                                            child: Text(
+                                              "W",
+                                              style: smallTextStyleWhite,
+                                            ),
+                                          )
+                                        : historyController.historyList[index]
+                                                        .wasHome ==
+                                                    true &&
+                                                historyController
+                                                        .historyList[index]
+                                                        .teamHScore! <
+                                                    historyController
+                                                        .historyList[index]
+                                                        .teamAScore!
+                                            ? Container(
+                                                padding: EdgeInsets.all(5),
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: Colors.red,
+                                                ),
+                                                child: Text(
+                                                  "L",
+                                                  style: smallTextStyleWhite,
+                                                ),
+                                              )
+                                            : historyController
+                                                            .historyList[index]
+                                                            .wasHome ==
+                                                        false &&
+                                                    historyController
+                                                            .historyList[index]
+                                                            .teamHScore! <
+                                                        historyController
+                                                            .historyList[index]
+                                                            .teamAScore!
+                                                ? Container(
+                                                    padding: EdgeInsets.all(5),
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: Colors.green,
+                                                    ),
+                                                    child: Text(
+                                                      "W",
+                                                      style:
+                                                          smallTextStyleWhite,
+                                                    ),
+                                                  )
+                                                : Container(
+                                                    padding: EdgeInsets.all(5),
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: Colors.red,
+                                                    ),
+                                                    child: Text(
+                                                      "L",
+                                                      style:
+                                                          smallTextStyleWhite,
+                                                    ),
+                                                  ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  historyController
+                                          .historyList[index].teamHScore
+                                          .toString() +
+                                      " - " +
+                                      historyController
+                                          .historyList[index].teamAScore
+                                          .toString(),
+                                  style: defaultTextStyleBlack,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        children: [
+                          Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Date'),
+                                  Text(historyController
+                                          .historyList[index].kickoffTime ??
+                                      '')
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Round'),
+                                  Text(
+                                      "${historyController.historyList[index].round ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Minute Played'),
+                                  Text(
+                                      "${historyController.historyList[index].minutes ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Goals'),
+                                  Text(
+                                      "${historyController.historyList[index].goalsScored ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Assists'),
+                                  Text(
+                                      "${historyController.historyList[index].assists ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Clean Sheets'),
+                                  Text(
+                                      "${historyController.historyList[index].cleanSheets ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Goals Conceded'),
+                                  Text(
+                                      "${historyController.historyList[index].goalsConceded ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Own Goals'),
+                                  Text(
+                                      "${historyController.historyList[index].ownGoals ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Penalties Saved'),
+                                  Text(
+                                      "${historyController.historyList[index].penaltiesMissed ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Penalties Missed'),
+                                  Text(
+                                      "${historyController.historyList[index].penaltiesMissed ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Yellow Cards'),
+                                  Text(
+                                      "${historyController.historyList[index].yellowCards ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Red Cards'),
+                                  Text(
+                                      "${historyController.historyList[index].redCards ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Saves'),
+                                  Text(
+                                      "${historyController.historyList[index].saves ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Bouns'),
+                                  Text(
+                                      "${historyController.historyList[index].bonus ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Expected Goals'),
+                                  Text(
+                                      "${historyController.historyList[index].expectedGoals ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Expected Assists'),
+                                  Text(historyController
+                                          .historyList[index].expectedAssists ??
+                                      '')
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Expected Clean Sheets'),
+                                  Text(
+                                      "${historyController.historyList[index].cleanSheets ?? ''}")
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Expected Goals Conceded'),
+                                  Text(historyController.historyList[index]
+                                          .expectedGoalsConceded ??
+                                      '')
+                                ],
+                              ),
+                            ],
+                          )
+                        ],
+                      ));
+                }),
+            // ListView(
+            //   children: historyController.historyList
+            //       .map((e) => ResultsWidget(
+            //             teamLogo: e.opponentTeam ?? 0,
+            //             isHome: e.wasHome == true ? "H" : "A",
+            //             opponentName: teamList
+            //                     .firstWhere((element) =>
+            //                         int.parse(element.id.toString()) ==
+            //                         int.parse(e.opponentTeam.toString()))
+            //                     .name ??
+            //                 '',
+            //             points: "${e.totalPoints} pts",
+            //             isWin: e.teamHScore! > e.teamAScore!,
+            //             result: "${e.teamHScore} - ${e.teamAScore}",
+            //           ))
+            //       .toList(),
+            // ),
+          ));
   }
 
   @override
@@ -369,128 +732,115 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
 }
 
 class ResultsWidget extends StatelessWidget {
-  const ResultsWidget(
-      {super.key,
-      required this.teamLogo,
-      required this.isHome,
-      required this.opponentName,
-      required this.points,
-      required this.isWin,
-      required this.result});
-  final int teamLogo;
-  final String isHome;
-  final String opponentName;
-  final String points;
-  final bool isWin;
-  final String result;
+  const ResultsWidget({
+    super.key,
+    required this.model,
+    // required this.teamLogo,
+    // required this.isHome,
+    // required this.opponentName,
+    // required this.points,
+    // required this.isWin,
+    // required this.result
+  });
+  // final int teamLogo;
+  // final String isHome;
+  // final String opponentName;
+  // final String points;
+  // final bool isWin;
+  // final String result;
+  final MatchHistoryModel model;
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> data = [
-      {
-        'title': 'Section 1',
-        'items': ['Item 1.1', 'Item 1.2', 'Item 1.3'],
-      },
-      {
-        'title': 'Section 2',
-        'items': ['Item 2.1', 'Item 2.2', 'Item 2.3'],
-      },
-      {
-        'title': 'Section 3',
-        'items': ['Item 3.1', 'Item 3.2', 'Item 3.3'],
-      },
-    ];
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .7,
-      width: MediaQuery.of(context).size.width * .88,
-      child: ListView(
-        children: data.map((section) {
-          return ExpansionTile(
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      isHome,
-                      style: defaultTextStyleBlack,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Image.network(
-                      'https://resources.premierleague.com/premierleague/badges/20/t$teamLogo.png',
-                      width: 20,
-                      height: 20,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      opponentName,
-                      style: defaultTextStyleBlack,
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      points,
-                      style: defaultTextStyleBlack,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    isWin
-                        ? Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.green,
-                            ),
-                            child: Text(
-                              "W",
-                              style: smallTextStyleWhite,
-                            ),
-                          )
-                        : Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.red,
-                            ),
-                            child: Text(
-                              "L",
-                              style: smallTextStyleWhite,
-                            ),
-                          ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      result,
-                      style: defaultTextStyleBlack,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            children: section['items'].map<Widget>((item) {
-              return Row(
+        height: MediaQuery.of(context).size.height * .7,
+        width: MediaQuery.of(context).size.width * .88,
+        child: ExpansionTile(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    item,
-                    style: smallTextStyleBlack,
+                    model.wasHome == true ? "H" : "A",
+                    style: defaultTextStyleBlack,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Image.network(
+                    teamList
+                            .firstWhere((element) =>
+                                int.parse(element.id.toString()) ==
+                                model.opponentTeam)
+                            .imageUrl ??
+                        '',
+                    width: 20,
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    teamList
+                            .firstWhere((element) =>
+                                int.parse(element.id.toString()) ==
+                                int.parse(model.opponentTeam.toString()))
+                            .name ??
+                        "",
+                    style: defaultTextStyleBlack,
                   ),
                 ],
-              );
-            }).toList(),
-          );
-        }).toList(),
-      ),
-    );
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    model.totalPoints.toString() + " pts",
+                    style: defaultTextStyleBlack,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  model.wasHome == true && model.teamHScore! > model.teamAScore!
+                      ? Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.green,
+                          ),
+                          child: Text(
+                            "W",
+                            style: smallTextStyleWhite,
+                          ),
+                        )
+                      : Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.red,
+                          ),
+                          child: Text(
+                            "L",
+                            style: smallTextStyleWhite,
+                          ),
+                        ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    model.teamHScore.toString() +
+                        " - " +
+                        model.teamAScore.toString(),
+                    style: defaultTextStyleBlack,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          children: [Container()],
+        ));
   }
 }
 

@@ -21,6 +21,11 @@ class HomeCustomCardSingle extends StatefulWidget {
 }
 
 class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
       isScrollControlled: true,
