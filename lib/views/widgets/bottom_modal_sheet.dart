@@ -2,7 +2,7 @@ import 'package:fb_livescore/controller/cart_controller.dart';
 import 'package:fb_livescore/controller/match_history_controller.dart';
 import 'package:fb_livescore/models/match_history_model.dart';
 import 'package:fb_livescore/models/status_model.dart';
-import 'package:fb_livescore/models/team_mode.dart';
+import 'package:fb_livescore/models/team_model.dart';
 import 'package:fb_livescore/services/api_constant.dart';
 import 'package:fb_livescore/utils/app_theme.dart';
 import 'package:fb_livescore/utils/constants.dart';
@@ -184,9 +184,6 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
   }
 
   Widget _resultsWidget(Elements modelData) {
-    bool isWin = false;
-    bool isLose = false;
-    bool isDraw = false;
     final historyController = Get.put(MatchHistoryController());
     historyController.getHistory(int.parse(modelData.id.toString()));
     return Obx(() => historyController.isLoading.value

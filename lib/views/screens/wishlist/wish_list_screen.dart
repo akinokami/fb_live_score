@@ -1,9 +1,8 @@
-import 'package:fb_livescore/views/widgets/home_custom_card_single.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/cart_controller.dart';
-import '../../../models/team_mode.dart';
+import '../../../models/team_model.dart';
 import '../../../services/api_constant.dart';
 import '../../../utils/app_theme.dart';
 import '../../../utils/constants.dart';

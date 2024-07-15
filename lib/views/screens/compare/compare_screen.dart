@@ -1,5 +1,5 @@
 import 'package:fb_livescore/models/status_model.dart';
-import 'package:fb_livescore/models/team_mode.dart';
+import 'package:fb_livescore/models/team_model.dart';
 import 'package:fb_livescore/services/api_constant.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
 import 'package:flutter/material.dart';
@@ -66,19 +66,6 @@ class _CompareScreenState extends State<CompareScreen> {
                                           CrossAxisAlignment.start,
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        // Image.network(
-                                        //   teamList
-                                        //           .firstWhere((element) =>
-                                        //               int.parse(element.id
-                                        //                   .toString()) ==
-                                        //               int.parse(selectedPlayer1!
-                                        //                   .team
-                                        //                   .toString()))
-                                        //           .imageUrl ??
-                                        //       '',
-                                        //   width: 20,
-                                        //   height: 20,
-                                        // ),
                                         Image.network(
                                           "${ApiConstant.imageUrl}${selectedPlayer1?.photo?.replaceAll('.jpg', '.png') ?? ''}",
                                           width: 50,
@@ -96,7 +83,18 @@ class _CompareScreenState extends State<CompareScreen> {
                                       height: 10,
                                     ),
                                     Opacity(
-                                        opacity: 0.7, child: Text("Team Code")),
+                                        opacity: 0.7,
+                                        child: Text(
+                                          teamList
+                                                  .firstWhere((element) =>
+                                                      int.parse(element.id
+                                                          .toString()) ==
+                                                      int.parse(selectedPlayer1!
+                                                          .team
+                                                          .toString()))
+                                                  .name ??
+                                              '',
+                                        )),
                                     const SizedBox(
                                       height: 10,
                                     ),
@@ -182,7 +180,18 @@ class _CompareScreenState extends State<CompareScreen> {
                                       ),
                                       Opacity(
                                           opacity: 0.7,
-                                          child: Text("Team Code")),
+                                          child: Text(
+                                            teamList
+                                                    .firstWhere((element) =>
+                                                        int.parse(element.id
+                                                            .toString()) ==
+                                                        int.parse(
+                                                            selectedPlayer2!
+                                                                .team
+                                                                .toString()))
+                                                    .name ??
+                                                '',
+                                          )),
                                       const SizedBox(
                                         height: 10,
                                       ),

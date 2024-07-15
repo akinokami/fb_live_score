@@ -1,6 +1,6 @@
 import 'package:fb_livescore/controller/cart_controller.dart';
 import 'package:fb_livescore/models/status_model.dart';
-import 'package:fb_livescore/models/team_mode.dart';
+import 'package:fb_livescore/models/team_model.dart';
 import 'package:fb_livescore/services/api_constant.dart';
 import 'package:fb_livescore/utils/constants.dart';
 import 'package:fb_livescore/utils/text_style_const.dart';
@@ -137,22 +137,29 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                   child: GestureDetector(
                                     // onTap: () => cartController
                                     //     .addToCart(widget.modelData),
-                                    onTap: (){
-                                      if (cartController.cartList.any((item) => item.id == widget.modelData.id)) {
+                                    onTap: () {
+                                      if (cartController.cartList.any((item) =>
+                                          item.id == widget.modelData.id)) {
                                         // If it is, remove it
-                                        cartController.removeFromCart(widget.modelData);
+                                        cartController
+                                            .removeFromCart(widget.modelData);
                                       } else {
                                         // If it's not, add it
-                                        cartController.addToCart(widget.modelData);
+                                        cartController
+                                            .addToCart(widget.modelData);
                                       }
                                       // Update the UI
                                       cartController.updateCartList();
                                     },
                                     child: Icon(
-                                      color: cartController.cartList.any((item) => item.id == widget.modelData.id)
+                                      color: cartController.cartList.any(
+                                              (item) =>
+                                                  item.id ==
+                                                  widget.modelData.id)
                                           ? AppTheme.primaryColor
                                           : Colors.grey,
-                                      cartController.cartList.any((item) => item.id == widget.modelData.id)
+                                      cartController.cartList.any((item) =>
+                                              item.id == widget.modelData.id)
                                           ? Icons.shopping_cart
                                           : Icons.shopping_cart_outlined,
                                       size: 20,
