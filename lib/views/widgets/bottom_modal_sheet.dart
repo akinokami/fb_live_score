@@ -190,372 +190,360 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
         ? const Center(
             child: CircularProgressIndicator(),
           )
-        : Container(
-            padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
-            height: 50,
-            child: ListView.builder(
-                itemCount: historyController.historyList.length,
-                itemBuilder: (context, index) {
-                  return SizedBox(
-                      width: MediaQuery.of(context).size.width * .88,
-                      child: ExpansionTile(
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  historyController
-                                              .historyList[index].wasHome ==
-                                          true
-                                      ? "H"
-                                      : "A",
-                                  style: defaultTextStyleBlack,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Image.network(
-                                  teamList
-                                          .firstWhere((element) =>
-                                              int.parse(
-                                                  element.id.toString()) ==
-                                              historyController
-                                                  .historyList[index]
-                                                  .opponentTeam)
-                                          .imageUrl ??
-                                      '',
-                                  width: 20,
-                                  height: 20,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  teamList
-                                          .firstWhere((element) =>
-                                              int.parse(
-                                                  element.id.toString()) ==
-                                              int.parse(historyController
-                                                  .historyList[index]
-                                                  .opponentTeam
-                                                  .toString()))
-                                          .name ??
-                                      "",
-                                  style: defaultTextStyleBlack,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  historyController
-                                          .historyList[index].totalPoints
-                                          .toString() +
-                                      " pts",
-                                  style: defaultTextStyleBlack,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                historyController
-                                            .historyList[index].teamAScore ==
-                                        historyController
-                                            .historyList[index].teamHScore
-                                    ? Container(
-                                        padding: EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.grey,
-                                        ),
-                                        child: Text(
-                                          "D",
-                                          style: smallTextStyleWhite,
-                                        ),
-                                      )
-                                    : historyController.historyList[index]
-                                                    .wasHome ==
-                                                true &&
-                                            historyController.historyList[index]
-                                                    .teamHScore! >
-                                                historyController
-                                                    .historyList[index]
-                                                    .teamAScore!
-                                        ? Container(
-                                            padding: EdgeInsets.all(5),
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Colors.green,
-                                            ),
-                                            child: Text(
-                                              "W",
-                                              style: smallTextStyleWhite,
-                                            ),
-                                          )
-                                        : historyController.historyList[index]
-                                                        .wasHome ==
-                                                    true &&
-                                                historyController
-                                                        .historyList[index]
-                                                        .teamHScore! <
-                                                    historyController
-                                                        .historyList[index]
-                                                        .teamAScore!
-                                            ? Container(
-                                                padding: EdgeInsets.all(5),
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Colors.red,
-                                                ),
-                                                child: Text(
-                                                  "L",
-                                                  style: smallTextStyleWhite,
-                                                ),
-                                              )
-                                            : historyController
-                                                            .historyList[index]
-                                                            .wasHome ==
-                                                        false &&
-                                                    historyController
-                                                            .historyList[index]
-                                                            .teamHScore! <
-                                                        historyController
-                                                            .historyList[index]
-                                                            .teamAScore!
-                                                ? Container(
-                                                    padding: EdgeInsets.all(5),
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      color: Colors.green,
-                                                    ),
-                                                    child: Text(
-                                                      "W",
-                                                      style:
-                                                          smallTextStyleWhite,
-                                                    ),
-                                                  )
-                                                : Container(
-                                                    padding: EdgeInsets.all(5),
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      color: Colors.red,
-                                                    ),
-                                                    child: Text(
-                                                      "L",
-                                                      style:
-                                                          smallTextStyleWhite,
-                                                    ),
-                                                  ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  historyController
-                                          .historyList[index].teamHScore
-                                          .toString() +
-                                      " - " +
-                                      historyController
-                                          .historyList[index].teamAScore
-                                          .toString(),
-                                  style: defaultTextStyleBlack,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        children: [
-                          Column(
+        : Padding(
+          padding: const EdgeInsets.only(bottom: 15.0),
+          child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
+              height: 50,
+              child: ListView.builder(
+                  itemCount: historyController.historyList.length,
+                  itemBuilder: (context, index) {
+                    return SizedBox(
+                        width: MediaQuery.of(context).size.width * .88,
+                        child: ExpansionTile(
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('Date'),
-                                  Text(historyController
-                                          .historyList[index].kickoffTime ??
-                                      '')
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Round'),
                                   Text(
-                                      "${historyController.historyList[index].round ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Minute Played'),
+                                    historyController
+                                                .historyList[index].wasHome ==
+                                            true
+                                        ? "H"
+                                        : "A",
+                                    style: defaultTextStyleBlack,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Image.network(
+                                    teamList
+                                            .firstWhere((element) =>
+                                                int.parse(
+                                                    element.id.toString()) ==
+                                                historyController
+                                                    .historyList[index]
+                                                    .opponentTeam)
+                                            .imageUrl ??
+                                        '',
+                                    width: 20,
+                                    height: 20,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
                                   Text(
-                                      "${historyController.historyList[index].minutes ?? ''}")
+                                    teamList
+                                            .firstWhere((element) =>
+                                                int.parse(
+                                                    element.id.toString()) ==
+                                                int.parse(historyController
+                                                    .historyList[index]
+                                                    .opponentTeam
+                                                    .toString()))
+                                            .name ??
+                                        "",
+                                    style: defaultTextStyleBlack,
+                                  ),
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('Goals'),
                                   Text(
-                                      "${historyController.historyList[index].goalsScored ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Assists'),
+                                    historyController
+                                            .historyList[index].totalPoints
+                                            .toString() +
+                                        " pts",
+                                    style: defaultTextStyleBlack,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  historyController
+                                              .historyList[index].teamAScore ==
+                                          historyController
+                                              .historyList[index].teamHScore
+                                      ? Container(
+                                          padding: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.grey,
+                                          ),
+                                          child: Text(
+                                            "D",
+                                            style: smallTextStyleWhite,
+                                          ),
+                                        )
+                                      : historyController.historyList[index]
+                                                      .wasHome ==
+                                                  true &&
+                                              historyController.historyList[index]
+                                                      .teamHScore! >
+                                                  historyController
+                                                      .historyList[index]
+                                                      .teamAScore!
+                                          ? Container(
+                                              padding: EdgeInsets.all(5),
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Colors.green,
+                                              ),
+                                              child: Text(
+                                                "W",
+                                                style: smallTextStyleWhite,
+                                              ),
+                                            )
+                                          : historyController.historyList[index]
+                                                          .wasHome ==
+                                                      true &&
+                                                  historyController
+                                                          .historyList[index]
+                                                          .teamHScore! <
+                                                      historyController
+                                                          .historyList[index]
+                                                          .teamAScore!
+                                              ? Container(
+                                                  padding: EdgeInsets.all(5),
+                                                  decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: Colors.red,
+                                                  ),
+                                                  child: Text(
+                                                    "L",
+                                                    style: smallTextStyleWhite,
+                                                  ),
+                                                )
+                                              : historyController
+                                                              .historyList[index]
+                                                              .wasHome ==
+                                                          false &&
+                                                      historyController
+                                                              .historyList[index]
+                                                              .teamHScore! <
+                                                          historyController
+                                                              .historyList[index]
+                                                              .teamAScore!
+                                                  ? Container(
+                                                      padding: EdgeInsets.all(5),
+                                                      decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: Colors.green,
+                                                      ),
+                                                      child: Text(
+                                                        "W",
+                                                        style:
+                                                            smallTextStyleWhite,
+                                                      ),
+                                                    )
+                                                  : Container(
+                                                      padding: EdgeInsets.all(5),
+                                                      decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: Colors.red,
+                                                      ),
+                                                      child: Text(
+                                                        "L",
+                                                        style:
+                                                            smallTextStyleWhite,
+                                                      ),
+                                                    ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
                                   Text(
-                                      "${historyController.historyList[index].assists ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Clean Sheets'),
-                                  Text(
-                                      "${historyController.historyList[index].cleanSheets ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Goals Conceded'),
-                                  Text(
-                                      "${historyController.historyList[index].goalsConceded ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Own Goals'),
-                                  Text(
-                                      "${historyController.historyList[index].ownGoals ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Penalties Saved'),
-                                  Text(
-                                      "${historyController.historyList[index].penaltiesMissed ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Penalties Missed'),
-                                  Text(
-                                      "${historyController.historyList[index].penaltiesMissed ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Yellow Cards'),
-                                  Text(
-                                      "${historyController.historyList[index].yellowCards ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Red Cards'),
-                                  Text(
-                                      "${historyController.historyList[index].redCards ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Saves'),
-                                  Text(
-                                      "${historyController.historyList[index].saves ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Bouns'),
-                                  Text(
-                                      "${historyController.historyList[index].bonus ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Expected Goals'),
-                                  Text(
-                                      "${historyController.historyList[index].expectedGoals ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Expected Assists'),
-                                  Text(historyController
-                                          .historyList[index].expectedAssists ??
-                                      '')
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Expected Clean Sheets'),
-                                  Text(
-                                      "${historyController.historyList[index].cleanSheets ?? ''}")
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Expected Goals Conceded'),
-                                  Text(historyController.historyList[index]
-                                          .expectedGoalsConceded ??
-                                      '')
+                                    historyController
+                                            .historyList[index].teamHScore
+                                            .toString() +
+                                        " - " +
+                                        historyController
+                                            .historyList[index].teamAScore
+                                            .toString(),
+                                    style: defaultTextStyleBlack,
+                                  ),
                                 ],
                               ),
                             ],
-                          )
-                        ],
-                      ));
-                }),
-            // ListView(
-            //   children: historyController.historyList
-            //       .map((e) => ResultsWidget(
-            //             teamLogo: e.opponentTeam ?? 0,
-            //             isHome: e.wasHome == true ? "H" : "A",
-            //             opponentName: teamList
-            //                     .firstWhere((element) =>
-            //                         int.parse(element.id.toString()) ==
-            //                         int.parse(e.opponentTeam.toString()))
-            //                     .name ??
-            //                 '',
-            //             points: "${e.totalPoints} pts",
-            //             isWin: e.teamHScore! > e.teamAScore!,
-            //             result: "${e.teamHScore} - ${e.teamAScore}",
-            //           ))
-            //       .toList(),
-            // ),
-          ));
+                          ),
+                          children: [
+                            Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Date'),
+                                    Text(historyController
+                                            .historyList[index].kickoffTime ??
+                                        '')
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Round'),
+                                    Text(
+                                        "${historyController.historyList[index].round ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Minute Played'),
+                                    Text(
+                                        "${historyController.historyList[index].minutes ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Goals'),
+                                    Text(
+                                        "${historyController.historyList[index].goalsScored ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Assists'),
+                                    Text(
+                                        "${historyController.historyList[index].assists ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Clean Sheets'),
+                                    Text(
+                                        "${historyController.historyList[index].cleanSheets ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Goals Conceded'),
+                                    Text(
+                                        "${historyController.historyList[index].goalsConceded ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Own Goals'),
+                                    Text(
+                                        "${historyController.historyList[index].ownGoals ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Penalties Saved'),
+                                    Text(
+                                        "${historyController.historyList[index].penaltiesMissed ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Penalties Missed'),
+                                    Text(
+                                        "${historyController.historyList[index].penaltiesMissed ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Yellow Cards'),
+                                    Text(
+                                        "${historyController.historyList[index].yellowCards ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Red Cards'),
+                                    Text(
+                                        "${historyController.historyList[index].redCards ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Saves'),
+                                    Text(
+                                        "${historyController.historyList[index].saves ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Bouns'),
+                                    Text(
+                                        "${historyController.historyList[index].bonus ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Expected Goals'),
+                                    Text(
+                                        "${historyController.historyList[index].expectedGoals ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Expected Assists'),
+                                    Text(historyController
+                                            .historyList[index].expectedAssists ??
+                                        '')
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Expected Clean Sheets'),
+                                    Text(
+                                        "${historyController.historyList[index].cleanSheets ?? ''}")
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Expected Goals Conceded'),
+                                    Text(historyController.historyList[index]
+                                            .expectedGoalsConceded ??
+                                        '')
+                                  ],
+                                ),
+                                SizedBox(height: 30,)
+                              ],
+                            )
+                          ],
+                        ));
+                  }),
+
+            ),
+        ));
   }
 
   @override

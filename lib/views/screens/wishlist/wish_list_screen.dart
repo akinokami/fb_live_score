@@ -16,6 +16,7 @@ class WishListScreen extends StatelessWidget {
     final cartController = Get.find<CartController>();
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: AppTheme.primaryColor,
           title: const Text('Wish Lists'),
           centerTitle: true,
         ),

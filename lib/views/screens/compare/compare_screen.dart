@@ -242,7 +242,7 @@ class _CompareScreenState extends State<CompareScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "\u00A3${(selectedPlayer1?.nowCost ?? 0) / 10}",
+              selectedPlayer1?.nowCost!=null? "\u00A3${(selectedPlayer1?.nowCost ?? 0) / 10}":"",
                         style: defaultTextStyleBlack,
                       ),
                       const SizedBox(
@@ -651,7 +651,7 @@ class _CompareScreenState extends State<CompareScreen> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        "\u00A3${(selectedPlayer2?.nowCost ?? 0) / 10}",
+                        selectedPlayer2?.nowCost!=null? "\u00A3${(selectedPlayer2?.nowCost ?? 0) / 10}":"",
                         style: defaultTextStyleBlack,
                       ),
                       const SizedBox(
