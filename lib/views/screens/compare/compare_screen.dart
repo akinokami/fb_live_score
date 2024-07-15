@@ -45,6 +45,10 @@ class _CompareScreenState extends State<CompareScreen> {
                     width: MediaQuery.of(context).size.width * .4,
                     height: MediaQuery.of(context).size.height * .25,
                     child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                        elevation: 5,
                         child: selectedPlayer1 == null
                             ? const Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -128,6 +132,10 @@ class _CompareScreenState extends State<CompareScreen> {
                       width: MediaQuery.of(context).size.width * .4,
                       height: MediaQuery.of(context).size.height * .25,
                       child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          elevation: 5,
                           child: selectedPlayer2 == null
                               ? const Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -853,9 +861,14 @@ class _CompareScreenState extends State<CompareScreen> {
 
   void showPlayerChoiceDialog1(BuildContext context, RxList<Elements> players) {
     showDialog(
+
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          elevation: 5,
           title: const Text('Choose a Player'),
           content: SizedBox(
             width: double.maxFinite,
@@ -885,6 +898,10 @@ class _CompareScreenState extends State<CompareScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          elevation: 5,
           title: const Text('Choose a Player'),
           content: SizedBox(
             width: double.maxFinite,

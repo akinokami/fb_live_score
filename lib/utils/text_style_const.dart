@@ -65,7 +65,7 @@ TextStyle homeTitleTextStyle = const TextStyle(
 
 TextStyle homeSmallTitleTextStyle = const TextStyle(
   fontSize: 18,
-  color: Colors.black,
+  color: Colors.white,
   fontWeight: FontWeight.bold,
 );
 

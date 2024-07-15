@@ -28,11 +28,17 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
       isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+      ),
       context: context,
       builder: (context) {
         return FractionallySizedBox(
             heightFactor: 0.9,
+
             child: BottomSheetContent(
+
               title: widget.title,
               modelData: widget.list[selectedIndex],
               teamList: widget.teamList,
