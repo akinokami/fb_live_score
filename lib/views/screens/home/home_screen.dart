@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../../utils/app_theme.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -111,6 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: AppTheme.primaryColor,
           toolbarHeight: 50,
           title: Obx(
             () => homeController.isLoading.value
@@ -140,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       true
                                   ? "Finished"
                                   : "",
-                              style: defaultTextStyleBlack),
+                              style: defaultTextStyleWhite),
                         ),
                       ),
                     ],
