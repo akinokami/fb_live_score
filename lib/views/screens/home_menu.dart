@@ -2,6 +2,7 @@ import 'package:fb_livescore/utils/app_theme.dart';
 import 'package:fb_livescore/views/screens/compare/compare_screen.dart';
 import 'package:fb_livescore/views/screens/my_team/my_team_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import '../../controller/navigation_controller.dart';
 import 'home/home_screen.dart';
@@ -20,7 +21,7 @@ class Home extends StatelessWidget {
   buildBottomNavigationMenu(context, landingPageController) {
     return Obx(() => MediaQuery(
         data: MediaQuery.of(context)
-            .copyWith(textScaler: const TextScaler.linear(1.0)),
+            .copyWith(textScaleFactor:  1.0),///edit by erihmar
         child: SizedBox(
           height: 60,
           child: BottomNavigationBar(

@@ -109,7 +109,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                   height: 20,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 20,
                               ),
                               Image.network(
@@ -117,7 +117,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                 width: 50,
                                 height: 70,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 20,
                               ),
                               // Padding(
