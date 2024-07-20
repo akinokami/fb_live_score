@@ -11,8 +11,8 @@ class ApiUtils {
   factory ApiUtils() => singleton;
   ApiUtils._() {
     _dio.options.baseUrl = ApiConstant.baseUrl;
-    _dio.interceptors
-        .add(LogInterceptor(requestBody: true, responseBody: true));
+    _dio.interceptors.add(LogInterceptor(
+        requestHeader: false, requestBody: false, responseBody: false));
     _dio.options.connectTimeout = const Duration(seconds: 20);
     _dio.options.receiveTimeout = const Duration(seconds: 20);
     _dio.options.sendTimeout = const Duration(seconds: 20);

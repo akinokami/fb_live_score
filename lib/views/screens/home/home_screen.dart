@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
+import 'package:badges/badges.dart' as badges;
 import '../../../utils/app_theme.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppTheme.primaryColor,
-toolbarHeight: 40.h,
+          toolbarHeight: 40.h,
           title: Obx(
             () => homeController.isLoading.value
                 ? Container()
@@ -134,40 +134,39 @@ toolbarHeight: 40.h,
                   ),
           ),
           actions: [
-             Stack(
-
-                children: [
-                  Obx(()=>
-                     Positioned(
-                        child: Container(
-                          padding: EdgeInsets.all(3.w),
-                          child: CustomText(
-                            //text: "100",
-                            text: cartController.cartList.length.toString(),
-                            size: 6.sp,
-                            textColor: Colors.white,
-                          ),
-                          decoration: BoxDecoration(
-                              color: Colors.red, shape: BoxShape.circle),
-                        ),
-                        right: 3.w,
-                        top: 0),
+            Obx(
+              () => badges.Badge(
+                position: 1.sh > 600
+                    ? badges.BadgePosition.topEnd(top: 2, end: 5)
+                    : badges.BadgePosition.topEnd(top: 0, end: 3),
+                badgeStyle: badges.BadgeStyle(
+                  badgeColor: Colors.red,
+                ),
+                badgeContent: Padding(
+                  padding: cartController.cartList.length < 10
+                      ? const EdgeInsets.all(2)
+                      : const EdgeInsets.all(0),
+                  child: CustomText(
+                    text: cartController.cartList.length.toString(),
+                    textColor: Colors.white,
+                    size: 8.sp,
                   ),
-                  Padding(
-                    padding:  EdgeInsets.all( 5.w),
-                    child: IconButton(
+                ),
+                child: Padding(
+                  padding: 1.sh > 600
+                      ? EdgeInsets.only(right: 12.w, top: 5)
+                      : const EdgeInsets.all(0),
+                  child: IconButton(
                       icon: Icon(
                         Icons.shopping_cart_outlined,
-                        size: 15.w,
+                        size: 20.sp,
                       ),
                       onPressed: () {
                         Get.to(const WishListScreen());
-                      },
-                    ),
-                  ),
-                ],
+                      }),
+                ),
               ),
-
+            )
           ],
         ),
         body: Obx(
