@@ -62,7 +62,7 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
         ),
         SizedBox(height: 10.h),
         SizedBox(
-          height: 1.sh * .25,
+          height: 1.sh * .27,
           child: widget.list.isEmpty
               ? const Center(
                   child: CustomText(

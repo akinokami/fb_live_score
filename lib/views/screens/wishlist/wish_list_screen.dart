@@ -18,6 +18,7 @@ class WishListScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppTheme.primaryColor,
+          toolbarHeight: 40.h,
           title: CustomText(
             text: 'Wish Lists',
             size: 14.sp,
@@ -112,6 +113,7 @@ class WishListScreen extends StatelessWidget {
                                                       '',
                                                   width: 20.w,
                                                   height: 20.h,
+                                                  fit: BoxFit.contain,
                                                 ),
                                                 SizedBox(
                                                   width: 20.w,
@@ -149,7 +151,7 @@ class WishListScreen extends StatelessWidget {
                                                           ? Icons.shopping_cart
                                                           : Icons
                                                               .shopping_cart_outlined,
-                                                      size: 20,
+                                                      size: 18.sp,
                                                     ),
                                                   ),
                                                 ),
