@@ -1,4 +1,4 @@
-import 'package:fb_livescore/utils/text_style_const.dart';
+import 'package:fb_livescore/views/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class ScoreWidget extends StatelessWidget {
@@ -27,8 +27,12 @@ class ScoreWidget extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(title ?? '', style: smallTextStyleWhite),
-                Text(score ?? '', style: smallTextStyleWhite),
+                CustomText(
+                  text: title ?? '',
+                ),
+                CustomText(
+                  text: score ?? '',
+                ),
               ],
             )),
       ),

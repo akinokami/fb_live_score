@@ -2,7 +2,6 @@ import 'package:fb_livescore/models/status_model.dart';
 import 'package:fb_livescore/models/team_model.dart';
 import 'package:fb_livescore/services/api_constant.dart';
 import 'package:fb_livescore/utils/constants.dart';
-import 'package:fb_livescore/utils/text_style_const.dart';
 import 'package:fb_livescore/views/widgets/bottom_modal_sheet.dart';
 import 'package:fb_livescore/views/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -54,9 +53,8 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
       children: [
         Container(
           margin: const EdgeInsets.only(left: 8),
-          child: Text(
-            widget.title,
-            style: mediumTextStyleBlack,
+          child: CustomText(
+            text: widget.title,
           ),
         ),
         const SizedBox(
@@ -193,9 +191,8 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                       ],
                                     ),
                                   ),
-                                  Text(
-                                    widget.list[index].secondName ?? "",
-                                    style: smallTextStyleBlack,
+                                  CustomText(
+                                    text: widget.list[index].secondName ?? "",
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -208,13 +205,13 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                           width: 50,
                                           child: Opacity(
                                               opacity: 0.5,
-                                              child: Text(
-                                                  textAlign: TextAlign.right,
-                                                  Constants().defineType(widget
-                                                          .list[index]
-                                                          .elementType ??
-                                                      0),
-                                                  style: smallTextStyleBlack)),
+                                              child: CustomText(
+                                                text: Constants().defineType(
+                                                    widget.list[index]
+                                                            .elementType ??
+                                                        0),
+                                                textAlign: TextAlign.right,
+                                              )),
                                         ),
                                         const SizedBox(
                                           width: 2,
@@ -232,19 +229,18 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                           width: 90,
                                           child: Opacity(
                                               opacity: 0.5,
-                                              child: Text(
-                                                  widget.teamList
-                                                          .firstWhere((element) =>
-                                                              int.parse(element
-                                                                  .id
-                                                                  .toString()) ==
-                                                              int.parse(widget
-                                                                  .list[index]
-                                                                  .team
-                                                                  .toString()))
-                                                          .name ??
-                                                      '',
-                                                  style: smallTextStyleBlack)),
+                                              child: CustomText(
+                                                text: widget.teamList
+                                                        .firstWhere((element) =>
+                                                            int.parse(element.id
+                                                                .toString()) ==
+                                                            int.parse(widget
+                                                                .list[index]
+                                                                .team
+                                                                .toString()))
+                                                        .name ??
+                                                    '',
+                                              )),
                                         ),
                                       ],
                                     ),
@@ -272,15 +268,16 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                           children: [
                                             Opacity(
                                                 opacity: 0.6,
-                                                child: Text("GW38 Pts",
-                                                    style:
-                                                        smallTextStyleWhite)),
+                                                child: CustomText(
+                                                  text: "GW38 Pts",
+                                                  textColor: Colors.white,
+                                                )),
                                             Opacity(
                                                 opacity: 0.9,
-                                                child: Text(
-                                                    "${widget.list[index].eventPoints ?? ''}",
-                                                    style:
-                                                        smallTextStyleWhite)),
+                                                child: CustomText(
+                                                  text:
+                                                      "${widget.list[index].eventPoints ?? ''}",
+                                                )),
                                           ],
                                         ),
                                         const SizedBox(
@@ -290,15 +287,16 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                           children: [
                                             Opacity(
                                                 opacity: 0.6,
-                                                child: Text("Price",
-                                                    style:
-                                                        smallTextStyleWhite)),
+                                                child: CustomText(
+                                                  text: "Price",
+                                                  textColor: Colors.white,
+                                                )),
                                             Opacity(
                                                 opacity: 0.9,
-                                                child: Text(
-                                                    "${widget.list[index].nowCost ?? ''}",
-                                                    style:
-                                                        smallTextStyleWhite)),
+                                                child: CustomText(
+                                                  text:
+                                                      "${widget.list[index].nowCost ?? ''}",
+                                                )),
                                           ],
                                         )
                                       ],

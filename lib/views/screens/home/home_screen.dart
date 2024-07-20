@@ -1,7 +1,6 @@
 import 'package:fb_livescore/controller/cart_controller.dart';
 import 'package:fb_livescore/controller/home_controller.dart';
 import 'package:fb_livescore/utils/global.dart';
-import 'package:fb_livescore/utils/text_style_const.dart';
 import 'package:fb_livescore/views/screens/wishlist/wish_list_screen.dart';
 import 'package:fb_livescore/views/widgets/custom_text.dart';
 import 'package:fb_livescore/views/widgets/home_custom_card.dart';
@@ -123,11 +122,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.only(left: 0.0, top: 10),
                         child: Opacity(
                           opacity: 0.6,
-                          child: Text(
-                            homeController
+                          child: CustomText(
+                            text: homeController
                                     .statusModel.value.events?.last.name ??
                                 '',
-                            style: homeSmallTitleTextStyle,
                           ),
                         ),
                       ),
@@ -135,13 +133,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 0.0),
                         child: Opacity(
                           opacity: 0.6,
-                          child: Text(
-                              homeController.statusModel.value.events?.last
-                                          .finished ==
-                                      true
-                                  ? "Finished"
-                                  : "",
-                              style: defaultTextStyleWhite),
+                          child: CustomText(
+                            text: homeController.statusModel.value.events?.last
+                                        .finished ==
+                                    true
+                                ? "Finished"
+                                : "",
+                          ),
                         ),
                       ),
                     ],

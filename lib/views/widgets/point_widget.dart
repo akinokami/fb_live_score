@@ -1,4 +1,4 @@
-import 'package:fb_livescore/utils/text_style_const.dart';
+import 'package:fb_livescore/views/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class PointWidget extends StatelessWidget {
@@ -24,12 +24,14 @@ class PointWidget extends StatelessWidget {
         child: Column(
           children: [
             Opacity(
-                opacity: 0.6,
-                child: Text(
-                  title ?? '',
-                  style: smallTextStyleBlack,
-                )),
-            Text(point ?? '', style: smallTextStyleBlack),
+              opacity: 0.6,
+              child: CustomText(
+                text: title ?? '',
+              ),
+            ),
+            CustomText(
+              text: point ?? '',
+            ),
           ],
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:fb_livescore/views/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,7 +7,6 @@ import '../../../models/team_model.dart';
 import '../../../services/api_constant.dart';
 import '../../../utils/app_theme.dart';
 import '../../../utils/constants.dart';
-import '../../../utils/text_style_const.dart';
 
 class WishListScreen extends StatelessWidget {
   const WishListScreen({super.key});
@@ -148,11 +148,10 @@ class WishListScreen extends StatelessWidget {
                                             ],
                                           ),
                                         ),
-                                        Text(
-                                          cartController
+                                        CustomText(
+                                          text: cartController
                                                   .cartList[index].secondName ??
                                               "",
-                                          style: smallTextStyleBlack,
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.symmetric(
@@ -165,17 +164,16 @@ class WishListScreen extends StatelessWidget {
                                                 width: 50,
                                                 child: Opacity(
                                                     opacity: 0.5,
-                                                    child: Text(
-                                                        textAlign:
-                                                            TextAlign.right,
-                                                        Constants().defineType(
-                                                            cartController
-                                                                    .cartList[
-                                                                        index]
-                                                                    .elementType ??
-                                                                0),
-                                                        style:
-                                                            smallTextStyleBlack)),
+                                                    child: CustomText(
+                                                      text: Constants().defineType(
+                                                          cartController
+                                                                  .cartList[
+                                                                      index]
+                                                                  .elementType ??
+                                                              0),
+                                                      textAlign:
+                                                          TextAlign.right,
+                                                    )),
                                               ),
                                               const SizedBox(
                                                 width: 2,
@@ -193,22 +191,20 @@ class WishListScreen extends StatelessWidget {
                                                 width: 50,
                                                 child: Opacity(
                                                     opacity: 0.5,
-                                                    child: Text(
-                                                        teamList
-                                                                .firstWhere((element) =>
-                                                                    int.parse(
-                                                                        element
-                                                                            .id
-                                                                            .toString()) ==
-                                                                    int.parse(cartController
-                                                                        .cartList[
-                                                                            index]
-                                                                        .team
-                                                                        .toString()))
-                                                                .name ??
-                                                            '',
-                                                        style:
-                                                            smallTextStyleBlack)),
+                                                    child: CustomText(
+                                                      text: teamList
+                                                              .firstWhere((element) =>
+                                                                  int.parse(element
+                                                                      .id
+                                                                      .toString()) ==
+                                                                  int.parse(cartController
+                                                                      .cartList[
+                                                                          index]
+                                                                      .team
+                                                                      .toString()))
+                                                              .name ??
+                                                          '',
+                                                    )),
                                               ),
                                             ],
                                           ),
@@ -238,15 +234,15 @@ class WishListScreen extends StatelessWidget {
                                                 children: [
                                                   Opacity(
                                                       opacity: 0.6,
-                                                      child: Text("GW38 Pts",
-                                                          style:
-                                                              smallTextStyleWhite)),
+                                                      child: CustomText(
+                                                        text: "GW38 Pts",
+                                                      )),
                                                   Opacity(
                                                       opacity: 0.9,
-                                                      child: Text(
-                                                          "${cartController.cartList[index].eventPoints ?? ''}",
-                                                          style:
-                                                              smallTextStyleWhite)),
+                                                      child: CustomText(
+                                                        text:
+                                                            "${cartController.cartList[index].eventPoints ?? ''}",
+                                                      )),
                                                 ],
                                               ),
                                               const SizedBox(
@@ -256,15 +252,15 @@ class WishListScreen extends StatelessWidget {
                                                 children: [
                                                   Opacity(
                                                       opacity: 0.6,
-                                                      child: Text("Price",
-                                                          style:
-                                                              smallTextStyleWhite)),
+                                                      child: CustomText(
+                                                        text: "Price",
+                                                      )),
                                                   Opacity(
                                                       opacity: 0.9,
-                                                      child: Text(
-                                                          "${cartController.cartList[index].nowCost ?? ''}",
-                                                          style:
-                                                              smallTextStyleWhite)),
+                                                      child: CustomText(
+                                                        text:
+                                                            "${cartController.cartList[index].nowCost ?? ''}",
+                                                      )),
                                                 ],
                                               )
                                             ],
@@ -287,9 +283,8 @@ class WishListScreen extends StatelessWidget {
                         size: 100,
                         color: Colors.grey,
                       ),
-                      Text(
-                        'No wish list available',
-                        style: TextStyle(fontSize: 20),
+                      CustomText(
+                        text: 'No wish list available',
                       ),
                     ],
                   ),

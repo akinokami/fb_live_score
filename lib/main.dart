@@ -1,5 +1,6 @@
 import 'package:fb_livescore/views/screens/home_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -15,19 +16,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Live Score',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.green,
-          ),
-        ),
-      ),
-      home: Home(),
-      debugShowCheckedModeBanner: false,
-    );
+    return ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        // Use builder only if you need to use library outside ScreenUtilInit context
+        builder: (_, child) {
+          return GetMaterialApp(
+            title: 'Live Score',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+              elevatedButtonTheme: ElevatedButtonThemeData(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                ),
+              ),
+            ),
+            home: Home(),
+            debugShowCheckedModeBanner: false,
+          );
+        });
     // return MaterialApp(
     //   title: 'Flutter Demo',
     //   theme: ThemeData(

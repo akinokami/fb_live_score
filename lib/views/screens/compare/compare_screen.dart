@@ -1,7 +1,7 @@
 import 'package:fb_livescore/models/status_model.dart';
 import 'package:fb_livescore/models/team_model.dart';
 import 'package:fb_livescore/services/api_constant.dart';
-import 'package:fb_livescore/utils/text_style_const.dart';
+import 'package:fb_livescore/views/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -241,618 +241,535 @@ class _CompareScreenState extends State<CompareScreen> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        selectedPlayer1?.nowCost != null
+                      CustomText(
+                        text: selectedPlayer1?.nowCost != null
                             ? "\u00A3${(selectedPlayer1?.nowCost ?? 0) / 10}"
                             : "",
-                        style: defaultTextStyleBlack,
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.totalpoints ?? ''}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.totalpoints ?? ''}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer1?.pointsPerGame ?? '',
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer1?.pointsPerGame ?? '',
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer1?.form ?? '',
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer1?.form ?? '',
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.starts ?? ''}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.starts ?? ''}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.minutes ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.minutes ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.goalsScored ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.goalsScored ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.assists ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.assists ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.cleanSheets ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.cleanSheets ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.saves ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.saves ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer1?.expectedGoals ?? '',
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer1?.expectedGoals ?? '',
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer1?.expectedAssists ?? "",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer1?.expectedAssists ?? "",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer1?.expectedGoalInvolvements ?? "",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer1?.expectedGoalInvolvements ?? "",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.expectedGoalsPer90 ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.expectedGoalsPer90 ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.expectedAssistsPer90 ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.expectedAssistsPer90 ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.expectedGoalInvolvementsPer90 ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text:
+                            "${selectedPlayer1?.expectedGoalInvolvementsPer90 ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.goalsConceded ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.goalsConceded ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.goalsConcededPer90 ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.goalsConcededPer90 ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.expectedGoalsConcededPer90 ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text:
+                            "${selectedPlayer1?.expectedGoalsConcededPer90 ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.penaltiesMissed ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.penaltiesMissed ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.yellowCards ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.yellowCards ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.redCards ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.redCards ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.ownGoals ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.ownGoals ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.bonus ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.bonus ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer1?.bps ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer1?.bps ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer1?.influence ?? "",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer1?.influence ?? "",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer1?.creativity ?? "",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer1?.creativity ?? "",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer1?.threat ?? "",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer1?.threat ?? "",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer1?.ictIndex ?? "",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer1?.ictIndex ?? "",
                       ),
                     ],
                   ),
                   Column(
                     children: [
-                      Text(
-                        "Price",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Price",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Total Points",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Total Points",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Points Per Game",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Points Per Game",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Form",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Form",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Starts",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Starts",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Minutes",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Minutes",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Goals",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Goals",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Assists",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Assists",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Clean Sheets",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Clean Sheets",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Saves",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Saves",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "xGoals",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "xGoals",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "xAssists",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "xAssists",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "xGoal Involvements",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "xGoal Involvements",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "xGoal Per 90",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "xGoal Per 90",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "xAssist Per 90",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "xAssist Per 90",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "xGI Per 90",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "xGI Per 90",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Goals Conceded",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Goals Conceded",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "GC Per 90",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "GC Per 90",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "xGC Per 90",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "xGC Per 90",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Penalties Missed",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Penalties Missed",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Yellow Cards",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Yellow Cards",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Red Cards",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Red Cards",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Own Goals",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Own Goals",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Bonus",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Bonus",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "BPS",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "BPS",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Influence",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Influence",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Creativity",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Creativity",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Threat",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "Threat",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "ICT Index",
-                        style: defaultTextStyleGrey,
+                      CustomText(
+                        text: "ICT Index",
                       ),
                     ],
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
-                        selectedPlayer2?.nowCost != null
+                      CustomText(
+                        text: selectedPlayer2?.nowCost != null
                             ? "\u00A3${(selectedPlayer2?.nowCost ?? 0) / 10}"
                             : "",
-                        style: defaultTextStyleBlack,
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.totalpoints ?? ''}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.totalpoints ?? ''}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer2?.pointsPerGame ?? '',
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer2?.pointsPerGame ?? '',
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer2?.form ?? '',
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer2?.form ?? '',
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.starts ?? ''}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.starts ?? ''}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.minutes ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.minutes ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.goalsScored ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.goalsScored ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.assists ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.assists ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.cleanSheets ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.cleanSheets ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.saves ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.saves ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.expectedGoals ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer2?.expectedGoals ?? "",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer2?.expectedAssists ?? "",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer2?.expectedAssists ?? "",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer2?.expectedGoalInvolvements ?? "",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer2?.expectedGoalInvolvements ?? "",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.expectedGoalsPer90 ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.expectedGoalsPer90 ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.expectedAssistsPer90 ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.expectedAssistsPer90 ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.expectedGoalInvolvementsPer90 ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text:
+                            "${selectedPlayer2?.expectedGoalInvolvementsPer90 ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.goalsConceded ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.goalsConceded ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.goalsConcededPer90 ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.goalsConcededPer90 ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.expectedGoalsConcededPer90 ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text:
+                            "${selectedPlayer2?.expectedGoalsConcededPer90 ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.penaltiesMissed ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.penaltiesMissed ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.yellowCards ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.yellowCards ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.redCards ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.redCards ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.ownGoals ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.ownGoals ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.bonus ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.bonus ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "${selectedPlayer2?.bps ?? ""}",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: "${selectedPlayer2?.bps ?? ""}",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer2?.influence ?? "",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer2?.influence ?? "",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer2?.creativity ?? "",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer2?.creativity ?? "",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer2?.threat ?? "",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer2?.threat ?? "",
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        selectedPlayer2?.ictIndex ?? "",
-                        style: defaultTextStyleBlack,
+                      CustomText(
+                        text: selectedPlayer2?.ictIndex ?? "",
                       ),
                     ],
                   ),
