@@ -217,9 +217,9 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                               width: 1.sw * .2,
                                                               padding: EdgeInsets
                                                                   .only(
-                                                                      left: 5.r,
+                                                                      left: 5.w,
                                                                       right:
-                                                                          5.r),
+                                                                          5.w),
                                                               decoration: BoxDecoration(
                                                                   color: Colors
                                                                       .blue,
@@ -290,7 +290,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                               .center,
                                                       children: [
                                                         SizedBox(
-                                                          height: 80.h,
+                                                          height: 85.h,
                                                           child: homeController
                                                                   .dList.isEmpty
                                                               ? const Center(
@@ -327,7 +327,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                                                     return Icon(
                                                                                       Icons.person,
                                                                                       color: Colors.white,
-                                                                                      size: 45.h,
+                                                                                      size: 45.sp,
                                                                                     );
                                                                                   },
                                                                                 ),
@@ -374,7 +374,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                               .center,
                                                       children: [
                                                         SizedBox(
-                                                          height: 80.h,
+                                                          height: 85.h,
                                                           child:
                                                               ListView.builder(
                                                                   shrinkWrap:
@@ -406,7 +406,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                                                 return Icon(
                                                                                   Icons.person,
                                                                                   color: Colors.white,
-                                                                                  size: 45.h,
+                                                                                  size: 45.sp,
                                                                                 );
                                                                               },
                                                                             ),
@@ -460,7 +460,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                               .center,
                                                       children: [
                                                         SizedBox(
-                                                          height: 80.h,
+                                                          height: 85.h,
                                                           child:
                                                               ListView.builder(
                                                                   shrinkWrap:
@@ -492,7 +492,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                                                 return Icon(
                                                                                   Icons.person,
                                                                                   color: Colors.white,
-                                                                                  size: 45.h,
+                                                                                  size: 45.sp,
                                                                                 );
                                                                               },
                                                                             ),
