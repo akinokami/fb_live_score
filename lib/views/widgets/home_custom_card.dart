@@ -5,6 +5,7 @@ import 'package:fb_livescore/utils/constants.dart';
 import 'package:fb_livescore/views/widgets/bottom_modal_sheet.dart';
 import 'package:fb_livescore/views/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../controller/cart_controller.dart';
 import '../../utils/app_theme.dart';
@@ -55,18 +56,17 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
           margin: const EdgeInsets.only(left: 8),
           child: CustomText(
             text: widget.title,
+            size: 14.sp,
+            fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10.h),
         SizedBox(
-          height: MediaQuery.of(context).size.height * .22,
+          height: 1.sh * .25,
           child: widget.list.isEmpty
               ? const Center(
                   child: CustomText(
                   text: 'No Data',
-                  size: 14,
                 ))
               : ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -81,15 +81,14 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                         _showBottomSheet(context);
                       },
                       child: Container(
-                        width: MediaQuery.of(context).size.width * .4,
-                        height: MediaQuery.of(context).size.height * .45,
+                        width: 1.sw * .42,
                         margin: const EdgeInsets.all(8.0),
                         child: Material(
                           elevation: 10,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                           child: Container(
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10)),
+                                borderRadius: BorderRadius.circular(10.r)),
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(vertical: 0.0),
@@ -99,20 +98,11 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    padding: const EdgeInsets.only(top: 5),
-                                    decoration: const BoxDecoration(
-                                        //color:Colors.blueGrey,
-                                        //   gradient:  LinearGradient(
-                                        //     colors: [
-                                        //       Colors.blueGrey.withOpacity(0.6),
-                                        //       Colors.blueGrey
-                                        //     ], //#A2D240//#1B8B00
-                                        //     begin: Alignment.topLeft,
-                                        //     end: Alignment.bottomRight,
-                                        //   ),
+                                    padding: EdgeInsets.only(top: 5.h),
+                                    decoration: BoxDecoration(
                                         borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(10),
-                                            topRight: Radius.circular(10))),
+                                            topLeft: Radius.circular(10.r),
+                                            topRight: Radius.circular(10.r))),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
@@ -120,8 +110,8 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                           CrossAxisAlignment.start,
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        const SizedBox(
-                                          width: 5,
+                                        SizedBox(
+                                          width: 5.w,
                                         ),
                                         Image.network(
                                           teamList
@@ -133,19 +123,19 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                                           .toString()))
                                                   .imageUrl ??
                                               '',
-                                          width: 20,
-                                          height: 20,
+                                          width: 20.w,
+                                          height: 20.h,
                                         ),
-                                        const SizedBox(
-                                          width: 20,
+                                        SizedBox(
+                                          width: 20.w,
                                         ),
                                         Image.network(
                                           "${ApiConstant.imageUrl}${widget.list[index].photo?.replaceAll('.jpg', '.png') ?? ''}",
-                                          width: 50,
-                                          height: 70,
+                                          width: 50.w,
+                                          height: 70.h,
                                         ),
-                                        const SizedBox(
-                                          width: 20,
+                                        SizedBox(
+                                          width: 20.w,
                                         ),
                                         Obx(
                                           () => GestureDetector(
@@ -181,18 +171,19 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                                   ? Icons.shopping_cart
                                                   : Icons
                                                       .shopping_cart_outlined,
-                                              size: 20,
+                                              size: 20.sp,
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(
-                                          width: 5,
+                                        SizedBox(
+                                          width: 5.w,
                                         ),
                                       ],
                                     ),
                                   ),
                                   CustomText(
                                     text: widget.list[index].secondName ?? "",
+                                    size: 10.sp,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -202,7 +193,7 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                           MainAxisAlignment.center,
                                       children: [
                                         SizedBox(
-                                          width: 50,
+                                          width: 60.w,
                                           child: Opacity(
                                               opacity: 0.5,
                                               child: CustomText(
@@ -211,22 +202,24 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                                             .elementType ??
                                                         0),
                                                 textAlign: TextAlign.right,
+                                                size: 10.sp,
+                                                maxLines: 2,
                                               )),
                                         ),
-                                        const SizedBox(
-                                          width: 2,
-                                        ),
-                                        const SizedBox(
-                                            height: 10,
-                                            child: VerticalDivider(
-                                              width: 5,
-                                              color: Colors.grey,
-                                            )),
-                                        const SizedBox(
-                                          width: 2,
+                                        SizedBox(
+                                          width: 2.w,
                                         ),
                                         SizedBox(
-                                          width: 90,
+                                            height: 10.h,
+                                            child: VerticalDivider(
+                                              width: 5.w,
+                                              color: Colors.grey,
+                                            )),
+                                        SizedBox(
+                                          width: 2.w,
+                                        ),
+                                        SizedBox(
+                                          width: 60.w,
                                           child: Opacity(
                                               opacity: 0.5,
                                               child: CustomText(
@@ -240,14 +233,16 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                                                 .toString()))
                                                         .name ??
                                                     '',
+                                                size: 10.sp,
+                                                maxLines: 2,
                                               )),
                                         ),
                                       ],
                                     ),
                                   ),
                                   Container(
-                                    //padding:EdgeInsets.only(top: 5),
-                                    decoration: const BoxDecoration(
+                                    padding: EdgeInsets.all(5.h),
+                                    decoration: BoxDecoration(
                                         color: AppTheme.primaryColor,
                                         // gradient: LinearGradient(
                                         //   colors: [
@@ -258,8 +253,9 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                         //   end: Alignment.bottomRight,
                                         // ),
                                         borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(10),
-                                            bottomRight: Radius.circular(10))),
+                                            bottomLeft: Radius.circular(10.r),
+                                            bottomRight:
+                                                Radius.circular(10.r))),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
@@ -271,12 +267,15 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                                 child: CustomText(
                                                   text: "GW38 Pts",
                                                   textColor: Colors.white,
+                                                  size: 10.sp,
                                                 )),
                                             Opacity(
                                                 opacity: 0.9,
                                                 child: CustomText(
                                                   text:
                                                       "${widget.list[index].eventPoints ?? ''}",
+                                                  textColor: Colors.white,
+                                                  size: 10.sp,
                                                 )),
                                           ],
                                         ),
@@ -290,12 +289,15 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                                 child: CustomText(
                                                   text: "Price",
                                                   textColor: Colors.white,
+                                                  size: 10.sp,
                                                 )),
                                             Opacity(
                                                 opacity: 0.9,
                                                 child: CustomText(
                                                   text:
                                                       "${widget.list[index].nowCost ?? ''}",
+                                                  size: 10.sp,
+                                                  textColor: Colors.white,
                                                 )),
                                           ],
                                         )

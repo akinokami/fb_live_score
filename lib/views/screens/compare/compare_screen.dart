@@ -3,6 +3,7 @@ import 'package:fb_livescore/models/team_model.dart';
 import 'package:fb_livescore/services/api_constant.dart';
 import 'package:fb_livescore/views/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/home_controller.dart';
@@ -42,7 +43,7 @@ class _CompareScreenState extends State<CompareScreen> {
                     showPlayerChoiceDialog1(context, homeController.players);
                   },
                   child: SizedBox(
-                    width: MediaQuery.of(context).size.width * .4,
+                    width: MediaQuery.of(context).size.width * .45,
                     height: MediaQuery.of(context).size.height * .25,
                     child: Card(
                         shape: RoundedRectangleBorder(
@@ -50,14 +51,19 @@ class _CompareScreenState extends State<CompareScreen> {
                         ),
                         elevation: 5,
                         child: selectedPlayer1 == null
-                            ? const Column(
+                            ? Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text("Add Player"),
-                                  SizedBox(
-                                    height: 10,
+                                  const CustomText(
+                                    text: "Add Player",
                                   ),
-                                  Icon(Icons.add_circle_outlined)
+                                  SizedBox(
+                                    height: 10.h,
+                                  ),
+                                  Icon(
+                                    Icons.add_circle_outlined,
+                                    size: 20.sp,
+                                  )
                                 ],
                               )
                             : Column(
@@ -72,24 +78,22 @@ class _CompareScreenState extends State<CompareScreen> {
                                       children: [
                                         Image.network(
                                           "${ApiConstant.imageUrl}${selectedPlayer1?.photo?.replaceAll('.jpg', '.png') ?? ''}",
-                                          width: 50,
-                                          height: 70,
+                                          width: 50.w,
+                                          height: 70.h,
                                         ),
                                       ],
                                     ),
-                                    Text(
-                                      selectedPlayer1!.secondName ?? "",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
+                                    CustomText(
+                                      text: selectedPlayer1?.secondName ?? "",
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                    const SizedBox(
-                                      height: 10,
+                                    SizedBox(
+                                      height: 10.h,
                                     ),
                                     Opacity(
                                         opacity: 0.7,
-                                        child: Text(
-                                          teamList
+                                        child: CustomText(
+                                          text: teamList
                                                   .firstWhere((element) =>
                                                       int.parse(element.id
                                                           .toString()) ==
@@ -99,27 +103,30 @@ class _CompareScreenState extends State<CompareScreen> {
                                                   .name ??
                                               '',
                                         )),
-                                    const SizedBox(
-                                      height: 10,
+                                    SizedBox(
+                                      height: 10.h,
                                     ),
                                     Opacity(
                                         opacity: 0.7,
-                                        child: Text(selectedPlayer1!
-                                                    .elementType ==
-                                                1
-                                            ? "Goalkeeper"
-                                            : selectedPlayer1!.elementType == 2
-                                                ? "Defender"
+                                        child: CustomText(
+                                            text: selectedPlayer1!
+                                                        .elementType ==
+                                                    1
+                                                ? "Goalkeeper"
                                                 : selectedPlayer1!
                                                             .elementType ==
-                                                        3
-                                                    ? "Midfielder"
-                                                    : "Forward")),
-                                    const SizedBox(
-                                      height: 10,
+                                                        2
+                                                    ? "Defender"
+                                                    : selectedPlayer1!
+                                                                .elementType ==
+                                                            3
+                                                        ? "Midfielder"
+                                                        : "Forward")),
+                                    SizedBox(
+                                      height: 10.h,
                                     ),
-                                    const SizedBox(
-                                      height: 10,
+                                    SizedBox(
+                                      height: 10.h,
                                     ),
                                   ])),
                   ),
@@ -129,22 +136,22 @@ class _CompareScreenState extends State<CompareScreen> {
                     showPlayerChoiceDialog2(context, homeController.players);
                   },
                   child: SizedBox(
-                      width: MediaQuery.of(context).size.width * .4,
-                      height: MediaQuery.of(context).size.height * .25,
+                      width: 1.sw * .45,
+                      height: 1.sh * .25,
                       child: Card(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           elevation: 5,
                           child: selectedPlayer2 == null
-                              ? const Column(
+                              ? Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("Add Player"),
+                                    const CustomText(text: "Add Player"),
                                     SizedBox(
-                                      height: 10,
+                                      height: 10.h,
                                     ),
-                                    Icon(Icons.add_circle_outlined)
+                                    Icon(Icons.add_circle_outlined, size: 20.sp)
                                   ],
                                 )
                               : Column(
@@ -157,39 +164,24 @@ class _CompareScreenState extends State<CompareScreen> {
                                             CrossAxisAlignment.start,
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          // Image.network(
-                                          //   teamList
-                                          //           .firstWhere((element) =>
-                                          //               int.parse(element.id
-                                          //                   .toString()) ==
-                                          //               int.parse(selectedPlayer1!
-                                          //                   .team
-                                          //                   .toString()))
-                                          //           .imageUrl ??
-                                          //       '',
-                                          //   width: 20,
-                                          //   height: 20,
-                                          // ),
                                           Image.network(
                                             "${ApiConstant.imageUrl}${selectedPlayer2?.photo?.replaceAll('.jpg', '.png') ?? ''}",
-                                            width: 50,
-                                            height: 70,
+                                            width: 50.w,
+                                            height: 70.h,
                                           ),
                                         ],
                                       ),
-                                      Text(
-                                        selectedPlayer2!.secondName ?? "",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),
+                                      CustomText(
+                                        text: selectedPlayer2?.secondName ?? "",
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                      const SizedBox(
-                                        height: 10,
+                                      SizedBox(
+                                        height: 10.h,
                                       ),
                                       Opacity(
                                           opacity: 0.7,
-                                          child: Text(
-                                            teamList
+                                          child: CustomText(
+                                            text: teamList
                                                     .firstWhere((element) =>
                                                         int.parse(element.id
                                                             .toString()) ==
@@ -200,28 +192,30 @@ class _CompareScreenState extends State<CompareScreen> {
                                                     .name ??
                                                 '',
                                           )),
-                                      const SizedBox(
-                                        height: 10,
+                                      SizedBox(
+                                        height: 10.h,
                                       ),
                                       Opacity(
                                           opacity: 0.7,
-                                          child: Text(selectedPlayer2!
-                                                      .elementType ==
-                                                  1
-                                              ? "Goalkeeper"
-                                              : selectedPlayer2!.elementType ==
-                                                      2
-                                                  ? "Defender"
+                                          child: CustomText(
+                                              text: selectedPlayer2!
+                                                          .elementType ==
+                                                      1
+                                                  ? "Goalkeeper"
                                                   : selectedPlayer2!
                                                               .elementType ==
-                                                          3
-                                                      ? "Midfielder"
-                                                      : "Forward")),
-                                      const SizedBox(
-                                        height: 10,
+                                                          2
+                                                      ? "Defender"
+                                                      : selectedPlayer2!
+                                                                  .elementType ==
+                                                              3
+                                                          ? "Midfielder"
+                                                          : "Forward")),
+                                      SizedBox(
+                                        height: 10.h,
                                       ),
-                                      const SizedBox(
-                                        height: 10,
+                                      SizedBox(
+                                        height: 10.h,
                                       ),
                                     ]))),
                 )
@@ -229,7 +223,7 @@ class _CompareScreenState extends State<CompareScreen> {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.width * .05,
+            height: 1.sw * .05,
           ),
           Container(
               padding: const EdgeInsets.all(8),
@@ -245,176 +239,205 @@ class _CompareScreenState extends State<CompareScreen> {
                         text: selectedPlayer1?.nowCost != null
                             ? "\u00A3${(selectedPlayer1?.nowCost ?? 0) / 10}"
                             : "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.totalpoints ?? ''}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer1?.pointsPerGame ?? '',
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer1?.form ?? '',
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.starts ?? ''}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.minutes ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.goalsScored ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.assists ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.cleanSheets ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.saves ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer1?.expectedGoals ?? '',
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer1?.expectedAssists ?? "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer1?.expectedGoalInvolvements ?? "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.expectedGoalsPer90 ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.expectedAssistsPer90 ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text:
                             "${selectedPlayer1?.expectedGoalInvolvementsPer90 ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.goalsConceded ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.goalsConcededPer90 ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text:
                             "${selectedPlayer1?.expectedGoalsConcededPer90 ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.penaltiesMissed ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.yellowCards ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.redCards ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.ownGoals ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.bonus ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer1?.bps ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer1?.influence ?? "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer1?.creativity ?? "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer1?.threat ?? "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer1?.ictIndex ?? "",
+                        size: 10.sp,
                       ),
                     ],
                   ),
@@ -422,174 +445,203 @@ class _CompareScreenState extends State<CompareScreen> {
                     children: [
                       CustomText(
                         text: "Price",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Total Points",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Points Per Game",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Form",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Starts",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Minutes",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Goals",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Assists",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Clean Sheets",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Saves",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "xGoals",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "xAssists",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "xGoal Involvements",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "xGoal Per 90",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "xAssist Per 90",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "xGI Per 90",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Goals Conceded",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "GC Per 90",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "xGC Per 90",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Penalties Missed",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Yellow Cards",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Red Cards",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Own Goals",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Bonus",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "BPS",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Influence",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Creativity",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "Threat",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "ICT Index",
+                        size: 10.sp,
                       ),
                     ],
                   ),
@@ -600,176 +652,205 @@ class _CompareScreenState extends State<CompareScreen> {
                         text: selectedPlayer2?.nowCost != null
                             ? "\u00A3${(selectedPlayer2?.nowCost ?? 0) / 10}"
                             : "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.totalpoints ?? ''}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer2?.pointsPerGame ?? '',
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer2?.form ?? '',
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.starts ?? ''}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.minutes ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.goalsScored ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.assists ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.cleanSheets ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.saves ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer2?.expectedGoals ?? "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer2?.expectedAssists ?? "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer2?.expectedGoalInvolvements ?? "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.expectedGoalsPer90 ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.expectedAssistsPer90 ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text:
                             "${selectedPlayer2?.expectedGoalInvolvementsPer90 ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.goalsConceded ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.goalsConcededPer90 ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text:
                             "${selectedPlayer2?.expectedGoalsConcededPer90 ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.penaltiesMissed ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.yellowCards ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.redCards ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.ownGoals ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.bonus ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: "${selectedPlayer2?.bps ?? ""}",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer2?.influence ?? "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer2?.creativity ?? "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer2?.threat ?? "",
+                        size: 10.sp,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CustomText(
                         text: selectedPlayer2?.ictIndex ?? "",
+                        size: 10.sp,
                       ),
                     ],
                   ),
@@ -789,11 +870,15 @@ class _CompareScreenState extends State<CompareScreen> {
             borderRadius: BorderRadius.circular(10.0),
           ),
           elevation: 5,
-          title: const Text('Choose a Player'),
+          title: CustomText(
+            text: 'Choose a Player',
+            size: 16.sp,
+            fontWeight: FontWeight.w500,
+          ),
           content: SizedBox(
             width: double.maxFinite,
             child: players.isEmpty
-                ? const Center(child: Text("No player found"))
+                ? const Center(child: CustomText(text: "No player found"))
                 : ListView.builder(
                     shrinkWrap: true,
                     itemCount: players.length,
@@ -824,11 +909,15 @@ class _CompareScreenState extends State<CompareScreen> {
             borderRadius: BorderRadius.circular(10.0),
           ),
           elevation: 5,
-          title: const Text('Choose a Player'),
+          title: CustomText(
+            text: 'Choose a Player',
+            size: 16.sp,
+            fontWeight: FontWeight.w500,
+          ),
           content: SizedBox(
             width: double.maxFinite,
             child: players.isEmpty
-                ? const Center(child: Text("No player found"))
+                ? const Center(child: CustomText(text: "No player found"))
                 : ListView.builder(
                     shrinkWrap: true,
                     itemCount: players.length,
@@ -864,13 +953,17 @@ class PlayerListItem extends StatelessWidget {
       child: ListTile(
         leading: Image.network(
           "${ApiConstant.imageUrl}${player.photo?.replaceAll('.jpg', '.png') ?? ''}",
-          width: 40,
-          height: 50,
+          width: 40.w,
+          height: 50.h,
         ), // Placeholder for player icon
-        title: Text(player.secondName ?? ""),
+        title: CustomText(
+          text: player.secondName ?? "",
+        ),
 
-        subtitle: Text(
-            '${player.elementType}, Price: \u00A3${(player.nowCost ?? 1) / 10}, Points: ${player.totalpoints}'),
+        subtitle: CustomText(
+          text:
+              '${player.elementType}, Price: \u00A3${(player.nowCost ?? 1) / 10}, Points: ${player.totalpoints}',
+        ),
         //trailing: const Icon(Icons.add_circle_outline),
       ),
     );

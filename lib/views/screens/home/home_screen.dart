@@ -7,6 +7,7 @@ import 'package:fb_livescore/views/widgets/home_custom_card.dart';
 import 'package:fb_livescore/views/widgets/home_custom_card_single.dart';
 import 'package:fb_livescore/views/widgets/score_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -119,13 +120,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 0.0, top: 10),
+                        padding: EdgeInsets.only(left: 0.0, top: 10.h),
                         child: Opacity(
                           opacity: 0.6,
                           child: CustomText(
                             text: homeController
                                     .statusModel.value.events?.last.name ??
                                 '',
+                            size: 14.sp,
+                            textColor: Colors.white,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
@@ -152,7 +156,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Badge(
                   label: Text(cartController.cartList.length.toString()),
                   child: IconButton(
-                    icon: const Icon(Icons.shopping_cart_outlined),
+                    icon: Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 20.sp,
+                    ),
                     onPressed: () {
                       Get.to(const WishListScreen());
                     },
@@ -233,68 +240,49 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ],
                             )),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 10.h,
                     ),
 
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .28,
-                      child: HomeCustomCard(
-                        title: "Top Players",
-                        list: homeController.topPlayerList,
-                        teamList: homeController.statusModel.value.teams ?? [],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
+                    HomeCustomCard(
+                      title: "Top Players",
+                      list: homeController.topPlayerList,
+                      teamList: homeController.statusModel.value.teams ?? [],
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * .28,
-                      child: SizedBox(
-                          child: HomeCustomCard(
-                        title: "Top Forwards",
-                        list: homeController.topForwardList,
-                        teamList: homeController.statusModel.value.teams ?? [],
-                      )),
+                      height: 10.h,
                     ),
-                    const SizedBox(
-                      height: 10,
+                    HomeCustomCard(
+                      title: "Top Forwards",
+                      list: homeController.topForwardList,
+                      teamList: homeController.statusModel.value.teams ?? [],
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * .28,
-                      child: SizedBox(
-                          child: HomeCustomCard(
-                        title: "Top Midfielders",
-                        list: homeController.midfielderList,
-                        teamList: homeController.statusModel.value.teams ?? [],
-                      )),
+                      height: 10.h,
                     ),
-                    const SizedBox(
-                      height: 10,
+                    HomeCustomCard(
+                      title: "Top Midfielders",
+                      list: homeController.midfielderList,
+                      teamList: homeController.statusModel.value.teams ?? [],
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * .28,
-                      child: SizedBox(
-                          child: HomeCustomCard(
-                        title: "Top Defenders",
-                        list: homeController.defenderList,
-                        teamList: homeController.statusModel.value.teams ?? [],
-                      )),
+                      height: 10.h,
                     ),
-                    const SizedBox(
-                      height: 10,
+                    HomeCustomCard(
+                      title: "Top Defenders",
+                      list: homeController.defenderList,
+                      teamList: homeController.statusModel.value.teams ?? [],
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * .28,
-                      child: SizedBox(
-                          child: HomeCustomCard(
-                        title: "Top GoldKeepers",
-                        list: homeController.gokeeperList,
-                        teamList: homeController.statusModel.value.teams ?? [],
-                      )),
+                      height: 10.h,
                     ),
-                    const SizedBox(
-                      height: 10,
+                    HomeCustomCard(
+                      title: "Top GoldKeepers",
+                      list: homeController.gokeeperList,
+                      teamList: homeController.statusModel.value.teams ?? [],
+                    ),
+                    SizedBox(
+                      height: 10.h,
                     ),
                     // ignore: unnecessary_null_comparison
                     homeController.mostSelected.value.secondName == null ||
@@ -312,8 +300,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                           ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 10.h,
                     ),
                     homeController.mostCaptained.value.secondName == null ||
                             homeController.statusModel.value.teams!.isEmpty
@@ -330,8 +318,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                           ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 10.h,
                     ),
                     homeController.mostViceCaptained.value.secondName == null ||
                             homeController.statusModel.value.teams!.isEmpty
@@ -346,8 +334,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   homeController.statusModel.value.teams ?? [],
                             )),
                           ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 10.h,
                     ),
                     homeController.mostTransferred.value.secondName == null ||
                             homeController.statusModel.value.teams!.isEmpty
