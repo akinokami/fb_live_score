@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppTheme.primaryColor,
-          toolbarHeight: 40.h,
+toolbarHeight: 40.h,
           title: Obx(
             () => homeController.isLoading.value
                 ? Container()
@@ -134,28 +134,40 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
           ),
           actions: [
-            Obx(
-              () => Padding(
-                padding: EdgeInsets.all(8.h),
-                child: Badge(
-                  alignment: Alignment.topRight,
-                  label: CustomText(
-                    text: cartController.cartList.length.toString(),
-                    textColor: Colors.white,
-                    size: 8.sp,
+             Stack(
+
+                children: [
+                  Obx(()=>
+                     Positioned(
+                        child: Container(
+                          padding: EdgeInsets.all(3.w),
+                          child: CustomText(
+                            //text: "100",
+                            text: cartController.cartList.length.toString(),
+                            size: 6.sp,
+                            textColor: Colors.white,
+                          ),
+                          decoration: BoxDecoration(
+                              color: Colors.red, shape: BoxShape.circle),
+                        ),
+                        right: 3.w,
+                        top: 0),
                   ),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.shopping_cart_outlined,
-                      size: 18.sp,
+                  Padding(
+                    padding:  EdgeInsets.all( 5.w),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.shopping_cart_outlined,
+                        size: 15.w,
+                      ),
+                      onPressed: () {
+                        Get.to(const WishListScreen());
+                      },
                     ),
-                    onPressed: () {
-                      Get.to(const WishListScreen());
-                    },
                   ),
-                ),
+                ],
               ),
-            ),
+
           ],
         ),
         body: Obx(
