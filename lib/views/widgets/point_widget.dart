@@ -13,30 +13,30 @@ class PointWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(5.h),
-      child: Container(
-        height: 30.h,
-        padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 5.w),
-        decoration: BoxDecoration(
-          color: Colors.grey[200],
-          borderRadius: BorderRadius.circular(2.r),
-        ),
-        child: Column(
-          children: [
-            Opacity(
-              opacity: 0.6,
-              child: CustomText(
-                text: title ?? '',
-                size: 10.sp,
-              ),
-            ),
-            CustomText(
-              text: point ?? '',
+    return Container(
+      height: 35.h,
+      alignment: Alignment.center,
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      margin: EdgeInsets.only(right: 10.w),
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(2.r),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Opacity(
+            opacity: 0.6,
+            child: CustomText(
+              text: title ?? '',
               size: 10.sp,
             ),
-          ],
-        ),
+          ),
+          CustomText(
+            text: point ?? '',
+            size: 10.sp,
+          ),
+        ],
       ),
     );
   }

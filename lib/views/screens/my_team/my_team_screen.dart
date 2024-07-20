@@ -44,18 +44,10 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                           child: SizedBox(
                             height: 1.sh * .045,
                             child: TextField(
+                              style: TextStyle(fontSize: 12.sp),
                               controller: myTeamController.searchController,
                               onChanged: (value) {
                                 myTeamController.searchController.text = value;
-                                // if (myTeamController.searchController.text.isNotEmpty) {
-                                //   setState(() {
-                                //     data = true;
-                                //   });
-                                // }else{
-                                //   setState(() {
-                                //     data = false;
-                                //   });
-                                // }
                               },
                               decoration: InputDecoration(
                                   hintText: "Enter Manager ID",
@@ -64,6 +56,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                   hintStyle: TextStyle(
                                       color: Colors.grey, fontSize: 12.sp),
                                   //prefixIcon: Icon(Icons.search),
+
                                   suffixIcon: Padding(
                                     padding: EdgeInsets.all(5.h),
                                     child: GestureDetector(
@@ -222,21 +215,21 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                             ),
                                                             Container(
                                                               width: 1.sw * .2,
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .only(
-                                                                      left: 5,
-                                                                      right: 5),
-                                                              decoration: const BoxDecoration(
+                                                              padding: EdgeInsets
+                                                                  .only(
+                                                                      left: 5.r,
+                                                                      right:
+                                                                          5.r),
+                                                              decoration: BoxDecoration(
                                                                   color: Colors
                                                                       .blue,
                                                                   borderRadius: BorderRadius.only(
                                                                       topRight:
-                                                                          Radius.circular(
-                                                                              5),
+                                                                          Radius.circular(5
+                                                                              .r),
                                                                       topLeft: Radius
                                                                           .circular(
-                                                                              5))),
+                                                                              5.r))),
                                                               child: Center(
                                                                 child:
                                                                     CustomText(

@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
 
         ///edit by erihmar
         child: SizedBox(
-          height: 45.h,
+          height: 55.h,
           child: BottomNavigationBar(
             showUnselectedLabels: true,
             showSelectedLabels: true,
@@ -39,7 +39,7 @@ class Home extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.people,
-                  size: 20.sp,
+                  size: 18.w,
                 ),
                 label: 'My Team',
                 backgroundColor: AppTheme.primaryColor,
@@ -47,7 +47,7 @@ class Home extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home,
-                  size: 20.0.sp,
+                  size: 18.w,
                 ),
                 label: 'Home',
                 backgroundColor: AppTheme.primaryColor,
@@ -55,7 +55,7 @@ class Home extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.compare_arrows,
-                  size: 20.0.sp,
+                  size: 18.w,
                 ),
                 label: 'Compare',
                 backgroundColor: AppTheme.primaryColor,

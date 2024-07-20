@@ -112,38 +112,22 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppTheme.primaryColor,
-          toolbarHeight: 50,
+          toolbarHeight: 40.h,
           title: Obx(
             () => homeController.isLoading.value
                 ? Container()
                 : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 0.0, top: 10.h),
-                        child: Opacity(
-                          opacity: 0.6,
-                          child: CustomText(
-                            text: homeController
-                                    .statusModel.value.events?.last.name ??
-                                '',
-                            size: 14.sp,
-                            textColor: Colors.white,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 0.0),
-                        child: Opacity(
-                          opacity: 0.6,
-                          child: CustomText(
-                            text: homeController.statusModel.value.events?.last
-                                        .finished ==
-                                    true
-                                ? "Finished"
-                                : "",
-                          ),
+                      Opacity(
+                        opacity: 0.6,
+                        child: CustomText(
+                          text: homeController
+                                  .statusModel.value.events?.last.name ??
+                              '',
+                          size: 14.sp,
+                          textColor: Colors.white,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -152,13 +136,17 @@ class _HomeScreenState extends State<HomeScreen> {
           actions: [
             Obx(
               () => Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.h),
                 child: Badge(
-                  label: Text(cartController.cartList.length.toString()),
+                  label: CustomText(
+                    text: cartController.cartList.length.toString(),
+                    textColor: Colors.white,
+                    size: 7.sp,
+                  ),
                   child: IconButton(
                     icon: Icon(
                       Icons.shopping_cart_outlined,
-                      size: 20.sp,
+                      size: 18.sp,
                     ),
                     onPressed: () {
                       Get.to(const WishListScreen());
