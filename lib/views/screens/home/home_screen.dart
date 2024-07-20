@@ -55,12 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(6)),
                               activeColor: Colors.green,
-                              side:  BorderSide(
-                                  width: 1.5,
-                                  color:
-                                      isChecked ? Colors.green : Colors.black,
-                                ),
-
+                              side: BorderSide(
+                                width: 1.5,
+                                color: isChecked ? Colors.green : Colors.black,
+                              ),
                               value: isChecked,
                               onChanged: (bool? value) {
                                 setState(() {
@@ -73,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 });
                               },
                             ),
-                            CustomText(
+                            const CustomText(
                               text: 'I agreed to the Privacy Policy.',
                               size: 12,
                             )
@@ -173,73 +171,81 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               : ListView(
                   children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.width * .05,
-                    ),
-                    SizedBox(
-                        height: MediaQuery.of(context).size.height * .045,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            Row(
+                    homeController.statusModel.value.events?.last.chipPlays!
+                                .length ==
+                            0
+                        ? Container()
+                        : SizedBox(
+                            height: MediaQuery.of(context).size.width * .05,
+                          ),
+                    homeController.statusModel.value.events?.last.chipPlays!
+                                .length ==
+                            0
+                        ? Container()
+                        : SizedBox(
+                            height: MediaQuery.of(context).size.height * .045,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
                               children: [
-                                ScoreWidget(
-                                  title: 'Highest Points',
-                                  score: homeController.statusModel.value.events
-                                      ?.last.highestScore
-                                      .toString(),
-                                ),
-                                ScoreWidget(
-                                  title: 'Average Points',
-                                  score: homeController.statusModel.value.events
-                                      ?.last.averageEntryScore
-                                      .toString(),
-                                ),
-                                ScoreWidget(
-                                  title: 'Transfers Made',
-                                  score: homeController.statusModel.value.events
-                                      ?.last.transfersMade
-                                      .toString(),
-                                ),
-                                ScoreWidget(
-                                  title: 'Bench Boost',
-                                  score: homeController.statusModel.value.events
-                                      ?.last.chipPlays?[0].numPlayed
-                                      .toString(),
-                                ),
-                                ScoreWidget(
-                                  title: 'Free Hit',
-                                  score: homeController.statusModel.value.events
-                                      ?.last.chipPlays?[1].numPlayed
-                                      .toString(),
-                                ),
-                                ScoreWidget(
-                                  title: 'wildcard',
-                                  score: homeController.statusModel.value.events
-                                      ?.last.chipPlays?[2].numPlayed
-                                      .toString(),
-                                ),
-                                ScoreWidget(
-                                  title: 'Triple Captain',
-                                  score: homeController.statusModel.value.events
-                                      ?.last.chipPlays?[3].numPlayed
-                                      .toString(),
+                                Row(
+                                  children: [
+                                    ScoreWidget(
+                                      title: 'Highest Points',
+                                      score: homeController.statusModel.value
+                                          .events?.last.highestScore
+                                          .toString(),
+                                    ),
+                                    ScoreWidget(
+                                      title: 'Average Points',
+                                      score: homeController.statusModel.value
+                                          .events?.last.averageEntryScore
+                                          .toString(),
+                                    ),
+                                    ScoreWidget(
+                                      title: 'Transfers Made',
+                                      score: homeController.statusModel.value
+                                          .events?.last.transfersMade
+                                          .toString(),
+                                    ),
+                                    ScoreWidget(
+                                      title: 'Bench Boost',
+                                      score: homeController.statusModel.value
+                                          .events?.last.chipPlays?[0].numPlayed
+                                          .toString(),
+                                    ),
+                                    ScoreWidget(
+                                      title: 'Free Hit',
+                                      score: homeController.statusModel.value
+                                          .events?.last.chipPlays?[1].numPlayed
+                                          .toString(),
+                                    ),
+                                    ScoreWidget(
+                                      title: 'wildcard',
+                                      score: homeController.statusModel.value
+                                          .events?.last.chipPlays?[2].numPlayed
+                                          .toString(),
+                                    ),
+                                    ScoreWidget(
+                                      title: 'Triple Captain',
+                                      score: homeController.statusModel.value
+                                          .events?.last.chipPlays?[3].numPlayed
+                                          .toString(),
+                                    ),
+                                  ],
                                 ),
                               ],
-                            ),
-                          ],
-                        )),
+                            )),
                     const SizedBox(
                       height: 10,
                     ),
+
                     SizedBox(
                       height: MediaQuery.of(context).size.height * .28,
-                      child: SizedBox(
-                          child: HomeCustomCard(
+                      child: HomeCustomCard(
                         title: "Top Players",
                         list: homeController.topPlayerList,
                         teamList: homeController.statusModel.value.teams ?? [],
-                      )),
+                      ),
                     ),
                     const SizedBox(
                       height: 10,
@@ -292,55 +298,72 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(
                       height: 10,
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .28,
-                      child: SizedBox(
-                        child: HomeCustomCardSingle(
-                          title: "Most Selected",
-                          modelData: homeController.mostSelected.value,
-                          teamList:
-                              homeController.statusModel.value.teams ?? [],
-                        ),
-                      ),
-                    ),
+                    // ignore: unnecessary_null_comparison
+                    homeController.mostSelected.value.secondName == null ||
+                            homeController.statusModel.value.teams!.isEmpty
+                        ? Container()
+                        : SizedBox(
+                            height: MediaQuery.of(context).size.height * .28,
+                            child: SizedBox(
+                              child: HomeCustomCardSingle(
+                                title: "Most Selected",
+                                modelData: homeController.mostSelected.value,
+                                teamList:
+                                    homeController.statusModel.value.teams ??
+                                        [],
+                              ),
+                            ),
+                          ),
                     const SizedBox(
                       height: 10,
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .28,
-                      child: SizedBox(
-                        child: HomeCustomCardSingle(
-                          title: "Most Captained",
-                          modelData: homeController.mostCaptained.value,
-                          teamList:
-                              homeController.statusModel.value.teams ?? [],
-                        ),
-                      ),
-                    ),
+                    homeController.mostCaptained.value.secondName == null ||
+                            homeController.statusModel.value.teams!.isEmpty
+                        ? Container()
+                        : SizedBox(
+                            height: MediaQuery.of(context).size.height * .28,
+                            child: SizedBox(
+                              child: HomeCustomCardSingle(
+                                title: "Most Captained",
+                                modelData: homeController.mostCaptained.value,
+                                teamList:
+                                    homeController.statusModel.value.teams ??
+                                        [],
+                              ),
+                            ),
+                          ),
                     const SizedBox(
                       height: 10,
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .28,
-                      child: SizedBox(
-                          child: HomeCustomCardSingle(
-                        title: "Most Vice Captained",
-                        modelData: homeController.mostViceCaptained.value,
-                        teamList: homeController.statusModel.value.teams ?? [],
-                      )),
-                    ),
+                    homeController.mostViceCaptained.value.secondName == null ||
+                            homeController.statusModel.value.teams!.isEmpty
+                        ? Container()
+                        : SizedBox(
+                            height: MediaQuery.of(context).size.height * .28,
+                            child: SizedBox(
+                                child: HomeCustomCardSingle(
+                              title: "Most Vice Captained",
+                              modelData: homeController.mostViceCaptained.value,
+                              teamList:
+                                  homeController.statusModel.value.teams ?? [],
+                            )),
+                          ),
                     const SizedBox(
                       height: 10,
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .28,
-                      child: SizedBox(
-                          child: HomeCustomCardSingle(
-                        title: "Most Transferred in",
-                        modelData: homeController.mostTransferred.value,
-                        teamList: homeController.statusModel.value.teams ?? [],
-                      )),
-                    ),
+                    homeController.mostTransferred.value.secondName == null ||
+                            homeController.statusModel.value.teams!.isEmpty
+                        ? Container()
+                        : SizedBox(
+                            height: MediaQuery.of(context).size.height * .28,
+                            child: SizedBox(
+                                child: HomeCustomCardSingle(
+                              title: "Most Transferred in",
+                              modelData: homeController.mostTransferred.value,
+                              teamList:
+                                  homeController.statusModel.value.teams ?? [],
+                            )),
+                          ),
                   ],
                 ),
         ));

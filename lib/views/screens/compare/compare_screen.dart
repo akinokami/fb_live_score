@@ -45,9 +45,9 @@ class _CompareScreenState extends State<CompareScreen> {
                     width: MediaQuery.of(context).size.width * .4,
                     height: MediaQuery.of(context).size.height * .25,
                     child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
                         elevation: 5,
                         child: selectedPlayer1 == null
                             ? const Column(
@@ -242,7 +242,9 @@ class _CompareScreenState extends State<CompareScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-              selectedPlayer1?.nowCost!=null? "\u00A3${(selectedPlayer1?.nowCost ?? 0) / 10}":"",
+                        selectedPlayer1?.nowCost != null
+                            ? "\u00A3${(selectedPlayer1?.nowCost ?? 0) / 10}"
+                            : "",
                         style: defaultTextStyleBlack,
                       ),
                       const SizedBox(
@@ -651,7 +653,9 @@ class _CompareScreenState extends State<CompareScreen> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        selectedPlayer2?.nowCost!=null? "\u00A3${(selectedPlayer2?.nowCost ?? 0) / 10}":"",
+                        selectedPlayer2?.nowCost != null
+                            ? "\u00A3${(selectedPlayer2?.nowCost ?? 0) / 10}"
+                            : "",
                         style: defaultTextStyleBlack,
                       ),
                       const SizedBox(
@@ -861,7 +865,6 @@ class _CompareScreenState extends State<CompareScreen> {
 
   void showPlayerChoiceDialog1(BuildContext context, RxList<Elements> players) {
     showDialog(
-
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -872,21 +875,23 @@ class _CompareScreenState extends State<CompareScreen> {
           title: const Text('Choose a Player'),
           content: SizedBox(
             width: double.maxFinite,
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: players.length,
-              itemBuilder: (BuildContext context, int index) {
-                return PlayerListItem(
-                  player: players[index],
-                  onTap: () {
-                    setState(() {
-                      selectedPlayer1 = players[index];
-                    });
-                    Navigator.of(context).pop(); // Close the dialog
-                  },
-                );
-              },
-            ),
+            child: players.isEmpty
+                ? const Center(child: Text("No player found"))
+                : ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: players.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return PlayerListItem(
+                        player: players[index],
+                        onTap: () {
+                          setState(() {
+                            selectedPlayer1 = players[index];
+                          });
+                          Navigator.of(context).pop(); // Close the dialog
+                        },
+                      );
+                    },
+                  ),
           ),
         );
       },
@@ -905,21 +910,23 @@ class _CompareScreenState extends State<CompareScreen> {
           title: const Text('Choose a Player'),
           content: SizedBox(
             width: double.maxFinite,
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: players.length,
-              itemBuilder: (BuildContext context, int index) {
-                return PlayerListItem(
-                  player: players[index],
-                  onTap: () {
-                    setState(() {
-                      selectedPlayer2 = players[index];
-                    });
-                    Navigator.of(context).pop(); // Close the dialog
-                  },
-                );
-              },
-            ),
+            child: players.isEmpty
+                ? const Center(child: Text("No player found"))
+                : ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: players.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return PlayerListItem(
+                        player: players[index],
+                        onTap: () {
+                          setState(() {
+                            selectedPlayer2 = players[index];
+                          });
+                          Navigator.of(context).pop(); // Close the dialog
+                        },
+                      );
+                    },
+                  ),
           ),
         );
       },

@@ -52,7 +52,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
         children: [
           Text(
             widget.title ?? "",
-            style: homeSmallTitleTextStyle,
+            style: mediumTextStyleBlack,
           ),
           const SizedBox(
             height: 10,

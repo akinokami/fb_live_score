@@ -322,83 +322,76 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                       children: [
                                                         SizedBox(
                                                           height: 90,
-                                                          child:
-                                                              ListView.builder(
-                                                                  shrinkWrap:
-                                                                      true,
-                                                                  scrollDirection:
-                                                                      Axis
-                                                                          .horizontal,
-                                                                  itemCount:
-                                                                      homeController
+                                                          child: homeController
+                                                                  .dList.isEmpty
+                                                              ? const Center(
+                                                                  child: Text(
+                                                                      "No Data Found"),
+                                                                )
+                                                              : ListView
+                                                                  .builder(
+                                                                      shrinkWrap:
+                                                                          true,
+                                                                      scrollDirection:
+                                                                          Axis
+                                                                              .horizontal,
+                                                                      itemCount: homeController
                                                                           .dList
                                                                           .length,
-                                                                  itemBuilder:
-                                                                      (context,
-                                                                          index) {
-                                                                    return Padding(
-                                                                      padding: const EdgeInsets
-                                                                          .only(
-                                                                          right:
-                                                                              10.0),
-                                                                      child:
-                                                                          Column(
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.center,
-                                                                        children: [
-                                                                          SizedBox(
-                                                                            height:
-                                                                                50,
-                                                                            child:
-                                                                                Image.network(
-                                                                              "${ApiConstant.imageUrl}${homeController.dList[index].photo?.replaceAll('.jpg', '.png') ?? ''}",
-                                                                              errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                                                                                return const Icon(
-                                                                                  Icons.person,
-                                                                                  color: Colors.white,
-                                                                                  size: 50,
-                                                                                );
-                                                                              },
-                                                                            ),
-                                                                          ),
-                                                                          const SizedBox(
-                                                                            height:
-                                                                                10,
-                                                                          ),
-                                                                          Container(
-                                                                            width:
-                                                                                MediaQuery.of(context).size.width * .2,
-                                                                            padding:
-                                                                                const EdgeInsets.only(left: 5, right: 5),
-                                                                            decoration:
-                                                                                const BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.only(topRight: Radius.circular(5), topLeft: Radius.circular(5))),
-                                                                            child:
-                                                                                Center(
-                                                                              child: Text(
-                                                                                homeController.dList[index].secondName ?? '',
-                                                                                style: const TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.bold),
+                                                                      itemBuilder:
+                                                                          (context,
+                                                                              index) {
+                                                                        return Padding(
+                                                                          padding: const EdgeInsets
+                                                                              .only(
+                                                                              right: 10.0),
+                                                                          child:
+                                                                              Column(
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.center,
+                                                                            children: [
+                                                                              SizedBox(
+                                                                                height: 50,
+                                                                                child: Image.network(
+                                                                                  "${ApiConstant.imageUrl}${homeController.dList[index].photo?.replaceAll('.jpg', '.png') ?? ''}",
+                                                                                  errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                                                                                    return const Icon(
+                                                                                      Icons.person,
+                                                                                      color: Colors.white,
+                                                                                      size: 50,
+                                                                                    );
+                                                                                  },
+                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                          ),
-                                                                          Container(
-                                                                            width:
-                                                                                MediaQuery.of(context).size.width * .2,
-                                                                            padding:
-                                                                                const EdgeInsets.only(left: 5, right: 5),
-                                                                            decoration:
-                                                                                const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(bottomRight: Radius.circular(5), bottomLeft: Radius.circular(5))),
-                                                                            child:
-                                                                                Center(
-                                                                              child: Text(
-                                                                                "${homeController.dList[index].totalpoints}",
-                                                                                style: const TextStyle(color: Colors.black, fontSize: 10, fontWeight: FontWeight.bold),
+                                                                              const SizedBox(
+                                                                                height: 10,
                                                                               ),
-                                                                            ),
-                                                                          )
-                                                                        ],
-                                                                      ),
-                                                                    );
-                                                                  }),
+                                                                              Container(
+                                                                                width: MediaQuery.of(context).size.width * .2,
+                                                                                padding: const EdgeInsets.only(left: 5, right: 5),
+                                                                                decoration: const BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.only(topRight: Radius.circular(5), topLeft: Radius.circular(5))),
+                                                                                child: Center(
+                                                                                  child: Text(
+                                                                                    homeController.dList[index].secondName ?? '',
+                                                                                    style: const TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.bold),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                              Container(
+                                                                                width: MediaQuery.of(context).size.width * .2,
+                                                                                padding: const EdgeInsets.only(left: 5, right: 5),
+                                                                                decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(bottomRight: Radius.circular(5), bottomLeft: Radius.circular(5))),
+                                                                                child: Center(
+                                                                                  child: Text(
+                                                                                    "${homeController.dList[index].totalpoints}",
+                                                                                    style: const TextStyle(color: Colors.black, fontSize: 10, fontWeight: FontWeight.bold),
+                                                                                  ),
+                                                                                ),
+                                                                              )
+                                                                            ],
+                                                                          ),
+                                                                        );
+                                                                      }),
                                                         )
                                                       ],
                                                     ),
