@@ -2,6 +2,7 @@ import 'package:fb_livescore/utils/app_theme.dart';
 import 'package:fb_livescore/views/screens/compare/compare_screen.dart';
 import 'package:fb_livescore/views/screens/my_team/my_team_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../controller/navigation_controller.dart';
 import 'home/home_screen.dart';
@@ -12,10 +13,10 @@ class Home extends StatelessWidget {
   final TextStyle unselectedLabelStyle = TextStyle(
       color: Colors.white.withOpacity(0.5),
       fontWeight: FontWeight.w500,
-      fontSize: 12);
+      fontSize: 11.sp);
 
-  final TextStyle selectedLabelStyle = const TextStyle(
-      color: Colors.white, fontWeight: FontWeight.w500, fontSize: 12);
+  final TextStyle selectedLabelStyle = TextStyle(
+      color: Colors.white, fontWeight: FontWeight.w500, fontSize: 11.sp);
 
   buildBottomNavigationMenu(context, landingPageController) {
     return Obx(() => MediaQuery(
@@ -23,7 +24,7 @@ class Home extends StatelessWidget {
 
         ///edit by erihmar
         child: SizedBox(
-          height: 60,
+          height: 45.h,
           child: BottomNavigationBar(
             showUnselectedLabels: true,
             showSelectedLabels: true,
@@ -36,34 +37,25 @@ class Home extends StatelessWidget {
             selectedLabelStyle: selectedLabelStyle,
             items: [
               BottomNavigationBarItem(
-                icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
-                    Icons.people,
-                    size: 20.0,
-                  ),
+                icon: Icon(
+                  Icons.people,
+                  size: 20.sp,
                 ),
                 label: 'My Team',
                 backgroundColor: AppTheme.primaryColor,
               ),
               BottomNavigationBarItem(
-                icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
-                    Icons.home,
-                    size: 20.0,
-                  ),
+                icon: Icon(
+                  Icons.home,
+                  size: 20.0.sp,
                 ),
                 label: 'Home',
                 backgroundColor: AppTheme.primaryColor,
               ),
               BottomNavigationBarItem(
-                icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
-                    Icons.compare_arrows,
-                    size: 20.0,
-                  ),
+                icon: Icon(
+                  Icons.compare_arrows,
+                  size: 20.0.sp,
                 ),
                 label: 'Compare',
                 backgroundColor: AppTheme.primaryColor,

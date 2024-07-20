@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:fb_livescore/controller/home_controller.dart';
 import 'package:fb_livescore/services/api_constant.dart';
+import 'package:fb_livescore/views/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/my_team_controller.dart';
@@ -30,17 +32,17 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                 )
               : SingleChildScrollView(
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width,
+                    height: 1.sh,
+                    width: 1.sw,
                     child: Column(
                       children: [
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * .05,
+                          height: 1.sh * .05,
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.h),
                           child: SizedBox(
-                            height: MediaQuery.of(context).size.height * .045,
+                            height: 1.sh * .045,
                             child: TextField(
                               controller: myTeamController.searchController,
                               onChanged: (value) {
@@ -58,12 +60,12 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                               decoration: InputDecoration(
                                   hintText: "Enter Manager ID",
                                   contentPadding:
-                                      const EdgeInsets.only(top: 10, left: 10),
-                                  hintStyle: const TextStyle(
-                                      color: Colors.grey, fontSize: 12),
+                                      EdgeInsets.only(top: 10.h, left: 10.w),
+                                  hintStyle: TextStyle(
+                                      color: Colors.grey, fontSize: 12.sp),
                                   //prefixIcon: Icon(Icons.search),
                                   suffixIcon: Padding(
-                                    padding: const EdgeInsets.all(5.0),
+                                    padding: EdgeInsets.all(5.h),
                                     child: GestureDetector(
                                       onTap: () {
                                         if (myTeamController
@@ -76,29 +78,28 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                         }
                                       },
                                       child: Container(
-                                        //height: 15,
-                                        width: 60,
+                                        width: 70.w,
                                         decoration: BoxDecoration(
                                             color: AppTheme.primaryColor,
                                             borderRadius:
-                                                BorderRadius.circular(50)),
-                                        child: const Center(
-                                          child: Text("Search",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12,
-                                              )),
-                                        ),
+                                                BorderRadius.circular(50.r)),
+                                        child: Center(
+                                            child: CustomText(
+                                          text: "Search",
+                                          textColor: Colors.white,
+                                          size: 12.sp,
+                                        )),
                                       ),
                                     ),
                                   ),
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(50))),
+                                      borderRadius:
+                                          BorderRadius.circular(50.r))),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * .03,
+                          height: 1.sh * .03,
                         ),
                         Obx(
                           () => homeController.isLoading1.value
@@ -110,75 +111,60 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                     children: [
                                       if (data)
                                         Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 8.0),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 8.w),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Column(
                                                 children: [
-                                                  const Text(
-                                                    "Overall Rank",
-                                                    style: TextStyle(
-                                                        color: Colors.grey,
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                  const CustomText(
+                                                    text: "Overall Rank",
+                                                    textColor: Colors.grey,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
-                                                  Text(
-                                                    Random()
+                                                  SizedBox(height: 3.h),
+                                                  CustomText(
+                                                    text: Random()
                                                         .nextInt(111111)
                                                         .toString(),
-                                                    style: const TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    textColor: Colors.black,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
                                                 ],
                                               ),
                                               Column(
                                                 children: [
-                                                  const Text(
-                                                    "Points",
-                                                    style: TextStyle(
-                                                        color: Colors.grey,
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                  const CustomText(
+                                                    text: "Points",
+                                                    textColor: Colors.grey,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
-                                                  Text(
-                                                    Random()
+                                                  SizedBox(height: 3.h),
+                                                  CustomText(
+                                                    text: Random()
                                                         .nextInt(11)
                                                         .toString(),
-                                                    style: const TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    textColor: Colors.black,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
                                                 ],
                                               ),
                                               Column(
                                                 children: [
-                                                  const Text(
-                                                    "Total Points",
-                                                    style: TextStyle(
-                                                        color: Colors.grey,
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                  const CustomText(
+                                                    text: "Total Points",
+                                                    textColor: Colors.grey,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
-                                                  Text(
-                                                    Random()
+                                                  SizedBox(height: 3.h),
+                                                  CustomText(
+                                                    text: Random()
                                                         .nextInt(1111)
                                                         .toString(),
-                                                    style: const TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    textColor: Colors.black,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
                                                 ],
                                               )
@@ -186,9 +172,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                           ),
                                         ),
                                       SizedBox(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                .03,
+                                        height: 1.sh * .03,
                                       ),
                                       if (data)
                                         Expanded(
@@ -213,7 +197,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                         Column(
                                                           children: [
                                                             SizedBox(
-                                                              height: 50,
+                                                              height: 45.h,
                                                               child:
                                                                   Image.network(
                                                                 "${ApiConstant.imageUrl}${homeController.gokeeper.value.photo?.replaceAll('.jpg', '.png') ?? ''}",
@@ -223,25 +207,21 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                                         exception,
                                                                     StackTrace?
                                                                         stackTrace) {
-                                                                  return const Icon(
+                                                                  return Icon(
                                                                     Icons
                                                                         .person,
                                                                     color: Colors
                                                                         .white,
-                                                                    size: 50,
+                                                                    size: 45.sp,
                                                                   );
                                                                 },
                                                               ),
                                                             ),
-                                                            const SizedBox(
-                                                              height: 10,
+                                                            SizedBox(
+                                                              height: 8.sp,
                                                             ),
                                                             Container(
-                                                              width: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width *
-                                                                  .2,
+                                                              width: 1.sw * .2,
                                                               padding:
                                                                   const EdgeInsets
                                                                       .only(
@@ -258,56 +238,52 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                                           .circular(
                                                                               5))),
                                                               child: Center(
-                                                                child: Text(
-                                                                  homeController
+                                                                child:
+                                                                    CustomText(
+                                                                  text: homeController
                                                                           .gokeeper
                                                                           .value
                                                                           .secondName ??
                                                                       '',
-                                                                  style: const TextStyle(
-                                                                      color: Colors
+                                                                  textColor:
+                                                                      Colors
                                                                           .white,
-                                                                      fontSize:
-                                                                          8,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold),
+                                                                  size: 10.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
                                                                 ),
                                                               ),
                                                             ),
                                                             Container(
-                                                              width: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width *
-                                                                  .2,
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .only(
-                                                                      left: 5,
-                                                                      right: 5),
-                                                              decoration: const BoxDecoration(
+                                                              width: 1.sw * .2,
+                                                              padding: EdgeInsets
+                                                                  .only(
+                                                                      left: 5.w,
+                                                                      right:
+                                                                          5.w),
+                                                              decoration: BoxDecoration(
                                                                   color: Colors
                                                                       .white,
                                                                   borderRadius: BorderRadius.only(
                                                                       bottomRight:
-                                                                          Radius.circular(
-                                                                              5),
+                                                                          Radius.circular(5
+                                                                              .r),
                                                                       bottomLeft:
                                                                           Radius.circular(
-                                                                              5))),
-                                                              child:
-                                                                  const Center(
-                                                                child: Text(
-                                                                  "2",
-                                                                  style: TextStyle(
-                                                                      color: Colors
+                                                                              5.r))),
+                                                              child: Center(
+                                                                child:
+                                                                    CustomText(
+                                                                  text:
+                                                                      "${homeController.gokeeper.value.totalpoints ?? ''}",
+                                                                  textColor:
+                                                                      Colors
                                                                           .black,
-                                                                      fontSize:
-                                                                          10,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold),
+                                                                  size: 10.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
                                                                 ),
                                                               ),
                                                             )
@@ -321,12 +297,13 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                               .center,
                                                       children: [
                                                         SizedBox(
-                                                          height: 90,
+                                                          height: 80.h,
                                                           child: homeController
                                                                   .dList.isEmpty
                                                               ? const Center(
-                                                                  child: Text(
-                                                                      "No Data Found"),
+                                                                  child: CustomText(
+                                                                      text:
+                                                                          "No Data Found"),
                                                                 )
                                                               : ListView
                                                                   .builder(
@@ -342,49 +319,52 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                                           (context,
                                                                               index) {
                                                                         return Padding(
-                                                                          padding: const EdgeInsets
-                                                                              .only(
-                                                                              right: 10.0),
+                                                                          padding:
+                                                                              EdgeInsets.only(right: 10.w),
                                                                           child:
                                                                               Column(
                                                                             crossAxisAlignment:
                                                                                 CrossAxisAlignment.center,
                                                                             children: [
                                                                               SizedBox(
-                                                                                height: 50,
+                                                                                height: 45.h,
                                                                                 child: Image.network(
                                                                                   "${ApiConstant.imageUrl}${homeController.dList[index].photo?.replaceAll('.jpg', '.png') ?? ''}",
                                                                                   errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                                                                                    return const Icon(
+                                                                                    return Icon(
                                                                                       Icons.person,
                                                                                       color: Colors.white,
-                                                                                      size: 50,
+                                                                                      size: 45.h,
                                                                                     );
                                                                                   },
                                                                                 ),
                                                                               ),
-                                                                              const SizedBox(
-                                                                                height: 10,
+                                                                              SizedBox(
+                                                                                height: 8.h,
                                                                               ),
                                                                               Container(
-                                                                                width: MediaQuery.of(context).size.width * .2,
-                                                                                padding: const EdgeInsets.only(left: 5, right: 5),
-                                                                                decoration: const BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.only(topRight: Radius.circular(5), topLeft: Radius.circular(5))),
+                                                                                width: 1.sw * .2,
+                                                                                padding: EdgeInsets.only(left: 5.w, right: 5.w),
+                                                                                decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.only(topRight: Radius.circular(5.r), topLeft: Radius.circular(5.r))),
                                                                                 child: Center(
-                                                                                  child: Text(
-                                                                                    homeController.dList[index].secondName ?? '',
-                                                                                    style: const TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.bold),
+                                                                                  child: CustomText(
+                                                                                    text: homeController.dList[index].secondName ?? '',
+                                                                                    textColor: Colors.white,
+                                                                                    size: 10.sp,
+                                                                                    fontWeight: FontWeight.bold,
                                                                                   ),
                                                                                 ),
                                                                               ),
                                                                               Container(
-                                                                                width: MediaQuery.of(context).size.width * .2,
-                                                                                padding: const EdgeInsets.only(left: 5, right: 5),
-                                                                                decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(bottomRight: Radius.circular(5), bottomLeft: Radius.circular(5))),
+                                                                                width: 1.sw * .2,
+                                                                                padding: EdgeInsets.only(left: 5.w, right: 5.w),
+                                                                                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(bottomRight: Radius.circular(5.r), bottomLeft: Radius.circular(5.r))),
                                                                                 child: Center(
-                                                                                  child: Text(
-                                                                                    "${homeController.dList[index].totalpoints}",
-                                                                                    style: const TextStyle(color: Colors.black, fontSize: 10, fontWeight: FontWeight.bold),
+                                                                                  child: CustomText(
+                                                                                    text: "${homeController.dList[index].totalpoints}",
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    size: 10.sp,
+                                                                                    textColor: Colors.black,
                                                                                   ),
                                                                                 ),
                                                                               )
@@ -401,7 +381,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                               .center,
                                                       children: [
                                                         SizedBox(
-                                                          height: 90,
+                                                          height: 80.h,
                                                           child:
                                                               ListView.builder(
                                                                   shrinkWrap:
@@ -417,59 +397,60 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                                       (context,
                                                                           index) {
                                                                     return Padding(
-                                                                      padding: const EdgeInsets
-                                                                          .only(
+                                                                      padding: EdgeInsets.only(
                                                                           right:
-                                                                              10.0),
+                                                                              10.w),
                                                                       child:
                                                                           Column(
                                                                         children: [
                                                                           SizedBox(
                                                                             height:
-                                                                                50,
+                                                                                45.h,
                                                                             child:
                                                                                 Image.network(
                                                                               "${ApiConstant.imageUrl}${homeController.mList[index].photo?.replaceAll('.jpg', '.png') ?? ''}",
                                                                               errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                                                                                return const Icon(
+                                                                                return Icon(
                                                                                   Icons.person,
                                                                                   color: Colors.white,
-                                                                                  size: 50,
+                                                                                  size: 45.h,
                                                                                 );
                                                                               },
                                                                             ),
                                                                           ),
-                                                                          const SizedBox(
-                                                                            height:
-                                                                                10,
-                                                                          ),
+                                                                          SizedBox(
+                                                                              height: 8.h),
                                                                           Container(
                                                                             width:
-                                                                                MediaQuery.of(context).size.width * .2,
+                                                                                1.sw * .2,
                                                                             padding:
-                                                                                const EdgeInsets.only(left: 5, right: 5),
+                                                                                EdgeInsets.only(left: 5.w, right: 5.w),
                                                                             decoration:
-                                                                                const BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.only(topRight: Radius.circular(5), topLeft: Radius.circular(5))),
+                                                                                BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.only(topRight: Radius.circular(5.r), topLeft: Radius.circular(5.r))),
                                                                             child:
                                                                                 Center(
-                                                                              child: Text(
-                                                                                homeController.mList[index].secondName ?? '',
-                                                                                style: const TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.bold),
+                                                                              child: CustomText(
+                                                                                text: homeController.mList[index].secondName ?? '',
+                                                                                size: 10.sp,
+                                                                                fontWeight: FontWeight.bold,
+                                                                                textColor: Colors.white,
                                                                               ),
                                                                             ),
                                                                           ),
                                                                           Container(
                                                                             width:
-                                                                                MediaQuery.of(context).size.width * .2,
+                                                                                1.sw * .2,
                                                                             padding:
-                                                                                const EdgeInsets.only(left: 5, right: 5),
+                                                                                EdgeInsets.only(left: 5.w, right: 5.w),
                                                                             decoration:
-                                                                                const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(bottomRight: Radius.circular(5), bottomLeft: Radius.circular(5))),
+                                                                                BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(bottomRight: Radius.circular(5.r), bottomLeft: Radius.circular(5.r))),
                                                                             child:
                                                                                 Center(
-                                                                              child: Text(
-                                                                                "${homeController.mList[index].totalpoints}",
-                                                                                style: const TextStyle(color: Colors.black, fontSize: 10, fontWeight: FontWeight.bold),
+                                                                              child: CustomText(
+                                                                                text: "${homeController.mList[index].totalpoints}",
+                                                                                textColor: Colors.black,
+                                                                                size: 10.sp,
+                                                                                fontWeight: FontWeight.bold,
                                                                               ),
                                                                             ),
                                                                           )
@@ -486,7 +467,7 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                               .center,
                                                       children: [
                                                         SizedBox(
-                                                          height: 90,
+                                                          height: 80.h,
                                                           child:
                                                               ListView.builder(
                                                                   shrinkWrap:
@@ -502,59 +483,62 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                                                                       (context,
                                                                           index) {
                                                                     return Padding(
-                                                                      padding: const EdgeInsets
-                                                                          .only(
+                                                                      padding: EdgeInsets.only(
                                                                           right:
-                                                                              10),
+                                                                              10.w),
                                                                       child:
                                                                           Column(
                                                                         children: [
                                                                           SizedBox(
                                                                             height:
-                                                                                50,
+                                                                                45.h,
                                                                             child:
                                                                                 Image.network(
                                                                               "${ApiConstant.imageUrl}${homeController.fList[index].photo?.replaceAll('.jpg', '.png') ?? ''}",
                                                                               errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                                                                                return const Icon(
+                                                                                return Icon(
                                                                                   Icons.person,
                                                                                   color: Colors.white,
-                                                                                  size: 50,
+                                                                                  size: 45.h,
                                                                                 );
                                                                               },
                                                                             ),
                                                                           ),
-                                                                          const SizedBox(
+                                                                          SizedBox(
                                                                             height:
-                                                                                10,
+                                                                                8.h,
                                                                           ),
                                                                           Container(
                                                                             width:
-                                                                                MediaQuery.of(context).size.width * .2,
+                                                                                1.sw * .2,
                                                                             padding:
-                                                                                const EdgeInsets.only(left: 5, right: 5),
+                                                                                EdgeInsets.only(left: 5.w, right: 5.w),
                                                                             decoration:
-                                                                                const BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.only(topRight: Radius.circular(5), topLeft: Radius.circular(5))),
+                                                                                BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.only(topRight: Radius.circular(5.r), topLeft: Radius.circular(5.r))),
                                                                             child:
                                                                                 Center(
-                                                                              child: Text(
-                                                                                homeController.fList[index].secondName ?? '',
-                                                                                style: const TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.bold),
+                                                                              child: CustomText(
+                                                                                text: homeController.fList[index].secondName ?? '',
+                                                                                textColor: Colors.white,
+                                                                                size: 10.sp,
+                                                                                fontWeight: FontWeight.bold,
                                                                               ),
                                                                             ),
                                                                           ),
                                                                           Container(
                                                                             width:
-                                                                                MediaQuery.of(context).size.width * .2,
+                                                                                1.sw * .2,
                                                                             padding:
-                                                                                const EdgeInsets.only(left: 5, right: 5),
+                                                                                EdgeInsets.only(left: 5.w, right: 5.w),
                                                                             decoration:
-                                                                                const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(bottomRight: Radius.circular(5), bottomLeft: Radius.circular(5))),
+                                                                                BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(bottomRight: Radius.circular(5.r), bottomLeft: Radius.circular(5.r))),
                                                                             child:
                                                                                 Center(
-                                                                              child: Text(
-                                                                                "${homeController.fList[index].totalpoints}",
-                                                                                style: const TextStyle(color: Colors.black, fontSize: 10, fontWeight: FontWeight.bold),
+                                                                              child: CustomText(
+                                                                                text: "${homeController.fList[index].totalpoints}",
+                                                                                textColor: Colors.black,
+                                                                                fontWeight: FontWeight.bold,
+                                                                                size: 10.sp,
                                                                               ),
                                                                             ),
                                                                           )

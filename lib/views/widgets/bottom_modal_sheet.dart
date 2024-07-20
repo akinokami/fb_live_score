@@ -854,8 +854,8 @@ class ResultsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: MediaQuery.of(context).size.height * .7,
-        width: MediaQuery.of(context).size.width * .88,
+        height: 1.sh * .7,
+        width: 1.sw * .88,
         child: ExpansionTile(
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -865,9 +865,10 @@ class ResultsWidget extends StatelessWidget {
                 children: [
                   CustomText(
                     text: model.wasHome == true ? "H" : "A",
+                    size: 10.sp,
                   ),
                   SizedBox(
-                    width: 10,
+                    width: 10.w,
                   ),
                   Image.network(
                     teamList
@@ -876,11 +877,11 @@ class ResultsWidget extends StatelessWidget {
                                 model.opponentTeam)
                             .imageUrl ??
                         '',
-                    width: 20,
-                    height: 20,
+                    width: 20.w,
+                    height: 20.w,
                   ),
                   SizedBox(
-                    width: 10,
+                    width: 10.w,
                   ),
                   CustomText(
                     text: teamList
@@ -889,6 +890,7 @@ class ResultsWidget extends StatelessWidget {
                                 int.parse(model.opponentTeam.toString()))
                             .name ??
                         "",
+                    size: 10.sp,
                   ),
                 ],
               ),
@@ -896,39 +898,41 @@ class ResultsWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomText(
-                    text: model.totalPoints.toString() + " pts",
+                    text: "${model.totalPoints} pts",
+                    size: 10.sp,
                   ),
                   SizedBox(
-                    width: 10,
+                    width: 10.w,
                   ),
                   model.wasHome == true && model.teamHScore! > model.teamAScore!
                       ? Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
+                          padding: EdgeInsets.all(5.h),
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.green,
                           ),
                           child: CustomText(
                             text: "W",
+                            size: 10.sp,
                           ),
                         )
                       : Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
+                          padding: EdgeInsets.all(5.h),
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.red,
                           ),
                           child: CustomText(
                             text: "L",
+                            size: 10.sp,
                           ),
                         ),
                   SizedBox(
-                    width: 10,
+                    width: 10.w,
                   ),
                   CustomText(
-                    text: model.teamHScore.toString() +
-                        " - " +
-                        model.teamAScore.toString(),
+                    text: "${model.teamHScore} - ${model.teamAScore}",
+                    size: 10.sp,
                   ),
                 ],
               ),
