@@ -138,10 +138,11 @@ class _HomeScreenState extends State<HomeScreen> {
               () => Padding(
                 padding: EdgeInsets.all(8.h),
                 child: Badge(
+                  alignment: Alignment.topRight,
                   label: CustomText(
                     text: cartController.cartList.length.toString(),
                     textColor: Colors.white,
-                    size: 7.sp,
+                    size: 8.sp,
                   ),
                   child: IconButton(
                     icon: Icon(

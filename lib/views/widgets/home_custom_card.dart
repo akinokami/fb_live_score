@@ -125,6 +125,7 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                               '',
                                           width: 20.w,
                                           height: 20.h,
+                                          fit: BoxFit.contain,
                                         ),
                                         SizedBox(
                                           width: 20.w,
@@ -171,7 +172,7 @@ class _HomeCustomCardState extends State<HomeCustomCard> {
                                                   ? Icons.shopping_cart
                                                   : Icons
                                                       .shopping_cart_outlined,
-                                              size: 20.sp,
+                                              size: 18.sp,
                                             ),
                                           ),
                                         ),

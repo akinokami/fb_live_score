@@ -683,6 +683,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                         '',
                     width: 20.w,
                     height: 20.h,
+                    fit: BoxFit.contain,
                   ),
                 ),
                 SizedBox(
@@ -709,7 +710,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                         cartController.cartList.contains(widget.modelData)
                             ? Icons.shopping_cart
                             : Icons.shopping_cart_outlined,
-                        size: 20.sp,
+                        size: 18.sp,
                       ),
                     ),
                   ),

@@ -6,6 +6,7 @@ import 'package:fb_livescore/utils/constants.dart';
 import 'package:fb_livescore/views/widgets/bottom_modal_sheet.dart';
 import 'package:fb_livescore/views/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../utils/app_theme.dart';
@@ -53,21 +54,21 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
           CustomText(
             text: widget.title ?? "",
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           GestureDetector(
             onTap: () {
               _showBottomSheet(context);
             },
             child: SizedBox(
-              height: MediaQuery.of(context).size.height * .2,
+              height: 1.sh * .2,
               child: Material(
                 elevation: 10,
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
                   decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                      BoxDecoration(borderRadius: BorderRadius.circular(10.r)),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 0.0),
                     child: Column(
@@ -75,7 +76,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                               //color:Colors.blueGrey,
                               // gradient:  LinearGradient(
                               //   colors: [
@@ -86,8 +87,8 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                               //   end: Alignment.bottomRight,
                               // ),
                               borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(10),
-                                  topRight: Radius.circular(10))),
+                                  topLeft: Radius.circular(10.r),
+                                  topRight: Radius.circular(10.r))),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,8 +105,9 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                                   .toString()))
                                           .imageUrl ??
                                       '',
-                                  width: 20,
-                                  height: 20,
+                                  fit: BoxFit.contain,
+                                  width: 20.w,
+                                  height: 20.h,
                                 ),
                               ),
                               const SizedBox(
@@ -113,11 +115,11 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                               ),
                               Image.network(
                                 "${ApiConstant.imageUrl}${widget.modelData.photo?.replaceAll('.jpg', '.png') ?? ''}",
-                                width: 50,
-                                height: 70,
+                                width: 50.w,
+                                height: 70.h,
                               ),
-                              const SizedBox(
-                                width: 20,
+                              SizedBox(
+                                width: 20.w,
                               ),
                               // Padding(
                               //   padding: EdgeInsets.all(8.0),
@@ -161,7 +163,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                               item.id == widget.modelData.id)
                                           ? Icons.shopping_cart
                                           : Icons.shopping_cart_outlined,
-                                      size: 20,
+                                      size: 18.sp,
                                     ),
                                   ),
                                 ),
@@ -171,6 +173,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                         ),
                         CustomText(
                           text: widget.modelData.secondName ?? "",
+                          size: 10.sp,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 5.0),
@@ -182,18 +185,19 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                   child: CustomText(
                                     text: Constants().defineType(
                                         widget.modelData.elementType ?? 0),
+                                    size: 10.sp,
                                   )),
-                              const SizedBox(
-                                width: 2,
+                              SizedBox(
+                                width: 2.w,
                               ),
-                              const SizedBox(
-                                  height: 10,
+                              SizedBox(
+                                  height: 10.h,
                                   child: VerticalDivider(
-                                    width: 5,
+                                    width: 5.w,
                                     color: Colors.grey,
                                   )),
-                              const SizedBox(
-                                width: 2,
+                              SizedBox(
+                                width: 2.w,
                               ),
                               Opacity(
                                   opacity: 0.5,
@@ -206,24 +210,17 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                                     .toString()))
                                             .name ??
                                         '',
+                                    size: 10.sp,
                                   )),
                             ],
                           ),
                         ),
                         Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                               color: AppTheme.primaryColor,
-                              // gradient: LinearGradient(
-                              //   colors: [
-                              //     Color(0xFFA2D240),
-                              //     Color(0xFF1B8B00)
-                              //   ], //#A2D240//#1B8B00
-                              //   begin: Alignment.topLeft,
-                              //   end: Alignment.bottomRight,
-                              // ),
                               borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(10),
-                                  bottomRight: Radius.circular(10))),
+                                  bottomLeft: Radius.circular(10.r),
+                                  bottomRight: Radius.circular(10.r))),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -234,6 +231,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                       child: CustomText(
                                         text: "GW38 Pts",
                                         textColor: Colors.white,
+                                        size: 10.sp,
                                       )),
                                   Opacity(
                                       opacity: 0.8,
@@ -241,11 +239,12 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                         text:
                                             "${widget.modelData.eventPoints ?? ''}",
                                         textColor: Colors.white,
+                                        size: 10.sp,
                                       )),
                                 ],
                               ),
-                              const SizedBox(
-                                width: 10,
+                              SizedBox(
+                                width: 10.w,
                               ),
                               Column(
                                 children: [
@@ -254,6 +253,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                       child: CustomText(
                                         text: "Price",
                                         textColor: Colors.white,
+                                        size: 10.sp,
                                       )),
                                   Opacity(
                                       opacity: 0.8,
@@ -261,11 +261,12 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                         text:
                                             "${widget.modelData.nowCost ?? ''}",
                                         textColor: Colors.white,
+                                        size: 10.sp,
                                       )),
                                 ],
                               ),
-                              const SizedBox(
-                                width: 10,
+                              SizedBox(
+                                width: 10.sp,
                               ),
                               Column(
                                 children: [
@@ -274,6 +275,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                       child: CustomText(
                                         text: "Owned",
                                         textColor: Colors.white,
+                                        size: 10.sp,
                                       )),
                                   Opacity(
                                       opacity: 0.8,
@@ -281,6 +283,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                         text:
                                             "${widget.modelData.selectedByPercent ?? ''}%",
                                         textColor: Colors.white,
+                                        size: 10.sp,
                                       )),
                                 ],
                               )
