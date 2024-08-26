@@ -107,5 +107,5 @@ flutter:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/fb.webp"
+  image_path: "assets/launcher.webp"
   min_sdk_android: 21

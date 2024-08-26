@@ -267,7 +267,7 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                       opacity: 0.8,
                                       child: CustomText(
                                         text:
-                                            "${widget.modelData.nowCost ?? ''}",
+                                            "\u00A3${widget.modelData.nowCost ?? ''}",
                                         textColor: Colors.white,
                                         size: 10.sp,
                                       )),
