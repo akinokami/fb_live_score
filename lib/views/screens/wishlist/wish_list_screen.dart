@@ -114,6 +114,9 @@ class WishListScreen extends StatelessWidget {
                                                   width: 20.w,
                                                   height: 20.h,
                                                   fit: BoxFit.contain,
+                                                  errorBuilder: (context, error,
+                                                          stackTrace) =>
+                                                      const Icon(Icons.error),
                                                 ),
                                                 SizedBox(
                                                   width: 20.w,
@@ -122,6 +125,14 @@ class WishListScreen extends StatelessWidget {
                                                   "${ApiConstant.imageUrl}${cartController.cartList[index].photo?.replaceAll('.jpg', '.png') ?? ''}",
                                                   width: 50.w,
                                                   height: 70.h,
+                                                  errorBuilder: (context, error,
+                                                          stackTrace) =>
+                                                      SizedBox(
+                                                    width: 50.w,
+                                                    height: 70.h,
+                                                    child: Icon(Icons.person,
+                                                        size: 25.sp),
+                                                  ),
                                                 ),
                                                 SizedBox(
                                                   width: 20.w,

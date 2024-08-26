@@ -231,6 +231,9 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                                             '',
                                         width: 20.w,
                                         height: 20.h,
+                                        errorBuilder:
+                                            (context, error, stackTrace) =>
+                                                const Icon(Icons.error),
                                       ),
                                       SizedBox(
                                         width: 10.h,
@@ -684,6 +687,8 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                     width: 20.w,
                     height: 20.h,
                     fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.error),
                   ),
                 ),
                 SizedBox(
@@ -693,6 +698,11 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                   "${ApiConstant.imageUrl}${widget.modelData?.photo?.replaceAll('.jpg', '.png') ?? ''}",
                   width: 50.w,
                   height: 70.h,
+                  errorBuilder: (context, error, stackTrace) => SizedBox(
+                    width: 50.w,
+                    height: 70.h,
+                    child: Icon(Icons.person, size: 25.sp),
+                  ),
                 ),
                 SizedBox(
                   width: 20.w,
@@ -880,6 +890,8 @@ class ResultsWidget extends StatelessWidget {
                         '',
                     width: 20.w,
                     height: 20.w,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.error),
                   ),
                   SizedBox(
                     width: 10.w,

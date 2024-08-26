@@ -46,31 +46,31 @@ class HomeController extends GetxController {
                 a.nowCost ?? 0)))! // Sort in descending order by nowCost
           ;
       topPlayerList.value = statusModel.value.elements
-              ?.where((i) => num.parse(i.totalpoints.toString()) >= 135)
+              ?.where((i) => num.parse(i.totalpoints.toString()) >= 20)
               .toList() ??
           [];
 
       topForwardList.value = statusModel.value.elements
               ?.where((i) =>
-                  num.parse(i.totalpoints.toString()) >= 130 &&
+                  num.parse(i.totalpoints.toString()) >= 15 &&
                   i.elementType == 4)
               .toList() ??
           [];
       midfielderList.value = statusModel.value.elements
               ?.where((i) =>
-                  num.parse(i.totalpoints.toString()) >= 135 &&
+                  num.parse(i.totalpoints.toString()) >= 10 &&
                   i.elementType == 3)
               .toList() ??
           [];
       defenderList.value = statusModel.value.elements
               ?.where((i) =>
-                  num.parse(i.totalpoints.toString()) >= 120 &&
+                  num.parse(i.totalpoints.toString()) >= 10 &&
                   i.elementType == 2)
               .toList() ??
           [];
       gokeeperList.value = statusModel.value.elements
               ?.where((i) =>
-                  num.parse(i.totalpoints.toString()) >= 110 &&
+                  num.parse(i.totalpoints.toString()) >= 10 &&
                   i.elementType == 1)
               .toList() ??
           [];

@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:fb_livescore/models/status_model.dart';
 import 'package:fb_livescore/models/team_model.dart';
 import 'package:fb_livescore/services/api_constant.dart';
@@ -80,6 +82,12 @@ class _CompareScreenState extends State<CompareScreen> {
                                           "${ApiConstant.imageUrl}${selectedPlayer1?.photo?.replaceAll('.jpg', '.png') ?? ''}",
                                           width: 50.w,
                                           height: 70.h,
+                                          errorBuilder:
+                                              (context, error, stackTrace) =>
+                                                  Icon(
+                                            Icons.person,
+                                            size: 30.sp,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -164,10 +172,59 @@ class _CompareScreenState extends State<CompareScreen> {
                                             CrossAxisAlignment.start,
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
+                                          // FastCachedImage(
+                                          //   width: 40.w,
+                                          //   height: 50.h,
+                                          //   url:
+                                          //       "${ApiConstant.imageUrl}${selectedPlayer2?.photo?.replaceAll('.jpg', '.png') ?? ''}",
+                                          //   fit: BoxFit.cover,
+                                          //   fadeInDuration:
+                                          //       const Duration(seconds: 1),
+                                          //   errorBuilder: (context, exception,
+                                          //           stacktrace) =>
+                                          //       SizedBox(
+                                          //           width: 50.w,
+                                          //           height: 70.h,
+                                          //           child: Icon(
+                                          //             Icons.person_rounded,
+                                          //             size: 30.sp,
+                                          //           )),
+                                          //   loadingBuilder:
+                                          //       (context, progress) {
+                                          //     return SizedBox(
+                                          //       width: 50.w,
+                                          //       height: 70.h,
+                                          //       child: Stack(
+                                          //         alignment: Alignment.center,
+                                          //         children: [
+                                          //           if (progress
+                                          //                   .isDownloading &&
+                                          //               progress.totalBytes !=
+                                          //                   null)
+                                          //             SizedBox(
+                                          //                 width: 20.w,
+                                          //                 height: 20.w,
+                                          //                 child: CircularProgressIndicator(
+                                          //                     color:
+                                          //                         Colors.green,
+                                          //                     value: progress
+                                          //                         .progressPercentage
+                                          //                         .value)),
+                                          //         ],
+                                          //       ),
+                                          //     );
+                                          //   },
+                                          // ),
                                           Image.network(
                                             "${ApiConstant.imageUrl}${selectedPlayer2?.photo?.replaceAll('.jpg', '.png') ?? ''}",
                                             width: 50.w,
                                             height: 70.h,
+                                            errorBuilder:
+                                                (context, error, stackTrace) =>
+                                                    Icon(
+                                              Icons.person,
+                                              size: 30.sp,
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -951,11 +1008,40 @@ class PlayerListItem extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: ListTile(
-        leading: Image.network(
-          "${ApiConstant.imageUrl}${player.photo?.replaceAll('.jpg', '.png') ?? ''}",
+        leading: FastCachedImage(
           width: 40.w,
           height: 50.h,
-        ), // Placeholder for player icon
+          url:
+              "${ApiConstant.imageUrl}${player.photo?.replaceAll('.jpg', '.png') ?? ''}",
+          fit: BoxFit.cover,
+          fadeInDuration: const Duration(seconds: 1),
+          errorBuilder: (context, exception, stacktrace) => SizedBox(
+              width: 40.w,
+              height: 50.h,
+              child: Icon(
+                Icons.person_rounded,
+                size: 25.sp,
+              )),
+          loadingBuilder: (context, progress) {
+            return SizedBox(
+              width: 40.w,
+              height: 50.h,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  if (progress.isDownloading && progress.totalBytes != null)
+                    SizedBox(
+                        width: 20.w,
+                        height: 20.w,
+                        child: CircularProgressIndicator(
+                            color: Colors.green,
+                            value: progress.progressPercentage.value)),
+                ],
+              ),
+            );
+          },
+        ),
+
         title: CustomText(
           text: player.secondName ?? "",
         ),

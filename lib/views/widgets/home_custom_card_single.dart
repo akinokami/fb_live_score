@@ -108,6 +108,8 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                   fit: BoxFit.contain,
                                   width: 20.w,
                                   height: 20.h,
+                                  errorBuilder: (context, error, stackTrace) =>
+                                      const Icon(Icons.error),
                                 ),
                               ),
                               const SizedBox(
@@ -117,6 +119,12 @@ class _HomeCustomCardSingleState extends State<HomeCustomCardSingle> {
                                 "${ApiConstant.imageUrl}${widget.modelData.photo?.replaceAll('.jpg', '.png') ?? ''}",
                                 width: 50.w,
                                 height: 70.h,
+                                errorBuilder: (context, error, stackTrace) =>
+                                    SizedBox(
+                                  width: 50.w,
+                                  height: 70.h,
+                                  child: Icon(Icons.person, size: 25.sp),
+                                ),
                               ),
                               SizedBox(
                                 width: 20.w,
