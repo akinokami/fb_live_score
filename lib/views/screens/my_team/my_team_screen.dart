@@ -646,7 +646,9 @@ class _MyTeamScreenState extends State<MyTeamScreen> {
                     Visibility(
                       visible: Global.countryCode == 'PH' ||
                           Global.countryCode == 'VN',
-                      child: const AdsWidget(),
+                      child: AdsWidget(
+                        onTap: () {},
+                      ),
                     )
                   ],
                 ),

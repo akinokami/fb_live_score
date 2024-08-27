@@ -942,7 +942,9 @@ class _CompareScreenState extends State<CompareScreen> {
           ),
           Visibility(
             visible: Global.countryCode == 'PH' || Global.countryCode == 'VN',
-            child: const AdsWidget(),
+            child: AdsWidget(
+              onTap: () {},
+            ),
           )
         ],
       ),

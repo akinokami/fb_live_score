@@ -413,7 +413,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Visibility(
                       visible: Global.countryCode == 'PH' ||
                           Global.countryCode == 'VN',
-                      child: const AdsWidget(),
+                      child: AdsWidget(
+                        onTap: () {},
+                      ),
                     )
                   ],
                 ),
