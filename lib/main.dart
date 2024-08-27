@@ -1,5 +1,6 @@
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
-import 'package:fb_livescore/views/screens/home_menu.dart';
+
+import 'package:fb_livescore/views/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -29,14 +30,14 @@ class MyApp extends StatelessWidget {
           return GetMaterialApp(
             title: 'Live Score',
             theme: ThemeData(
-              primarySwatch: Colors.blue,
+              primarySwatch: Colors.green,
               elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                 ),
               ),
             ),
-            home: Home(),
+            home: const SplashScreen(),
             debugShowCheckedModeBanner: false,
           );
         });

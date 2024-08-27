@@ -30,4 +30,13 @@ class ApiRepo {
       throw CustomException(e.toString());
     }
   }
+
+  Future<String> getCountry() async {
+    try {
+      final response = await apiUtils.get(url: ApiConstant.countruUrl);
+      return response.data['countryCode'];
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
 }
